@@ -66,6 +66,58 @@
           <a class="btn btn-secondary" href="ratings.html">Browse the log →</a>
         </div>
       </section>
+      <section class="section-card minecraft-section">
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-heading">Minecraft Server Hub</h2>
+            <p>
+              Live status and the world map are wired in now, with services coming online
+              soon.
+            </p>
+          </div>
+          <span class="status-pill status-offline">Offline · Coming soon</span>
+        </div>
+        <div class="minecraft-grid">
+          <div class="minecraft-panel">
+            <h3>Server Status</h3>
+            <ul class="status-list">
+              <li>
+                <span>Survival Server</span>
+                <span class="status-pill status-offline">Offline</span>
+              </li>
+              <li>
+                <span>Address</span>
+                <span class="status-value">mc.epppe.net</span>
+              </li>
+              <li>
+                <span>Version</span>
+                <span class="status-value">Planned: 1.20+</span>
+              </li>
+            </ul>
+            <p class="status-note">
+              The server is currently in setup mode. Check back here once the world goes live.
+            </p>
+          </div>
+          <div class="minecraft-panel">
+            <h3>Live Map (Pl3xMap)</h3>
+            <div class="map-frame">
+              <iframe
+                src="https://map.epppe.net"
+                title="Minecraft live map"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              ></iframe>
+              <span class="map-status status-pill status-offline">Map offline</span>
+            </div>
+            <p class="status-note">
+              The map will render the moment the server is live.
+            </p>
+            <a class="btn btn-secondary" href="https://map.epppe.net" target="_blank" rel="noopener">
+              Open map.epppe.net →
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
