@@ -77,22 +77,32 @@ function renderRating(entry) {
   } else {
     // 3‑point smiley rating
     let emoji;
+    let label;
+    let toneClass;
     switch (entry.rating) {
       case 3:
         emoji = '😊';
+        label = 'GOOD';
+        toneClass = 'rating-good';
         break;
       case 2:
         emoji = '😐';
+        label = 'OKAY';
+        toneClass = 'rating-okay';
         break;
       default:
         emoji = '😞';
+        label = 'BAD';
+        toneClass = 'rating-bad';
     }
-    return `<span class="rating-smiley" aria-label="${entry.rating} of 3">${emoji}</span>`;
+    return `<span class="rating-badge ${toneClass}" aria-label="${label}">${emoji} ${label}</span>`;
   }
 }
 
 function renderFavorite(fav) {
-  return fav ? '<span class="favorite" aria-label="Favorite">❤️</span>' : '';
+  return fav
+    ? '<span class="favorite" aria-label="Favorite">❤️</span>'
+    : '<span class="favorite empty" aria-label="Not favorite">○</span>';
 }
 
 // Build external links based on category and title
@@ -124,7 +134,7 @@ function createRow(entry) {
   tr.appendChild(titleTd);
 
   const categoryTd = document.createElement('td');
-  categoryTd.textContent = capitalize(entry.category);
+  categoryTd.innerHTML = `<span class="category-pill">${capitalize(entry.category)}</span>`;
   tr.appendChild(categoryTd);
 
   const favoriteTd = document.createElement('td');
@@ -209,14 +219,24 @@ function showDetails(entry) {
   closeBtn.innerHTML = '&times;';
   closeBtn.addEventListener('click', () => modal.classList.remove('active'));
   content.appendChild(closeBtn);
-  // Title
+  const headerWrap = document.createElement('div');
+  headerWrap.className = 'modal-header';
+  const titleWrap = document.createElement('div');
+  const meta = document.createElement('div');
+  meta.className = 'modal-meta';
+  meta.innerHTML = `
+    <span class="category-pill">${capitalize(entry.category)}</span>
+    ${renderRating(entry)}
+  `;
+  titleWrap.appendChild(meta);
   const h3 = document.createElement('h3');
   h3.textContent = entry.title;
-  content.appendChild(h3);
-  // Rating display
-  const ratingDiv = document.createElement('div');
-  ratingDiv.innerHTML = `<strong>Rating:</strong> ${renderRating(entry)}`;
-  content.appendChild(ratingDiv);
+  titleWrap.appendChild(h3);
+  headerWrap.appendChild(titleWrap);
+  const favWrap = document.createElement('div');
+  favWrap.innerHTML = renderFavorite(entry.favorite);
+  headerWrap.appendChild(favWrap);
+  content.appendChild(headerWrap);
   // Notes
   if (entry.notes) {
     const notesP = document.createElement('p');
@@ -230,15 +250,26 @@ function showDetails(entry) {
   // External links
   const links = buildLinks(entry);
   if (Object.keys(links).length > 0) {
-    const linksDiv = document.createElement('div');
-    linksDiv.innerHTML = '<strong>Explore more:</strong> ';
-    let first = true;
-    for (const [key, url] of Object.entries(links)) {
-      if (!first) linksDiv.innerHTML += ' | ';
-      linksDiv.innerHTML += `<a href="${url}" target="_blank" rel="noopener">${capitalize(key)}</a>`;
-      first = false;
+    const actions = document.createElement('div');
+    actions.className = 'modal-actions';
+    const [primaryKey, primaryUrl] = Object.entries(links)[0];
+    actions.innerHTML = `
+      <a class="btn" href="${primaryUrl}" target="_blank" rel="noopener">
+        View on ${capitalize(primaryKey)} ↗
+      </a>
+    `;
+    if (Object.keys(links).length > 1) {
+      const extra = document.createElement('p');
+      extra.innerHTML = `<strong>Explore more:</strong> ${Object.entries(links)
+        .slice(1)
+        .map(
+          ([key, url]) =>
+            `<a href="${url}" target="_blank" rel="noopener">${capitalize(key)}</a>`
+        )
+        .join(' | ')}`;
+      actions.appendChild(extra);
     }
-    content.appendChild(linksDiv);
+    content.appendChild(actions);
   }
   modal.classList.add('active');
 }
