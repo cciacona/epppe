@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Editor - Epppe's Media Ratings</title>
-    <!-- Preconnect and Google Font import for a modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,66 +13,75 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Epppe's Media Ratings – Admin</h1>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-badge">E</span>
+        <span class="brand-text">epppe.net</span>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ratings.html">Reviews</a>
+        <a href="edit.html">Admin</a>
+        <a class="nav-pill" href="https://stream.epppe.net" target="_blank" rel="noreferrer">
+          ▶ Stream
+        </a>
+      </nav>
     </header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="ratings.html">Ratings</a>
-      <a href="edit.html">Edit</a>
-      <a href="https://stream.epppe.net" target="_blank">Stream</a>
-    </nav>
-    <div class="container">
-      <h2>Admin Editor</h2>
-      <p>This page allows you to manage your ratings. Access is restricted with a password.</p>
-      <div id="login-section">
-        <label for="admin-pass">Password:</label>
-        <input type="password" id="admin-pass" />
-        <button id="login-btn" class="btn">Login</button>
-        <p id="login-error" style="color: red; display: none;">Incorrect password. Please try again.</p>
-      </div>
-      <div id="edit-section" style="display: none;">
-        <h3>Existing Entries</h3>
-        <table id="edit-table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Favorite</th>
-              <th>Rating</th>
-              <th>Notes</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <h3 id="form-heading">Add Entry</h3>
-        <form id="entry-form">
-          <input type="hidden" id="entry-id" />
-          <label for="title-input">Title</label>
-          <input type="text" id="title-input" required />
-          <label for="category-input">Category</label>
-          <select id="category-input" required>
-            <option value="games">Games</option>
-            <option value="movies">Movies</option>
-            <option value="tv">TV</option>
-            <option value="anime">Anime</option>
-            <option value="reading">Reading</option>
-          </select>
-          <label for="rating-input">Rating</label>
-          <input type="number" id="rating-input" min="1" max="5" required />
-          <label for="favorite-input">Favorite</label>
-          <input type="checkbox" id="favorite-input" />
-          <label for="notes-input">Notes</label>
-          <textarea id="notes-input" rows="3"></textarea>
-          <label for="description-input">Description</label>
-          <textarea id="description-input" rows="4"></textarea>
-          <button type="submit" class="btn" id="save-btn">Save</button>
-          <button type="button" class="btn" id="cancel-edit" style="display: none;">Cancel</button>
-        </form>
-        <button id="download-json" class="btn">Download JSON</button>
-      </div>
-    </div>
+
+    <main class="page">
+      <section class="card">
+        <h2>Admin Editor</h2>
+        <p>This page allows you to manage your ratings. Access is restricted with a password.</p>
+        <div id="login-section">
+          <label for="admin-pass">Password:</label>
+          <input type="password" id="admin-pass" />
+          <button id="login-btn" class="btn">Login</button>
+          <p id="login-error" style="color: #f87171; display: none;">Incorrect password. Please try again.</p>
+        </div>
+        <div id="edit-section" style="display: none;">
+          <h3>Existing Entries</h3>
+          <table id="edit-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Favorite</th>
+                <th>Rating</th>
+                <th>Notes</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <h3 id="form-heading">Add Entry</h3>
+          <form id="entry-form">
+            <input type="hidden" id="entry-id" />
+            <label for="title-input">Title</label>
+            <input type="text" id="title-input" required />
+            <label for="category-input">Category</label>
+            <select id="category-input" required>
+              <option value="games">Games</option>
+              <option value="movies">Movies</option>
+              <option value="tv">TV</option>
+              <option value="anime">Anime</option>
+              <option value="reading">Reading</option>
+            </select>
+            <label for="rating-input">Rating</label>
+            <input type="number" id="rating-input" min="1" max="5" required />
+            <label for="favorite-input">Favorite</label>
+            <input type="checkbox" id="favorite-input" />
+            <label for="notes-input">Notes</label>
+            <textarea id="notes-input" rows="3"></textarea>
+            <label for="description-input">Description</label>
+            <textarea id="description-input" rows="4"></textarea>
+            <button type="submit" class="btn" id="save-btn">Save</button>
+            <button type="button" class="btn" id="cancel-edit" style="display: none;">Cancel</button>
+          </form>
+          <button id="download-json" class="btn">Download JSON</button>
+        </div>
+      </section>
+    </main>
+
     <script src="edit.js"></script>
   </body>
 </html>

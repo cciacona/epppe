@@ -77,22 +77,32 @@ function renderRating(entry) {
   } else {
     // 3‑point smiley rating
     let emoji;
+    let label;
+    let statusClass;
     switch (entry.rating) {
       case 3:
         emoji = '😊';
+        label = 'GOOD';
+        statusClass = 'good';
         break;
       case 2:
         emoji = '😐';
+        label = 'OKAY';
+        statusClass = 'okay';
         break;
       default:
         emoji = '😞';
+        label = 'BAD';
+        statusClass = 'bad';
     }
-    return `<span class="rating-smiley" aria-label="${entry.rating} of 3">${emoji}</span>`;
+    return `<span class="rating-smiley ${statusClass}" aria-label="${entry.rating} of 3">${emoji}<span class="rating-label">${label}</span></span>`;
   }
 }
 
 function renderFavorite(fav) {
-  return fav ? '<span class="favorite" aria-label="Favorite">❤️</span>' : '';
+  return fav
+    ? '<span class="favorite" aria-label="Favorite">❤️</span>'
+    : '<span class="favorite favorite--off" aria-label="Not a favorite">○</span>';
 }
 
 // Build external links based on category and title
@@ -124,7 +134,7 @@ function createRow(entry) {
   tr.appendChild(titleTd);
 
   const categoryTd = document.createElement('td');
-  categoryTd.textContent = capitalize(entry.category);
+  categoryTd.innerHTML = `<span class="category-pill">${capitalize(entry.category)}</span>`;
   tr.appendChild(categoryTd);
 
   const favoriteTd = document.createElement('td');
@@ -209,14 +219,34 @@ function showDetails(entry) {
   closeBtn.innerHTML = '&times;';
   closeBtn.addEventListener('click', () => modal.classList.remove('active'));
   content.appendChild(closeBtn);
-  // Title
+  const header = document.createElement('div');
+  header.className = 'modal-header';
+
+  const badges = document.createElement('div');
+  badges.className = 'modal-badges';
+
+  const categoryBadge = document.createElement('span');
+  categoryBadge.className = 'category-pill';
+  categoryBadge.textContent = capitalize(entry.category);
+  badges.appendChild(categoryBadge);
+
+  const ratingBadge = document.createElement('div');
+  ratingBadge.innerHTML = renderRating(entry);
+  badges.appendChild(ratingBadge);
+
+  if (entry.favorite) {
+    const favoriteBadge = document.createElement('span');
+    favoriteBadge.className = 'favorite';
+    favoriteBadge.textContent = '❤️';
+    badges.appendChild(favoriteBadge);
+  }
+
+  header.appendChild(badges);
+  content.appendChild(header);
+
   const h3 = document.createElement('h3');
   h3.textContent = entry.title;
   content.appendChild(h3);
-  // Rating display
-  const ratingDiv = document.createElement('div');
-  ratingDiv.innerHTML = `<strong>Rating:</strong> ${renderRating(entry)}`;
-  content.appendChild(ratingDiv);
   // Notes
   if (entry.notes) {
     const notesP = document.createElement('p');
@@ -224,20 +254,28 @@ function showDetails(entry) {
     content.appendChild(notesP);
   }
   // Description
+  const descSection = document.createElement('div');
+  descSection.className = 'modal-section';
   const descP = document.createElement('p');
   descP.innerHTML = `<strong>Description:</strong> ${entry.description || 'No description provided.'}`;
-  content.appendChild(descP);
+  descSection.appendChild(descP);
+  content.appendChild(descSection);
   // External links
   const links = buildLinks(entry);
   if (Object.keys(links).length > 0) {
     const linksDiv = document.createElement('div');
-    linksDiv.innerHTML = '<strong>Explore more:</strong> ';
+    linksDiv.className = 'modal-section modal-links';
+    const label = document.createElement('strong');
+    label.textContent = 'Explore more:';
+    linksDiv.appendChild(label);
+    const list = document.createElement('div');
     let first = true;
     for (const [key, url] of Object.entries(links)) {
-      if (!first) linksDiv.innerHTML += ' | ';
-      linksDiv.innerHTML += `<a href="${url}" target="_blank" rel="noopener">${capitalize(key)}</a>`;
+      if (!first) list.innerHTML += ' | ';
+      list.innerHTML += `<a href="${url}" target="_blank" rel="noopener">${capitalize(key)}</a>`;
       first = false;
     }
+    linksDiv.appendChild(list);
     content.appendChild(linksDiv);
   }
   modal.classList.add('active');

@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Epppe's Media Ratings</title>
-    <!-- Preconnect and Google Font import for a modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,25 +13,56 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Epppe's Media Ratings</h1>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-badge">E</span>
+        <span class="brand-text">epppe.net</span>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ratings.html">Reviews</a>
+        <a class="nav-pill" href="https://stream.epppe.net" target="_blank" rel="noreferrer">
+          ▶ Stream
+        </a>
+      </nav>
     </header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="ratings.html">Ratings</a>
-      <a href="https://stream.epppe.net" target="_blank">Stream</a>
-    </nav>
-    <div class="container">
-      <h2>Welcome</h2>
-      <p>
-        Welcome to my personal media review site. Here I rate games, movies, TV
-        shows, anime, and books. Use the Ratings page to browse my collection and
-        see what I liked, loved, or disliked.
-      </p>
-      <p>
-        Click on a rating to see more details and find links to learn more on
-        external databases like IMDb, AniList, OpenCritic, and Goodreads.
-      </p>
-    </div>
+
+    <main class="page">
+      <section class="hero">
+        <span class="status-pill">System Online</span>
+        <h1>Welcome to <span>epppe.net</span></h1>
+        <p>
+          My personal corner of the internet. Browse the latest media reviews,
+          find quick recommendations, and jump straight into my private media server.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="ratings.html">Read Reviews</a>
+          <a class="btn btn-outline" href="https://stream.epppe.net" target="_blank" rel="noreferrer">
+            Launch Jellyfin
+          </a>
+        </div>
+      </section>
+
+      <section class="section-grid">
+        <div class="card">
+          <h2>Review Log</h2>
+          <p>
+            Curated ratings for games, movies, TV, anime, and books I have consumed recently.
+            Sort by category, search for favorites, and dive into detailed notes.
+          </p>
+          <a class="btn" href="ratings.html">Explore Ratings</a>
+        </div>
+        <div class="card">
+          <h2>Private Media Server</h2>
+          <p>
+            Access my personal library of movies, shows, and music via Jellyfin.
+            High-quality streaming available directly through the browser.
+          </p>
+          <a class="btn" href="https://stream.epppe.net" target="_blank" rel="noreferrer">
+            Go to stream.epppe.net
+          </a>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

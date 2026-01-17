@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ratings - Epppe's Media Ratings</title>
-    <!-- Preconnect and Google Font import for a modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,38 +13,50 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Epppe's Media Ratings</h1>
-    </header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="ratings.html">Ratings</a>
-      <a href="https://stream.epppe.net" target="_blank">Stream</a>
-    </nav>
-    <div class="container">
-      <h2>Ratings</h2>
-      <p>Select a category or click on column headings to sort. Click on a rating to view details and external links.</p>
-      <div class="filters">
-        <button class="filter-button active" data-category="all">All</button>
-        <button class="filter-button" data-category="games">Games</button>
-        <button class="filter-button" data-category="movies">Movies</button>
-        <button class="filter-button" data-category="tv">TV</button>
-        <button class="filter-button" data-category="anime">Anime</button>
-        <button class="filter-button" data-category="reading">Reading</button>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-badge">E</span>
+        <span class="brand-text">epppe.net</span>
       </div>
-      <table id="ratings-table">
-        <thead>
-          <tr>
-            <th data-key="title">Title</th>
-            <th data-key="category">Category</th>
-            <th data-key="favorite">Favorite</th>
-            <th data-key="rating">Rating</th>
-            <th data-key="notes">Notes</th>
-          </tr>
-        </thead>
-        <tbody id="ratings-body"></tbody>
-      </table>
-    </div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ratings.html">Reviews</a>
+        <a class="nav-pill" href="https://stream.epppe.net" target="_blank" rel="noreferrer">
+          ▶ Stream
+        </a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2>Review Log</h2>
+        <p>
+          Curated ratings for things I've consumed recently. Select a category or click on column
+          headings to sort. Click on a rating to view details and external links.
+        </p>
+        <div class="filters">
+          <button class="filter-button active" data-category="all">All</button>
+          <button class="filter-button" data-category="games">Games</button>
+          <button class="filter-button" data-category="movies">Movies</button>
+          <button class="filter-button" data-category="tv">TV</button>
+          <button class="filter-button" data-category="anime">Anime</button>
+          <button class="filter-button" data-category="reading">Reading</button>
+        </div>
+        <table id="ratings-table">
+          <thead>
+            <tr>
+              <th data-key="title">Title</th>
+              <th data-key="category">Category</th>
+              <th data-key="favorite">Favorite</th>
+              <th data-key="rating">Rating</th>
+              <th data-key="notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody id="ratings-body"></tbody>
+        </table>
+      </section>
+    </main>
+
     <div id="detail-modal" class="modal">
       <div class="modal-content"></div>
     </div>
