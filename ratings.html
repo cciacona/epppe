@@ -14,17 +14,30 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Epppe's Media Ratings</h1>
+    <header class="site-header">
+      <div class="nav-container">
+        <div class="brand">
+          <div class="brand-mark">E</div>
+          <div class="brand-title">epppe.net</div>
+        </div>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="ratings.html">Reviews</a>
+          <a class="nav-cta" href="https://stream.epppe.net" target="_blank">Stream</a>
+        </nav>
+      </div>
     </header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="ratings.html">Ratings</a>
-      <a href="https://stream.epppe.net" target="_blank">Stream</a>
-    </nav>
-    <div class="container">
-      <h2>Ratings</h2>
-      <p>Select a category or click on column headings to sort. Click on a rating to view details and external links.</p>
+    <main class="container">
+      <div class="ratings-header">
+        <div>
+          <h2 class="ratings-title">Review Log</h2>
+          <p>Curated ratings for things I've consumed recently.</p>
+        </div>
+        <div class="view-toggle" aria-hidden="true">
+          <span class="active">Grid</span>
+          <span>Spreadsheet</span>
+        </div>
+      </div>
       <div class="filters">
         <button class="filter-button active" data-category="all">All</button>
         <button class="filter-button" data-category="games">Games</button>
@@ -33,19 +46,21 @@
         <button class="filter-button" data-category="anime">Anime</button>
         <button class="filter-button" data-category="reading">Reading</button>
       </div>
-      <table id="ratings-table">
-        <thead>
-          <tr>
-            <th data-key="title">Title</th>
-            <th data-key="category">Category</th>
-            <th data-key="favorite">Favorite</th>
-            <th data-key="rating">Rating</th>
-            <th data-key="notes">Notes</th>
-          </tr>
-        </thead>
-        <tbody id="ratings-body"></tbody>
-      </table>
-    </div>
+      <div class="table-wrapper">
+        <table id="ratings-table">
+          <thead>
+            <tr>
+              <th data-key="title">Title</th>
+              <th data-key="category">Category</th>
+              <th data-key="favorite">Favorite</th>
+              <th data-key="rating">Rating</th>
+              <th data-key="notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody id="ratings-body"></tbody>
+        </table>
+      </div>
+    </main>
     <div id="detail-modal" class="modal">
       <div class="modal-content"></div>
     </div>
