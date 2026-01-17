@@ -17,6 +17,7 @@ const INITIAL_DATA = [
     description:
       'An epic role‑playing game where you play as Geralt of Rivia, a monster hunter searching for his adopted daughter in a war‑torn world.',
     year: 2015,
+    dateAdded: '2024-01-12',
     posterUrl: 'https://img.opencritic.com/game/952/o/8zRAx8ET.jpg',
   },
   {
@@ -29,6 +30,7 @@ const INITIAL_DATA = [
     description:
       "A sequel set thirty years after the original Blade Runner; LAPD officer K uncovers a long‑buried secret that could plunge what's left of society into chaos.",
     year: 2017,
+    dateAdded: '2024-02-03',
     posterUrl: 'https://media.themoviedb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg',
   },
   {
@@ -41,6 +43,7 @@ const INITIAL_DATA = [
     description:
       "A high school chemistry teacher turned methamphetamine manufacturer navigates the criminal underworld to secure his family's future.",
     year: 2008,
+    dateAdded: '2024-02-18',
     posterUrl: 'https://media.themoviedb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg',
   },
   {
@@ -53,6 +56,7 @@ const INITIAL_DATA = [
     description:
       'Two brothers use alchemy in their quest to regain their bodies after a disastrous attempt to revive their deceased mother.',
     year: 2009,
+    dateAdded: '2024-03-01',
     posterUrl: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5114-nSWCgQlmOMtj.jpg',
   },
   {
@@ -65,6 +69,7 @@ const INITIAL_DATA = [
     description:
       "Bilbo Baggins, a comfort‑loving hobbit, is unexpectedly swept into an epic quest to reclaim the dwarves' homeland from the dragon Smaug.",
     year: 1937,
+    dateAdded: '2024-03-22',
     posterUrl: 'https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg',
   },
 ];
@@ -159,6 +164,10 @@ function createRow(entry) {
   notesTd.classList.add('notes');
   tr.appendChild(notesTd);
 
+  const dateAddedTd = document.createElement('td');
+  dateAddedTd.textContent = entry.dateAdded || '';
+  tr.appendChild(dateAddedTd);
+
   return tr;
 }
 
@@ -233,6 +242,8 @@ function renderView() {
   const isGrid = currentView === 'grid';
   grid.hidden = !isGrid;
   tableWrapper.hidden = isGrid;
+  grid.classList.toggle('is-hidden', !isGrid);
+  tableWrapper.classList.toggle('is-hidden', isGrid);
   if (isGrid) {
     renderGrid();
   } else {
@@ -300,6 +311,12 @@ function showDetails(entry) {
   const descP = document.createElement('p');
   descP.innerHTML = `<strong>Description:</strong> ${entry.description || 'No description provided.'}`;
   content.appendChild(descP);
+  // Date added
+  if (entry.dateAdded) {
+    const dateP = document.createElement('p');
+    dateP.innerHTML = `<strong>Date added:</strong> ${entry.dateAdded}`;
+    content.appendChild(dateP);
+  }
   // External links
   const links = buildLinks(entry);
   if (Object.keys(links).length > 0) {
