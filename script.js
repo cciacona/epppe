@@ -17,6 +17,7 @@ const INITIAL_DATA = [
     description:
       'An epic role‑playing game where you play as Geralt of Rivia, a monster hunter searching for his adopted daughter in a war‑torn world.',
     year: 2015,
+    posterUrl: 'https://img.opencritic.com/game/952/o/8zRAx8ET.jpg',
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const INITIAL_DATA = [
     description:
       "A sequel set thirty years after the original Blade Runner; LAPD officer K uncovers a long‑buried secret that could plunge what's left of society into chaos.",
     year: 2017,
+    posterUrl: 'https://media.themoviedb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg',
   },
   {
     id: 3,
@@ -39,6 +41,7 @@ const INITIAL_DATA = [
     description:
       "A high school chemistry teacher turned methamphetamine manufacturer navigates the criminal underworld to secure his family's future.",
     year: 2008,
+    posterUrl: 'https://media.themoviedb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg',
   },
   {
     id: 4,
@@ -50,6 +53,7 @@ const INITIAL_DATA = [
     description:
       'Two brothers use alchemy in their quest to regain their bodies after a disastrous attempt to revive their deceased mother.',
     year: 2009,
+    posterUrl: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5114-nSWCgQlmOMtj.jpg',
   },
   {
     id: 5,
@@ -61,11 +65,13 @@ const INITIAL_DATA = [
     description:
       "Bilbo Baggins, a comfort‑loving hobbit, is unexpectedly swept into an epic quest to reclaim the dwarves' homeland from the dragon Smaug.",
     year: 1937,
+    posterUrl: 'https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg',
   },
 ];
 let currentSortKey = null;
 let currentSortDir = 'asc';
 let currentCategoryFilter = 'all';
+let currentView = 'grid';
 
 // Utility functions for converting ratings and favorites to symbols
 function renderRating(entry) {
@@ -164,17 +170,43 @@ function capitalize(str) {
 function renderTable() {
   const tbody = document.querySelector('#ratings-body');
   tbody.innerHTML = '';
-  // Filter by category
+  getVisibleEntries().forEach((entry) => {
+    tbody.appendChild(createRow(entry));
+  });
+}
+
+function renderGrid() {
+  const grid = document.querySelector('#ratings-grid');
+  grid.innerHTML = '';
+  getVisibleEntries().forEach((entry) => {
+    const card = document.createElement('article');
+    card.className = 'ratings-card';
+    card.innerHTML = `
+      <img src="${entry.posterUrl}" alt="Poster for ${entry.title}" loading="lazy" />
+      <div class="ratings-card-body">
+        <div class="ratings-card-meta">
+          <span class="category-pill">${capitalize(entry.category)}</span>
+          ${renderFavorite(entry.favorite)}
+        </div>
+        <h3 class="ratings-card-title">${entry.title}</h3>
+        <div class="ratings-card-meta">${renderRating(entry)}</div>
+        <p class="ratings-card-notes">${entry.notes || ''}</p>
+      </div>
+    `;
+    card.addEventListener('click', () => showDetails(entry));
+    grid.appendChild(card);
+  });
+}
+
+function getVisibleEntries() {
   let filtered = ratingsData;
   if (currentCategoryFilter !== 'all') {
     filtered = ratingsData.filter((item) => item.category === currentCategoryFilter);
   }
-  // Sort if needed
   if (currentSortKey) {
     filtered = filtered.slice().sort((a, b) => {
       let valA = a[currentSortKey];
       let valB = b[currentSortKey];
-      // For title and category, compare strings case‑insensitively
       if (typeof valA === 'string') valA = valA.toLowerCase();
       if (typeof valB === 'string') valB = valB.toLowerCase();
       if (valA < valB) return currentSortDir === 'asc' ? -1 : 1;
@@ -182,9 +214,30 @@ function renderTable() {
       return 0;
     });
   }
-  filtered.forEach((entry) => {
-    tbody.appendChild(createRow(entry));
+  return filtered;
+}
+
+function setView(view) {
+  currentView = view;
+  document.querySelectorAll('.view-button').forEach((btn) => {
+    const isActive = btn.dataset.view === view;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', String(isActive));
   });
+  renderView();
+}
+
+function renderView() {
+  const grid = document.querySelector('#ratings-grid');
+  const tableWrapper = document.querySelector('#ratings-table-wrapper');
+  const isGrid = currentView === 'grid';
+  grid.hidden = !isGrid;
+  tableWrapper.hidden = isGrid;
+  if (isGrid) {
+    renderGrid();
+  } else {
+    renderTable();
+  }
 }
 
 // Handle sorting when clicking a column header
@@ -281,7 +334,7 @@ function setCategory(category) {
   document.querySelectorAll('.filter-button').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.category === category);
   });
-  renderTable();
+  renderView();
 }
 
 // Initialize the page
@@ -305,7 +358,10 @@ async function initRatingsPage() {
   document.querySelectorAll('.filter-button').forEach((btn) => {
     btn.addEventListener('click', () => setCategory(btn.dataset.category));
   });
-  renderTable();
+  document.querySelectorAll('.view-button').forEach((btn) => {
+    btn.addEventListener('click', () => setView(btn.dataset.view));
+  });
+  renderView();
 }
 
 // Only run init on the ratings page

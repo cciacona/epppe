@@ -33,9 +33,13 @@
           <h2 class="ratings-title">Review Log</h2>
           <p>Curated ratings for things I've consumed recently.</p>
         </div>
-        <div class="view-toggle" aria-hidden="true">
-          <span class="active">Grid</span>
-          <span>Spreadsheet</span>
+        <div class="view-toggle" role="group" aria-label="Toggle ratings view">
+          <button class="view-button active" type="button" data-view="grid" aria-pressed="true">
+            Grid
+          </button>
+          <button class="view-button" type="button" data-view="spreadsheet" aria-pressed="false">
+            Spreadsheet
+          </button>
         </div>
       </div>
       <div class="filters">
@@ -46,7 +50,8 @@
         <button class="filter-button" data-category="anime">Anime</button>
         <button class="filter-button" data-category="reading">Reading</button>
       </div>
-      <div class="table-wrapper">
+      <div class="grid-wrapper" id="ratings-grid"></div>
+      <div class="table-wrapper" id="ratings-table-wrapper" hidden>
         <table id="ratings-table">
           <thead>
             <tr>
