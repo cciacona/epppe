@@ -71,6 +71,32 @@
           <button type="submit" class="btn" id="save-btn">Save</button>
           <button type="button" class="btn" id="cancel-edit" style="display: none;">Cancel</button>
         </form>
+        <h3>Publish to GitHub</h3>
+        <p class="form-hint">
+          Sync your updates directly to the repo that powers the live site. This uses the
+          GitHub Contents API, so you need a fine-grained personal access token with
+          <strong>Contents: Read &amp; Write</strong> for the target repo. Settings are stored
+          only in your browser's local storage.
+        </p>
+        <div class="github-settings">
+          <label for="github-owner">GitHub Owner</label>
+          <input type="text" id="github-owner" placeholder="epppe" />
+          <label for="github-repo">Repository</label>
+          <input type="text" id="github-repo" placeholder="epppe.net" />
+          <label for="github-branch">Branch</label>
+          <input type="text" id="github-branch" value="main" />
+          <label for="github-path">Data File Path</label>
+          <input type="text" id="github-path" value="data.json" />
+          <label for="github-token">Personal Access Token</label>
+          <input type="password" id="github-token" placeholder="ghp_..." />
+        </div>
+        <div class="github-actions">
+          <button type="button" class="btn btn-secondary" id="save-github-settings">
+            Save Settings
+          </button>
+          <button type="button" class="btn" id="publish-github">Publish to GitHub</button>
+        </div>
+        <p id="publish-status" class="status-message" aria-live="polite"></p>
         <button id="download-json" class="btn">Download JSON</button>
       </div>
     </div>
