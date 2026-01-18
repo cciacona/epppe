@@ -660,3 +660,33 @@ form select {
 form textarea {
   resize: vertical;
 }
+
+.form-hint {
+  margin-bottom: 1rem;
+  color: #c0c9e6;
+}
+
+.github-settings {
+  margin-bottom: 1rem;
+}
+
+.github-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.status-message {
+  min-height: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+.status-message[data-status='success'] {
+  color: #8ee4af;
+}
+
+.status-message[data-status='error'] {
+  color: #ff9cab;
+}

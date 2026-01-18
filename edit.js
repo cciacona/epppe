@@ -84,6 +84,16 @@ const notesInput = document.getElementById('notes-input');
 const descriptionInput = document.getElementById('description-input');
 const cancelEditBtn = document.getElementById('cancel-edit');
 const downloadBtn = document.getElementById('download-json');
+const githubOwnerInput = document.getElementById('github-owner');
+const githubRepoInput = document.getElementById('github-repo');
+const githubBranchInput = document.getElementById('github-branch');
+const githubPathInput = document.getElementById('github-path');
+const githubTokenInput = document.getElementById('github-token');
+const saveGithubSettingsBtn = document.getElementById('save-github-settings');
+const publishGithubBtn = document.getElementById('publish-github');
+const publishStatus = document.getElementById('publish-status');
+
+const GITHUB_SETTINGS_KEY = 'githubSettings';
 
 // Login handler
 loginBtn.addEventListener('click', () => {
@@ -91,6 +101,7 @@ loginBtn.addEventListener('click', () => {
   if (pass === ADMIN_PASSWORD) {
     loginSection.style.display = 'none';
     editSection.style.display = 'block';
+    loadGithubSettings();
     loadData();
   } else {
     loginError.style.display = 'block';
@@ -243,4 +254,115 @@ downloadBtn.addEventListener('click', () => {
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function loadGithubSettings() {
+  const storedSettings = localStorage.getItem(GITHUB_SETTINGS_KEY);
+  if (!storedSettings) return;
+  try {
+    const settings = JSON.parse(storedSettings);
+    githubOwnerInput.value = settings.owner || '';
+    githubRepoInput.value = settings.repo || '';
+    githubBranchInput.value = settings.branch || 'main';
+    githubPathInput.value = settings.path || 'data.json';
+    githubTokenInput.value = '';
+  } catch (error) {
+    console.warn('Failed to parse stored GitHub settings.');
+  }
+}
+
+function getGithubSettings() {
+  return {
+    owner: githubOwnerInput.value.trim(),
+    repo: githubRepoInput.value.trim(),
+    branch: githubBranchInput.value.trim() || 'main',
+    path: githubPathInput.value.trim() || 'data.json',
+    token: githubTokenInput.value.trim(),
+  };
+}
+
+function setPublishStatus(message, status = 'info') {
+  publishStatus.textContent = message;
+  publishStatus.dataset.status = status;
+}
+
+function encodeContentBase64(content) {
+  return btoa(unescape(encodeURIComponent(content)));
+}
+
+function encodePath(path) {
+  return path
+    .split('/')
+    .map((segment) => encodeURIComponent(segment))
+    .join('/');
+}
+
+saveGithubSettingsBtn.addEventListener('click', () => {
+  const settings = getGithubSettings();
+  const { owner, repo, branch, path } = settings;
+  localStorage.setItem(
+    GITHUB_SETTINGS_KEY,
+    JSON.stringify({
+      owner,
+      repo,
+      branch,
+      path,
+    })
+  );
+  setPublishStatus('Repo settings saved locally. Token stays in memory only.', 'success');
+});
+
+publishGithubBtn.addEventListener('click', async () => {
+  const settings = getGithubSettings();
+  if (!settings.owner || !settings.repo || !settings.token) {
+    setPublishStatus('Owner, repo, and token are required before publishing.', 'error');
+    return;
+  }
+  setPublishStatus('Publishing to GitHub...', 'info');
+  try {
+    await publishToGithub(settings);
+    setPublishStatus('Published successfully. Refresh the site to see changes.', 'success');
+  } catch (error) {
+    console.error(error);
+    setPublishStatus(`Publish failed: ${error.message}`, 'error');
+  }
+});
+
+async function publishToGithub(settings) {
+  const { owner, repo, branch, path, token } = settings;
+  const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents/${encodePath(path)}`;
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    Authorization: `Bearer ${token}`,
+  };
+  let existingSha = null;
+  const lookupResponse = await fetch(`${apiBase}?ref=${encodeURIComponent(branch)}`, {
+    headers,
+  });
+  if (lookupResponse.ok) {
+    const data = await lookupResponse.json();
+    existingSha = data.sha;
+  } else if (lookupResponse.status !== 404) {
+    throw new Error('Unable to read the existing data.json file.');
+  }
+
+  const content = JSON.stringify(ratingsData, null, 2);
+  const payload = {
+    message: 'Update review data via admin editor',
+    content: encodeContentBase64(content),
+    branch,
+    ...(existingSha ? { sha: existingSha } : {}),
+  };
+
+  const publishResponse = await fetch(apiBase, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify(payload),
+  });
+
+  if (!publishResponse.ok) {
+    const errorBody = await publishResponse.json().catch(() => ({}));
+    const message = errorBody.message || 'GitHub rejected the update.';
+    throw new Error(message);
+  }
 }
