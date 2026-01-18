@@ -101,13 +101,12 @@ loginBtn.addEventListener('click', () => {
   if (pass === ADMIN_PASSWORD) {
     loginSection.style.display = 'none';
     editSection.style.display = 'block';
+    loadGithubSettings();
     loadData();
   } else {
     loginError.style.display = 'block';
   }
 });
-
-loadGithubSettings();
 
 // Load data from data.json
 async function loadData() {
@@ -266,7 +265,7 @@ function loadGithubSettings() {
     githubRepoInput.value = settings.repo || '';
     githubBranchInput.value = settings.branch || 'main';
     githubPathInput.value = settings.path || 'data.json';
-    githubTokenInput.value = settings.token || '';
+    githubTokenInput.value = '';
   } catch (error) {
     console.warn('Failed to parse stored GitHub settings.');
   }
@@ -300,8 +299,17 @@ function encodePath(path) {
 
 saveGithubSettingsBtn.addEventListener('click', () => {
   const settings = getGithubSettings();
-  localStorage.setItem(GITHUB_SETTINGS_KEY, JSON.stringify(settings));
-  setPublishStatus('Settings saved locally in your browser.', 'success');
+  const { owner, repo, branch, path } = settings;
+  localStorage.setItem(
+    GITHUB_SETTINGS_KEY,
+    JSON.stringify({
+      owner,
+      repo,
+      branch,
+      path,
+    })
+  );
+  setPublishStatus('Repo settings saved locally. Token stays in memory only.', 'success');
 });
 
 publishGithubBtn.addEventListener('click', async () => {
