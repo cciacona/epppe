@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO
+  branch: main
+  auth_endpoint: https://decapcms-auth.netlify.app/.netlify/functions/auth
+
+site_url: https://epppe.net
+publish_mode: simple
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "reviews"
+    label: "Reviews"
+    format: "json"
+    files:
+      - name: "review_data"
+        label: "Review Entries"
+        file: "data.json"
+        fields:
+          - label: "Entries"
+            name: "entries"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "number" }
+              - { label: "Title", name: "title", widget: "string" }
+              -
+                label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["games", "movies", "tv", "anime", "reading"]
+              -
+                label: "Rating"
+                name: "rating"
+                widget: "number"
+                min: 1
+                max: 5
+              - { label: "Favorite", name: "favorite", widget: "boolean", default: false }
+              - { label: "Notes", name: "notes", widget: "text", required: false }
+              -
+                label: "Description"
+                name: "description"
+                widget: "text"
+                required: false
+              - { label: "Year", name: "year", widget: "number", required: false }
+              -
+                label: "Date Added"
+                name: "dateAdded"
+                widget: "datetime"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                required: false
+              -
+                label: "Poster URL"
+                name: "posterUrl"
+                widget: "string"
+                required: false
