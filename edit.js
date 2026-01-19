@@ -108,12 +108,24 @@ loginBtn.addEventListener('click', () => {
   }
 });
 
+function normalizeRatingsData(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (payload && Array.isArray(payload.entries)) return payload.entries;
+  return [];
+}
+
+function buildRatingsPayload(entries) {
+  return {
+    entries,
+  };
+}
+
 // Load data from data.json
 async function loadData() {
   try {
     const res = await fetch('data.json');
     if (res.ok) {
-      ratingsData = await res.json();
+      ratingsData = normalizeRatingsData(await res.json());
     } else {
       throw new Error('Failed to fetch');
     }
@@ -241,7 +253,8 @@ function deleteEntry(id) {
 
 // Download JSON representation of the data
 downloadBtn.addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(ratingsData, null, 2)], { type: 'application/json' });
+  const payload = buildRatingsPayload(ratingsData);
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -346,7 +359,7 @@ async function publishToGithub(settings) {
     throw new Error('Unable to read the existing data.json file.');
   }
 
-  const content = JSON.stringify(ratingsData, null, 2);
+  const content = JSON.stringify(buildRatingsPayload(ratingsData), null, 2);
   const payload = {
     message: 'Update review data via admin editor',
     content: encodeContentBase64(content),

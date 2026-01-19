@@ -354,12 +354,18 @@ function setCategory(category) {
   renderView();
 }
 
+function normalizeRatingsData(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (payload && Array.isArray(payload.entries)) return payload.entries;
+  return [];
+}
+
 // Initialize the page
 async function initRatingsPage() {
   try {
     const response = await fetch('data.json');
     if (response.ok) {
-      ratingsData = await response.json();
+      ratingsData = normalizeRatingsData(await response.json());
     } else {
       throw new Error('Fetch failed');
     }
