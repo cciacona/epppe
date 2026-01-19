@@ -4,7 +4,7 @@ backend:
   branch: main
   auth_endpoint: https://decapcms-auth.netlify.app/.netlify/functions/auth
 
-site_url: https://cciacona.github.io/epppe
+site_url: https://epppe.net
 publish_mode: simple
 
 media_folder: "uploads"
