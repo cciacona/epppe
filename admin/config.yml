@@ -2,7 +2,7 @@ backend:
   name: github
   repo: cciacona/epppe
   branch: main
-  auth_endpoint: https://auth.decapcms.org/auth
+  auth_endpoint: https://decapcms-auth.netlify.app/.netlify/functions/auth
 
 site_url: https://cciacona.github.io/epppe
 publish_mode: simple
