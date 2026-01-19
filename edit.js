@@ -7,7 +7,8 @@ let ratingsData = [];
 
 // Inline fallback data identical to data.json. This is used if fetching
 // data.json fails, such as when the site is opened via the file:// protocol.
-const INITIAL_DATA = [
+const INITIAL_DATA = {
+  entries: [
   {
     id: 1,
     title: 'The Witcher 3: Wild Hunt',
@@ -63,7 +64,8 @@ const INITIAL_DATA = [
       "Bilbo Baggins, a comfort‑loving hobbit, is unexpectedly swept into an epic quest to reclaim the dwarves' homeland from the dragon Smaug.",
     year: 1937,
   },
-];
+  ],
+};
 let editingEntryId = null;
 
 // Elements
@@ -113,13 +115,14 @@ async function loadData() {
   try {
     const res = await fetch('data.json');
     if (res.ok) {
-      ratingsData = await res.json();
+      const data = await res.json();
+      ratingsData = normalizeRatingsData(data);
     } else {
       throw new Error('Failed to fetch');
     }
   } catch (err) {
     console.warn('Could not fetch data.json, using inline data.');
-    ratingsData = INITIAL_DATA.slice();
+    ratingsData = normalizeRatingsData(INITIAL_DATA);
   }
   renderEditTable();
 }
@@ -241,7 +244,9 @@ function deleteEntry(id) {
 
 // Download JSON representation of the data
 downloadBtn.addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(ratingsData, null, 2)], { type: 'application/json' });
+  const blob = new Blob([JSON.stringify(buildRatingsPayload(), null, 2)], {
+    type: 'application/json',
+  });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -254,6 +259,22 @@ downloadBtn.addEventListener('click', () => {
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function normalizeRatingsData(payload) {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  if (payload && Array.isArray(payload.entries)) {
+    return payload.entries;
+  }
+  return [];
+}
+
+function buildRatingsPayload() {
+  return {
+    entries: ratingsData,
+  };
 }
 
 function loadGithubSettings() {
@@ -346,7 +367,7 @@ async function publishToGithub(settings) {
     throw new Error('Unable to read the existing data.json file.');
   }
 
-  const content = JSON.stringify(ratingsData, null, 2);
+  const content = JSON.stringify(buildRatingsPayload(), null, 2);
   const payload = {
     message: 'Update review data via admin editor',
     content: encodeContentBase64(content),

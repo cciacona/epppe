@@ -1,62 +1,64 @@
-[
-  {
-    "id": 1,
-    "title": "The Witcher 3: Wild Hunt",
-    "category": "games",
-    "rating": 3,
-    "favorite": true,
-    "notes": "One of my all‑time favorite RPGs. Incredible storytelling and open world.",
-    "description": "An epic role‑playing game where you play as Geralt of Rivia, a monster hunter searching for his adopted daughter in a war‑torn world.",
-    "year": 2015,
-    "dateAdded": "2024-01-12",
-    "posterUrl": "https://img.opencritic.com/game/952/o/8zRAx8ET.jpg"
-  },
-  {
-    "id": 2,
-    "title": "Blade Runner 2049",
-    "category": "movies",
-    "rating": 3,
-    "favorite": false,
-    "notes": "Stunning visuals and a haunting soundtrack.",
-    "description": "A sequel set thirty years after the original Blade Runner; LAPD officer K uncovers a long‑buried secret that could plunge what's left of society into chaos.",
-    "year": 2017,
-    "dateAdded": "2024-02-03",
-    "posterUrl": "https://media.themoviedb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg"
-  },
-  {
-    "id": 3,
-    "title": "Breaking Bad",
-    "category": "tv",
-    "rating": 3,
-    "favorite": true,
-    "notes": "Perfect character arc and tension.",
-    "description": "A high school chemistry teacher turned methamphetamine manufacturer navigates the criminal underworld to secure his family's future.",
-    "year": 2008,
-    "dateAdded": "2024-02-18",
-    "posterUrl": "https://media.themoviedb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Fullmetal Alchemist: Brotherhood",
-    "category": "anime",
-    "rating": 5,
-    "favorite": true,
-    "notes": "Masterpiece of storytelling and world building.",
-    "description": "Two brothers use alchemy in their quest to regain their bodies after a disastrous attempt to revive their deceased mother.",
-    "year": 2009,
-    "dateAdded": "2024-03-01",
-    "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5114-nSWCgQlmOMtj.jpg"
-  },
-  {
-    "id": 5,
-    "title": "The Hobbit",
-    "category": "reading",
-    "rating": 3,
-    "favorite": false,
-    "notes": "A charming adventure in Middle‑earth.",
-    "description": "Bilbo Baggins, a comfort‑loving hobbit, is unexpectedly swept into an epic quest to reclaim the dwarves' homeland from the dragon Smaug.",
-    "year": 1937,
-    "dateAdded": "2024-03-22",
-    "posterUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg"
-  }
-]
+{
+  "entries": [
+    {
+      "id": 1,
+      "title": "The Witcher 3: Wild Hunt",
+      "category": "games",
+      "rating": 3,
+      "favorite": true,
+      "notes": "One of my all‑time favorite RPGs. Incredible storytelling and open world.",
+      "description": "An epic role‑playing game where you play as Geralt of Rivia, a monster hunter searching for his adopted daughter in a war‑torn world.",
+      "year": 2015,
+      "dateAdded": "2024-01-12",
+      "posterUrl": "https://img.opencritic.com/game/952/o/8zRAx8ET.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Blade Runner 2049",
+      "category": "movies",
+      "rating": 3,
+      "favorite": false,
+      "notes": "Stunning visuals and a haunting soundtrack.",
+      "description": "A sequel set thirty years after the original Blade Runner; LAPD officer K uncovers a long‑buried secret that could plunge what's left of society into chaos.",
+      "year": 2017,
+      "dateAdded": "2024-02-03",
+      "posterUrl": "https://media.themoviedb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Breaking Bad",
+      "category": "tv",
+      "rating": 3,
+      "favorite": true,
+      "notes": "Perfect character arc and tension.",
+      "description": "A high school chemistry teacher turned methamphetamine manufacturer navigates the criminal underworld to secure his family's future.",
+      "year": 2008,
+      "dateAdded": "2024-02-18",
+      "posterUrl": "https://media.themoviedb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "category": "anime",
+      "rating": 5,
+      "favorite": true,
+      "notes": "Masterpiece of storytelling and world building.",
+      "description": "Two brothers use alchemy in their quest to regain their bodies after a disastrous attempt to revive their deceased mother.",
+      "year": 2009,
+      "dateAdded": "2024-03-01",
+      "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5114-nSWCgQlmOMtj.jpg"
+    },
+    {
+      "id": 5,
+      "title": "The Hobbit",
+      "category": "reading",
+      "rating": 3,
+      "favorite": false,
+      "notes": "A charming adventure in Middle‑earth.",
+      "description": "Bilbo Baggins, a comfort‑loving hobbit, is unexpectedly swept into an epic quest to reclaim the dwarves' homeland from the dragon Smaug.",
+      "year": 1937,
+      "dateAdded": "2024-03-22",
+      "posterUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg"
+    }
+  ]
+}

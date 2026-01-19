@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO
+  branch: main
+  base_url: https://decapcms-github-oauth.netlify.app
+  auth_endpoint: auth
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: reviews
+    label: Reviews
+    files:
+      - name: ratings
+        label: Review Entries
+        file: data.json
+        format: json
+        editor:
+          preview: false
+        fields:
+          - name: entries
+            label: Entries
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID, widget: number }
+              - { name: title, label: Title, widget: string }
+              - name: category
+                label: Category
+                widget: select
+                options:
+                  - games
+                  - movies
+                  - tv
+                  - anime
+                  - reading
+              - { name: rating, label: Rating, widget: number, min: 1, max: 5 }
+              - { name: favorite, label: Favorite, widget: boolean, default: false }
+              - { name: notes, label: Notes, widget: text, required: false }
+              - { name: description, label: Description, widget: text, required: false }
+              - { name: year, label: Year, widget: number, required: false }
+              - name: dateAdded
+                label: Date Added
+                widget: datetime
+                format: "YYYY-MM-DD"
+                time_format: false
+                required: false
+              - { name: posterUrl, label: Poster URL, widget: string, required: false }

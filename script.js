@@ -6,7 +6,8 @@ let ratingsData = [];
 // Inline copy of data.json used as a fallback when the site is loaded via the
 // file:// protocol or if fetch fails. This ensures the ratings page works even
 // without a web server. Update this array whenever you modify data.json.
-const INITIAL_DATA = [
+const INITIAL_DATA = {
+  entries: [
   {
     id: 1,
     title: 'The Witcher 3: Wild Hunt',
@@ -72,7 +73,8 @@ const INITIAL_DATA = [
     dateAdded: '2024-03-22',
     posterUrl: 'https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg',
   },
-];
+  ],
+};
 let currentSortKey = null;
 let currentSortDir = 'asc';
 let currentCategoryFilter = 'all';
@@ -359,13 +361,14 @@ async function initRatingsPage() {
   try {
     const response = await fetch('data.json');
     if (response.ok) {
-      ratingsData = await response.json();
+      const data = await response.json();
+      ratingsData = normalizeRatingsData(data);
     } else {
       throw new Error('Fetch failed');
     }
   } catch (err) {
     console.warn('Could not fetch data.json, using inline data.');
-    ratingsData = INITIAL_DATA.slice();
+    ratingsData = normalizeRatingsData(INITIAL_DATA);
   }
   // Attach event listeners to headers for sorting
   document.querySelectorAll('th').forEach((th) => {
@@ -387,3 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initRatingsPage();
   }
 });
+
+function normalizeRatingsData(payload) {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  if (payload && Array.isArray(payload.entries)) {
+    return payload.entries;
+  }
+  return [];
+}
