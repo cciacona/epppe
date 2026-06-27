@@ -2,6 +2,17 @@
 
 Astro portfolio site configured for Cloudflare Pages, Pages Functions, and a D1-backed reviews catalog.
 
+## Source Of Truth
+
+Edit the Astro app under `src/`:
+
+- `src/pages/index.astro` - home page
+- `src/pages/portfolio.astro` - portfolio page
+- `src/pages/vault.astro` - services, Minecraft status, and published reviews
+- `src/layouts/Layout.astro` - shared navigation, page shell, and footer
+
+The old hand-written static site has been archived in `legacy-static/` for reference. Cloudflare Pages builds from Astro into `dist/`, so root-level legacy HTML files should not be edited for the live site.
+
 ## Deployed Project
 
 - Production: https://epppe.net
@@ -50,9 +61,14 @@ npm run db:migrate:remote
 npm run pages:deploy
 ```
 
+## GitHub Pages
+
+This project deploys with Cloudflare Pages, not GitHub Pages. Keep GitHub Pages disabled in the repository settings to avoid the automatic `pages-build-deployment` workflow.
+
 ## Routes
 
-- `/` - portfolio
+- `/` - home page
+- `/portfolio` - business portfolio and composition research portfolio
 - `/vault` - services, Minecraft status, and published reviews
 - `/admin/reviews` - spreadsheet-style review editor
 - `/api/reviews` - public `GET`, admin `GET` and `POST`
