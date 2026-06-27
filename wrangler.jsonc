@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "epppe-portfolio",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-06-26",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "epppe-reviews",
+      "database_id": "06739b72-1857-4a0f-8eb6-8066af7edfb7",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

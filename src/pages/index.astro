@@ -1,17 +1,49 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Carmine Iacona | Cloud & Network Engineering">
+	<div class="max-w-4xl mx-auto px-6 py-20">
+		
+		<header class="mb-20 text-center sm:text-left">
+			<h1 class="text-5xl font-extrabold text-white mb-4 tracking-tight">Carmine Iacona</h1>
+			<p class="text-xl text-purple-400 mb-6">B.S. CECS Student @ UCF</p>
+			<p class="text-slate-400 max-w-2xl leading-relaxed">
+				Focused on cloud infrastructure, network engineering, and automation. Experienced in optimizing systems natively in Windows 11, troubleshooting complex game engine architectures, and delivering high-level operational service.
+			</p>
+		</header>
+
+		<section class="mb-20">
+			<h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2">Technical Core</h2>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+				<div class="bg-slate-900 border border-slate-800 p-4 rounded-lg text-center">
+					<span class="block text-purple-400 font-bold mb-1">Languages</span>
+					<span class="text-sm">Python, C++, C, Java</span>
+				</div>
+				<div class="bg-slate-900 border border-slate-800 p-4 rounded-lg text-center">
+					<span class="block text-purple-400 font-bold mb-1">Systems</span>
+					<span class="text-sm">Windows 11 Admin, PowerShell</span>
+				</div>
+				<div class="bg-slate-900 border border-slate-800 p-4 rounded-lg text-center">
+					<span class="block text-purple-400 font-bold mb-1">Engines</span>
+					<span class="text-sm">Godot 4, Unreal Engine 5</span>
+				</div>
+				<div class="bg-slate-900 border border-slate-800 p-4 rounded-lg text-center">
+					<span class="block text-purple-400 font-bold mb-1">Hardware</span>
+					<span class="text-sm">GPU Undervolting & Tuning</span>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2">Selected Projects</h2>
+			<div class="space-y-6">
+				<div class="bg-slate-900/50 p-6 rounded-lg border border-slate-800 hover:border-purple-500/50 transition-colors">
+					<h3 class="text-xl font-bold text-white mb-2">Engine Rendering Diagnostics</h3>
+					<p class="text-slate-400 text-sm">Diagnosed and resolved complex compilation and environment physics errors across multiple Unreal Engine versions and engineered custom logic via GDScript in Godot 4.</p>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</Layout>

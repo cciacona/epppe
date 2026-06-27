@@ -9,9 +9,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "pages:dev": "npm run build && npx wrangler pages dev ./dist",
+    "pages:deploy": "npm run build && npx wrangler pages deploy ./dist --project-name=epppe-portfolio",
+    "db:migrate:local": "npx wrangler d1 migrations apply epppe-reviews --local",
+    "db:migrate:remote": "npx wrangler d1 migrations apply epppe-reviews --remote",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.0.3"
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^7.0.3",
+    "tailwindcss": "^4.3.1"
   }
 }

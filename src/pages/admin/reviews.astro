@@ -1,0 +1,639 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Review Admin | EPPPE.NET">
+	<div class="mx-auto max-w-6xl px-4 py-8">
+		<div class="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+			<div>
+				<p class="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-purple-400">Admin</p>
+				<h1 class="text-4xl font-bold text-white">Review Sheet</h1>
+			</div>
+			<div class="flex flex-col gap-2 sm:flex-row">
+				<input
+					id="admin-token"
+					type="password"
+					autocomplete="current-password"
+					placeholder="Admin token"
+					class="min-h-11 rounded border border-slate-700 bg-black px-4 text-sm text-white outline-none focus:border-purple-500"
+				/>
+				<button id="load-reviews" type="button" class="sheet-button sheet-button-primary">Load</button>
+			</div>
+		</div>
+
+		<div id="admin-message" class="mb-4 hidden rounded border px-4 py-3 text-sm"></div>
+
+		<div class="mb-4 flex flex-wrap gap-2">
+			<button id="add-row" type="button" class="sheet-button">Add Row</button>
+			<button id="save-all" type="button" class="sheet-button sheet-button-primary">Save All</button>
+			<button id="delete-selected" type="button" class="sheet-button sheet-button-danger">Delete Selected</button>
+			<button id="export-csv" type="button" class="sheet-button">Export CSV</button>
+		</div>
+
+		<details class="mb-5 border-y border-slate-800 py-4">
+			<summary class="cursor-pointer text-sm font-bold uppercase tracking-[0.18em] text-slate-400">Import CSV / TSV</summary>
+			<div class="mt-4 grid gap-3">
+				<textarea id="import-data" rows="7" class="w-full rounded border border-slate-700 bg-black px-3 py-3 font-mono text-sm text-white outline-none focus:border-purple-500"></textarea>
+				<div>
+					<button id="import-rows" type="button" class="sheet-button">Import Rows</button>
+				</div>
+			</div>
+		</details>
+
+		<div class="sheet-frame">
+			<table class="sheet-table">
+				<thead>
+					<tr>
+						<th class="sheet-select"></th>
+						<th>Title</th>
+						<th>Status</th>
+						<th>Order</th>
+						<th>Format</th>
+						<th>Date</th>
+						<th>Runtime</th>
+						<th>Votes</th>
+						<th>Comments</th>
+						<th>URL</th>
+						<th>Public</th>
+					</tr>
+				</thead>
+				<tbody id="reviews-body">
+					<tr>
+						<td colspan="11" class="sheet-empty">No rows loaded.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<style>
+		.sheet-button {
+			min-height: 2.75rem;
+			border: 1px solid rgb(51 65 85);
+			border-radius: 0.25rem;
+			background: rgb(15 23 42);
+			color: rgb(226 232 240);
+			font-size: 0.875rem;
+			font-weight: 700;
+			padding: 0 0.9rem;
+		}
+
+		.sheet-button:hover {
+			border-color: rgb(192 132 252);
+			color: #ffffff;
+		}
+
+		.sheet-button-primary {
+			border-color: rgba(168, 85, 247, 0.7);
+			background: rgb(126 34 206);
+			color: #ffffff;
+		}
+
+		.sheet-button-danger {
+			border-color: rgba(239, 68, 68, 0.6);
+			color: rgb(252 165 165);
+		}
+
+		.sheet-frame {
+			overflow: auto;
+			border: 1px solid rgb(30 41 59);
+			background: rgba(2, 6, 23, 0.92);
+		}
+
+		.sheet-table {
+			width: 100%;
+			min-width: 1320px;
+			border-collapse: collapse;
+			table-layout: fixed;
+			font-size: 0.9rem;
+		}
+
+		.sheet-table th,
+		.sheet-table td {
+			border-bottom: 1px solid rgba(71, 85, 105, 0.45);
+			border-right: 1px solid rgba(71, 85, 105, 0.35);
+			padding: 0;
+			vertical-align: middle;
+		}
+
+		.sheet-table th {
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			height: 2.75rem;
+			background: rgb(15 23 42);
+			color: rgb(203 213 225);
+			font-weight: 700;
+			text-align: left;
+			padding: 0 0.6rem;
+		}
+
+		.sheet-table tr {
+			background: rgba(15, 23, 42, 0.72);
+		}
+
+		.sheet-table tr[data-status="scheduled"] {
+			background: rgba(30, 64, 105, 0.72);
+		}
+
+		.sheet-table tr[data-status="paused"] {
+			background: rgba(91, 38, 38, 0.72);
+		}
+
+		.sheet-table tr[data-status="completed"],
+		.sheet-table tr[data-status="reviewed"] {
+			background: rgba(30, 80, 61, 0.68);
+		}
+
+		.sheet-table tr.is-dirty {
+			outline: 1px solid rgb(192 132 252);
+			outline-offset: -1px;
+		}
+
+		.sheet-table input,
+		.sheet-table select,
+		.sheet-table textarea {
+			width: 100%;
+			min-height: 2.75rem;
+			border: 0;
+			background: transparent;
+			color: #ffffff;
+			outline: none;
+			padding: 0.45rem 0.6rem;
+		}
+
+		.sheet-table textarea {
+			resize: vertical;
+			line-height: 1.35;
+		}
+
+		.sheet-table input:focus,
+		.sheet-table select:focus,
+		.sheet-table textarea:focus {
+			background: rgba(168, 85, 247, 0.18);
+		}
+
+		.sheet-table select option {
+			background: rgb(15 23 42);
+			color: #ffffff;
+		}
+
+		.sheet-select {
+			width: 2.75rem;
+			text-align: center;
+		}
+
+		.sheet-select input {
+			width: 1rem;
+			min-height: 1rem;
+			accent-color: rgb(168 85 247);
+		}
+
+		.sheet-title {
+			width: 18rem;
+		}
+
+		.sheet-status,
+		.sheet-format {
+			width: 8rem;
+		}
+
+		.sheet-order {
+			width: 5rem;
+		}
+
+		.sheet-date {
+			width: 12rem;
+		}
+
+		.sheet-runtime,
+		.sheet-votes {
+			width: 10rem;
+		}
+
+		.sheet-comments {
+			width: 18rem;
+		}
+
+		.sheet-url {
+			width: 15rem;
+		}
+
+		.sheet-public {
+			width: 5rem;
+			text-align: center;
+		}
+
+		.sheet-empty {
+			height: 6rem;
+			color: rgb(100 116 139);
+			text-align: center;
+		}
+	</style>
+
+	<script>
+		const statusOptions = ['Candidate', 'Scheduled', 'Watching', 'Paused', 'Completed', 'Reviewed', 'Dropped'];
+		const formatOptions = ['Series', 'Season', 'Movie', 'Game', 'Book', 'Album', 'Other'];
+		const csvColumns = [
+			{ key: 'title', label: 'Title' },
+			{ key: 'status', label: 'Status' },
+			{ key: 'sort_order', label: 'Order' },
+			{ key: 'format', label: 'Format' },
+			{ key: 'release_date', label: 'Date' },
+			{ key: 'runtime', label: 'Runtime' },
+			{ key: 'votes', label: 'Votes' },
+			{ key: 'body', label: 'Comments' },
+			{ key: 'external_url', label: 'URL' },
+			{ key: 'is_published', label: 'Public' }
+		];
+
+		const tokenInput = document.getElementById('admin-token');
+		const loadButton = document.getElementById('load-reviews');
+		const addButton = document.getElementById('add-row');
+		const saveButton = document.getElementById('save-all');
+		const deleteButton = document.getElementById('delete-selected');
+		const exportButton = document.getElementById('export-csv');
+		const importButton = document.getElementById('import-rows');
+		const importData = document.getElementById('import-data');
+		const message = document.getElementById('admin-message');
+		const tbody = document.getElementById('reviews-body');
+
+		let rows = [];
+		let dirtyKeys = new Set();
+		let deletedIds = new Set();
+
+		tokenInput.value = localStorage.getItem('reviewsAdminToken') || '';
+
+		function token() {
+			return tokenInput.value.trim();
+		}
+
+		function rowKey(row) {
+			return row.id ? `id-${row.id}` : row.client_id;
+		}
+
+		function blankRow() {
+			return {
+				client_id: `new-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+				id: null,
+				title: '',
+				status: 'Candidate',
+				sort_order: 0,
+				format: 'Series',
+				release_date: '',
+				runtime: '',
+				votes: '',
+				body: '',
+				external_url: '',
+				is_published: 1
+			};
+		}
+
+		function normalizeRow(row) {
+			return {
+				...blankRow(),
+				...row,
+				client_id: row.client_id || `row-${row.id || Date.now()}`,
+				status: row.status || 'Candidate',
+				format: row.format || row.category || 'Series',
+				release_date: row.release_date || '',
+				runtime: row.runtime || '',
+				votes: row.votes || '',
+				body: row.body || '',
+				external_url: row.external_url || '',
+				sort_order: Number.isInteger(Number(row.sort_order)) ? Number(row.sort_order) : 0,
+				is_published: row.is_published ? 1 : 0
+			};
+		}
+
+		function showMessage(text, type = 'info') {
+			message.textContent = text;
+			message.className = `mb-4 rounded border px-4 py-3 text-sm ${
+				type === 'error'
+					? 'border-red-500/40 bg-red-500/10 text-red-200'
+					: 'border-purple-500/40 bg-purple-500/10 text-purple-100'
+			}`;
+		}
+
+		function escapeHtml(value) {
+			return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+				'&': '&amp;',
+				'<': '&lt;',
+				'>': '&gt;',
+				'"': '&quot;',
+				"'": '&#039;'
+			})[char]);
+		}
+
+		function statusSlug(status) {
+			return String(status || '').toLowerCase();
+		}
+
+		function optionsHtml(options, selected) {
+			return options
+				.map((option) => `<option value="${escapeHtml(option)}"${option === selected ? ' selected' : ''}>${escapeHtml(option)}</option>`)
+				.join('');
+		}
+
+		function renderRows() {
+			const visibleRows = rows.filter((row) => !row.id || !deletedIds.has(row.id));
+
+			if (!visibleRows.length) {
+				tbody.innerHTML = '<tr><td colspan="11" class="sheet-empty">No rows loaded.</td></tr>';
+				return;
+			}
+
+			tbody.innerHTML = visibleRows
+				.map((row) => {
+					const key = rowKey(row);
+					return `
+						<tr data-key="${escapeHtml(key)}" data-status="${escapeHtml(statusSlug(row.status))}" class="${dirtyKeys.has(key) ? 'is-dirty' : ''}">
+							<td class="sheet-select"><input type="checkbox" class="row-select" /></td>
+							<td class="sheet-title"><input data-field="title" value="${escapeHtml(row.title)}" /></td>
+							<td class="sheet-status"><select data-field="status">${optionsHtml(statusOptions, row.status)}</select></td>
+							<td class="sheet-order"><input data-field="sort_order" type="number" value="${escapeHtml(row.sort_order)}" /></td>
+							<td class="sheet-format"><select data-field="format">${optionsHtml(formatOptions, row.format)}</select></td>
+							<td class="sheet-date"><input data-field="release_date" value="${escapeHtml(row.release_date)}" /></td>
+							<td class="sheet-runtime"><input data-field="runtime" value="${escapeHtml(row.runtime)}" /></td>
+							<td class="sheet-votes"><input data-field="votes" value="${escapeHtml(row.votes)}" /></td>
+							<td class="sheet-comments"><textarea data-field="body" rows="1">${escapeHtml(row.body)}</textarea></td>
+							<td class="sheet-url"><input data-field="external_url" value="${escapeHtml(row.external_url)}" /></td>
+							<td class="sheet-public"><input data-field="is_published" type="checkbox" ${row.is_published ? 'checked' : ''} /></td>
+						</tr>
+					`;
+				})
+				.join('');
+		}
+
+		function rowFromElement(element) {
+			const tr = element.closest('tr[data-key]');
+			if (!tr) return null;
+			const row = rows.find((item) => rowKey(item) === tr.dataset.key);
+			return row ? { row, tr } : null;
+		}
+
+		function readCellValue(input) {
+			if (input.type === 'checkbox') return input.checked ? 1 : 0;
+			if (input.dataset.field === 'sort_order') return Number(input.value || 0);
+			return input.value;
+		}
+
+		function markDirty(row, tr) {
+			const key = rowKey(row);
+			dirtyKeys.add(key);
+			tr.classList.add('is-dirty');
+			tr.dataset.status = statusSlug(row.status);
+		}
+
+		async function api(path, options = {}) {
+			const response = await fetch(path, {
+				...options,
+				headers: {
+					authorization: `Bearer ${token()}`,
+					'content-type': 'application/json',
+					...(options.headers || {})
+				}
+			});
+			const data = await response.json();
+			if (!response.ok) throw new Error(data.error || 'Request failed.');
+			return data;
+		}
+
+		function payloadFromRow(row) {
+			return {
+				title: row.title,
+				status: row.status,
+				sort_order: row.sort_order,
+				format: row.format,
+				category: row.format,
+				release_date: row.release_date,
+				runtime: row.runtime,
+				votes: row.votes,
+				body: row.body,
+				external_url: row.external_url,
+				is_published: Boolean(row.is_published)
+			};
+		}
+
+		async function loadReviews() {
+			try {
+				localStorage.setItem('reviewsAdminToken', token());
+				const data = await api('/api/reviews');
+				rows = data.reviews.map(normalizeRow);
+				dirtyKeys = new Set();
+				deletedIds = new Set();
+				renderRows();
+				showMessage('Loaded.');
+			} catch (error) {
+				showMessage(error.message, 'error');
+			}
+		}
+
+		async function saveAll() {
+			try {
+				let changed = 0;
+
+				for (const id of deletedIds) {
+					await api(`/api/reviews/${id}`, { method: 'DELETE' });
+					changed += 1;
+				}
+
+				for (const row of rows) {
+					const key = rowKey(row);
+					const isDeleted = row.id && deletedIds.has(row.id);
+					const isBlankNewRow = !row.id && !row.title.trim();
+					if (isDeleted || isBlankNewRow) continue;
+					if (row.id && !dirtyKeys.has(key)) continue;
+
+					const path = row.id ? `/api/reviews/${row.id}` : '/api/reviews';
+					const method = row.id ? 'PUT' : 'POST';
+					await api(path, {
+						method,
+						body: JSON.stringify(payloadFromRow(row))
+					});
+					changed += 1;
+				}
+
+				await loadReviews();
+				showMessage(changed ? `Saved ${changed} change${changed === 1 ? '' : 's'}.` : 'Nothing to save.');
+			} catch (error) {
+				showMessage(error.message, 'error');
+			}
+		}
+
+		function addRow() {
+			const row = blankRow();
+			rows.push(row);
+			dirtyKeys.add(rowKey(row));
+			renderRows();
+		}
+
+		function deleteSelected() {
+			const selected = Array.from(tbody.querySelectorAll('.row-select:checked'));
+			if (!selected.length) {
+				showMessage('No rows selected.', 'error');
+				return;
+			}
+
+			for (const checkbox of selected) {
+				const match = rowFromElement(checkbox);
+				if (!match) continue;
+
+				if (match.row.id) deletedIds.add(match.row.id);
+				else rows = rows.filter((row) => rowKey(row) !== rowKey(match.row));
+			}
+
+			renderRows();
+			showMessage('Selected rows marked for deletion.');
+		}
+
+		function csvEscape(value) {
+			const text = String(value ?? '');
+			return /[",\n\r]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+		}
+
+		function exportCsv() {
+			const visibleRows = rows.filter((row) => !row.id || !deletedIds.has(row.id));
+			const lines = [
+				csvColumns.map((column) => csvEscape(column.label)).join(','),
+				...visibleRows.map((row) => csvColumns.map((column) => csvEscape(row[column.key])).join(','))
+			];
+			const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+			const url = URL.createObjectURL(blob);
+			const link = document.createElement('a');
+			link.href = url;
+			link.download = 'reviews.csv';
+			link.click();
+			URL.revokeObjectURL(url);
+		}
+
+		function parseDelimited(text) {
+			const delimiter = text.includes('\t') ? '\t' : ',';
+			const rows = [];
+			let row = [];
+			let cell = '';
+			let quoted = false;
+
+			for (let index = 0; index < text.length; index += 1) {
+				const char = text[index];
+				const next = text[index + 1];
+
+				if (quoted) {
+					if (char === '"' && next === '"') {
+						cell += '"';
+						index += 1;
+					} else if (char === '"') {
+						quoted = false;
+					} else {
+						cell += char;
+					}
+				} else if (char === '"') {
+					quoted = true;
+				} else if (char === delimiter) {
+					row.push(cell);
+					cell = '';
+				} else if (char === '\n') {
+					row.push(cell);
+					rows.push(row);
+					row = [];
+					cell = '';
+				} else if (char !== '\r') {
+					cell += char;
+				}
+			}
+
+			row.push(cell);
+			rows.push(row);
+			return rows.filter((item) => item.some((value) => value.trim()));
+		}
+
+		function headerToKey(header) {
+			const normalized = header.toLowerCase().replace(/[^a-z0-9]/g, '');
+			const map = {
+				title: 'title',
+				status: 'status',
+				order: 'sort_order',
+				sortorder: 'sort_order',
+				format: 'format',
+				category: 'format',
+				date: 'release_date',
+				releasedate: 'release_date',
+				runtime: 'runtime',
+				votes: 'votes',
+				comments: 'body',
+				comment: 'body',
+				body: 'body',
+				url: 'external_url',
+				link: 'external_url',
+				externalurl: 'external_url',
+				public: 'is_published',
+				published: 'is_published'
+			};
+			return map[normalized] || null;
+		}
+
+		function parsePublished(value) {
+			const normalized = String(value || '').trim().toLowerCase();
+			return ['1', 'true', 'yes', 'y', 'published', 'public'].includes(normalized) ? 1 : 0;
+		}
+
+		function importRows() {
+			const parsed = parseDelimited(importData.value.trim());
+			if (!parsed.length) {
+				showMessage('No import rows found.', 'error');
+				return;
+			}
+
+			const headerKeys = parsed[0].map(headerToKey);
+			const hasHeader = headerKeys.some(Boolean);
+			const keys = hasHeader ? headerKeys : csvColumns.map((column) => column.key);
+			const dataRows = hasHeader ? parsed.slice(1) : parsed;
+			const imported = [];
+
+			for (const cells of dataRows) {
+				const row = blankRow();
+				cells.forEach((cell, index) => {
+					const key = keys[index];
+					if (!key) return;
+					if (key === 'sort_order') row[key] = Number(cell || 0);
+					else if (key === 'is_published') row[key] = parsePublished(cell);
+					else row[key] = cell;
+				});
+				if (row.title.trim()) imported.push(row);
+			}
+
+			rows.push(...imported);
+			for (const row of imported) dirtyKeys.add(rowKey(row));
+			importData.value = '';
+			renderRows();
+			showMessage(`Imported ${imported.length} row${imported.length === 1 ? '' : 's'}.`);
+		}
+
+		tbody.addEventListener('input', (event) => {
+			const input = event.target;
+			if (!input.dataset?.field) return;
+			const match = rowFromElement(input);
+			if (!match) return;
+
+			match.row[input.dataset.field] = readCellValue(input);
+			markDirty(match.row, match.tr);
+		});
+
+		tbody.addEventListener('change', (event) => {
+			const input = event.target;
+			if (!input.dataset?.field) return;
+			const match = rowFromElement(input);
+			if (!match) return;
+
+			match.row[input.dataset.field] = readCellValue(input);
+			markDirty(match.row, match.tr);
+		});
+
+		loadButton.addEventListener('click', loadReviews);
+		addButton.addEventListener('click', addRow);
+		saveButton.addEventListener('click', saveAll);
+		deleteButton.addEventListener('click', deleteSelected);
+		exportButton.addEventListener('click', exportCsv);
+		importButton.addEventListener('click', importRows);
+	</script>
+</Layout>
