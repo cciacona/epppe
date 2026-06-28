@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview",
     "pages:dev": "npm run build && npx wrangler pages dev ./dist",
     "pages:deploy": "npm run build && npx wrangler pages deploy ./dist --project-name=epppe-portfolio",
@@ -19,5 +20,14 @@
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^7.0.3",
     "tailwindcss": "^4.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.2",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "yaml-language-server": {
+      "yaml": "^2.9.0"
+    }
   }
 }

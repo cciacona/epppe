@@ -232,9 +232,29 @@ import Layout from '../../layouts/Layout.astro';
 	</style>
 
 	<script>
+		type ReviewRow = {
+			client_id: string;
+			id: number | null;
+			title: string;
+			status: string;
+			sort_order: number;
+			format: string;
+			category?: string;
+			release_date: string;
+			runtime: string;
+			votes: string;
+			body: string;
+			external_url: string;
+			is_published: number;
+		};
+
+		type ReviewField = 'title' | 'status' | 'sort_order' | 'format' | 'release_date' | 'runtime' | 'votes' | 'body' | 'external_url' | 'is_published';
+		type CsvColumn = { key: ReviewField; label: string };
+		type RowMatch = { row: ReviewRow; tr: HTMLTableRowElement };
+
 		const statusOptions = ['Candidate', 'Scheduled', 'Watching', 'Paused', 'Completed', 'Reviewed', 'Dropped'];
 		const formatOptions = ['Series', 'Season', 'Movie', 'Game', 'Book', 'Album', 'Other'];
-		const csvColumns = [
+		const csvColumns: CsvColumn[] = [
 			{ key: 'title', label: 'Title' },
 			{ key: 'status', label: 'Status' },
 			{ key: 'sort_order', label: 'Order' },
@@ -247,20 +267,20 @@ import Layout from '../../layouts/Layout.astro';
 			{ key: 'is_published', label: 'Public' }
 		];
 
-		const tokenInput = document.getElementById('admin-token');
-		const loadButton = document.getElementById('load-reviews');
-		const addButton = document.getElementById('add-row');
-		const saveButton = document.getElementById('save-all');
-		const deleteButton = document.getElementById('delete-selected');
-		const exportButton = document.getElementById('export-csv');
-		const importButton = document.getElementById('import-rows');
-		const importData = document.getElementById('import-data');
-		const message = document.getElementById('admin-message');
-		const tbody = document.getElementById('reviews-body');
+		const tokenInput = document.getElementById('admin-token') as HTMLInputElement;
+		const loadButton = document.getElementById('load-reviews') as HTMLButtonElement;
+		const addButton = document.getElementById('add-row') as HTMLButtonElement;
+		const saveButton = document.getElementById('save-all') as HTMLButtonElement;
+		const deleteButton = document.getElementById('delete-selected') as HTMLButtonElement;
+		const exportButton = document.getElementById('export-csv') as HTMLButtonElement;
+		const importButton = document.getElementById('import-rows') as HTMLButtonElement;
+		const importData = document.getElementById('import-data') as HTMLTextAreaElement;
+		const message = document.getElementById('admin-message') as HTMLDivElement;
+		const tbody = document.getElementById('reviews-body') as HTMLTableSectionElement;
 
-		let rows = [];
-		let dirtyKeys = new Set();
-		let deletedIds = new Set();
+		let rows: ReviewRow[] = [];
+		let dirtyKeys = new Set<string>();
+		let deletedIds = new Set<number>();
 
 		tokenInput.value = localStorage.getItem('reviewsAdminToken') || '';
 
@@ -268,11 +288,11 @@ import Layout from '../../layouts/Layout.astro';
 			return tokenInput.value.trim();
 		}
 
-		function rowKey(row) {
+		function rowKey(row: ReviewRow) {
 			return row.id ? `id-${row.id}` : row.client_id;
 		}
 
-		function blankRow() {
+		function blankRow(): ReviewRow {
 			return {
 				client_id: `new-${Date.now()}-${Math.random().toString(16).slice(2)}`,
 				id: null,
@@ -289,7 +309,7 @@ import Layout from '../../layouts/Layout.astro';
 			};
 		}
 
-		function normalizeRow(row) {
+		function normalizeRow(row: Partial<ReviewRow> = {}): ReviewRow {
 			return {
 				...blankRow(),
 				...row,
@@ -306,7 +326,7 @@ import Layout from '../../layouts/Layout.astro';
 			};
 		}
 
-		function showMessage(text, type = 'info') {
+		function showMessage(text: string, type: 'info' | 'error' = 'info') {
 			message.textContent = text;
 			message.className = `mb-4 rounded border px-4 py-3 text-sm ${
 				type === 'error'
@@ -315,21 +335,22 @@ import Layout from '../../layouts/Layout.astro';
 			}`;
 		}
 
-		function escapeHtml(value) {
-			return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+		function escapeHtml(value: unknown) {
+			const entities: Record<string, string> = {
 				'&': '&amp;',
 				'<': '&lt;',
 				'>': '&gt;',
 				'"': '&quot;',
 				"'": '&#039;'
-			})[char]);
+			};
+			return String(value ?? '').replace(/[&<>"']/g, (char) => entities[char] || char);
 		}
 
-		function statusSlug(status) {
+		function statusSlug(status: string) {
 			return String(status || '').toLowerCase();
 		}
 
-		function optionsHtml(options, selected) {
+		function optionsHtml(options: string[], selected: string) {
 			return options
 				.map((option) => `<option value="${escapeHtml(option)}"${option === selected ? ' selected' : ''}>${escapeHtml(option)}</option>`)
 				.join('');
@@ -365,41 +386,80 @@ import Layout from '../../layouts/Layout.astro';
 				.join('');
 		}
 
-		function rowFromElement(element) {
-			const tr = element.closest('tr[data-key]');
+		function rowFromElement(element: Element): RowMatch | null {
+			const tr = element.closest<HTMLTableRowElement>('tr[data-key]');
 			if (!tr) return null;
 			const row = rows.find((item) => rowKey(item) === tr.dataset.key);
 			return row ? { row, tr } : null;
 		}
 
-		function readCellValue(input) {
-			if (input.type === 'checkbox') return input.checked ? 1 : 0;
+		function readCellValue(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
+			if (input instanceof HTMLInputElement && input.type === 'checkbox') return input.checked ? 1 : 0;
 			if (input.dataset.field === 'sort_order') return Number(input.value || 0);
 			return input.value;
 		}
 
-		function markDirty(row, tr) {
+		function applyCellValue(row: ReviewRow, field: ReviewField, value: string | number) {
+			switch (field) {
+				case 'sort_order':
+					row.sort_order = Number(value || 0);
+					break;
+				case 'is_published':
+					row.is_published = Number(value) ? 1 : 0;
+					break;
+				case 'title':
+					row.title = String(value);
+					break;
+				case 'status':
+					row.status = String(value);
+					break;
+				case 'format':
+					row.format = String(value);
+					break;
+				case 'release_date':
+					row.release_date = String(value);
+					break;
+				case 'runtime':
+					row.runtime = String(value);
+					break;
+				case 'votes':
+					row.votes = String(value);
+					break;
+				case 'body':
+					row.body = String(value);
+					break;
+				case 'external_url':
+					row.external_url = String(value);
+					break;
+			}
+		}
+
+		function errorMessage(error: unknown) {
+			return error instanceof Error ? error.message : 'Request failed.';
+		}
+
+		function markDirty(row: ReviewRow, tr: HTMLTableRowElement) {
 			const key = rowKey(row);
 			dirtyKeys.add(key);
 			tr.classList.add('is-dirty');
 			tr.dataset.status = statusSlug(row.status);
 		}
 
-		async function api(path, options = {}) {
+		async function api(path: string, options: RequestInit = {}) {
+			const headers = new Headers(options.headers);
+			headers.set('authorization', `Bearer ${token()}`);
+			headers.set('content-type', 'application/json');
+
 			const response = await fetch(path, {
 				...options,
-				headers: {
-					authorization: `Bearer ${token()}`,
-					'content-type': 'application/json',
-					...(options.headers || {})
-				}
+				headers
 			});
-			const data = await response.json();
+			const data = await response.json() as { error?: string; reviews?: ReviewRow[] };
 			if (!response.ok) throw new Error(data.error || 'Request failed.');
 			return data;
 		}
 
-		function payloadFromRow(row) {
+		function payloadFromRow(row: ReviewRow) {
 			return {
 				title: row.title,
 				status: row.status,
@@ -419,13 +479,13 @@ import Layout from '../../layouts/Layout.astro';
 			try {
 				localStorage.setItem('reviewsAdminToken', token());
 				const data = await api('/api/reviews');
-				rows = data.reviews.map(normalizeRow);
+				rows = (data.reviews || []).map(normalizeRow);
 				dirtyKeys = new Set();
 				deletedIds = new Set();
 				renderRows();
 				showMessage('Loaded.');
 			} catch (error) {
-				showMessage(error.message, 'error');
+				showMessage(errorMessage(error), 'error');
 			}
 		}
 
@@ -457,7 +517,7 @@ import Layout from '../../layouts/Layout.astro';
 				await loadReviews();
 				showMessage(changed ? `Saved ${changed} change${changed === 1 ? '' : 's'}.` : 'Nothing to save.');
 			} catch (error) {
-				showMessage(error.message, 'error');
+				showMessage(errorMessage(error), 'error');
 			}
 		}
 
@@ -487,7 +547,7 @@ import Layout from '../../layouts/Layout.astro';
 			showMessage('Selected rows marked for deletion.');
 		}
 
-		function csvEscape(value) {
+		function csvEscape(value: unknown) {
 			const text = String(value ?? '');
 			return /[",\n\r]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
 		}
@@ -507,10 +567,10 @@ import Layout from '../../layouts/Layout.astro';
 			URL.revokeObjectURL(url);
 		}
 
-		function parseDelimited(text) {
+		function parseDelimited(text: string) {
 			const delimiter = text.includes('\t') ? '\t' : ',';
-			const rows = [];
-			let row = [];
+			const rows: string[][] = [];
+			let row: string[] = [];
 			let cell = '';
 			let quoted = false;
 
@@ -547,9 +607,9 @@ import Layout from '../../layouts/Layout.astro';
 			return rows.filter((item) => item.some((value) => value.trim()));
 		}
 
-		function headerToKey(header) {
+		function headerToKey(header: string): ReviewField | null {
 			const normalized = header.toLowerCase().replace(/[^a-z0-9]/g, '');
-			const map = {
+			const map: Record<string, ReviewField> = {
 				title: 'title',
 				status: 'status',
 				order: 'sort_order',
@@ -572,7 +632,7 @@ import Layout from '../../layouts/Layout.astro';
 			return map[normalized] || null;
 		}
 
-		function parsePublished(value) {
+		function parsePublished(value: unknown): 1 | 0 {
 			const normalized = String(value || '').trim().toLowerCase();
 			return ['1', 'true', 'yes', 'y', 'published', 'public'].includes(normalized) ? 1 : 0;
 		}
@@ -584,20 +644,19 @@ import Layout from '../../layouts/Layout.astro';
 				return;
 			}
 
-			const headerKeys = parsed[0].map(headerToKey);
+			const firstRow = parsed[0] || [];
+			const headerKeys = firstRow.map(headerToKey);
 			const hasHeader = headerKeys.some(Boolean);
 			const keys = hasHeader ? headerKeys : csvColumns.map((column) => column.key);
 			const dataRows = hasHeader ? parsed.slice(1) : parsed;
-			const imported = [];
+			const imported: ReviewRow[] = [];
 
 			for (const cells of dataRows) {
 				const row = blankRow();
 				cells.forEach((cell, index) => {
 					const key = keys[index];
 					if (!key) return;
-					if (key === 'sort_order') row[key] = Number(cell || 0);
-					else if (key === 'is_published') row[key] = parsePublished(cell);
-					else row[key] = cell;
+					applyCellValue(row, key, key === 'is_published' ? parsePublished(cell) : cell);
 				});
 				if (row.title.trim()) imported.push(row);
 			}
@@ -609,25 +668,21 @@ import Layout from '../../layouts/Layout.astro';
 			showMessage(`Imported ${imported.length} row${imported.length === 1 ? '' : 's'}.`);
 		}
 
-		tbody.addEventListener('input', (event) => {
+		function handleCellEdit(event: Event) {
 			const input = event.target;
-			if (!input.dataset?.field) return;
+			if (!(input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement || input instanceof HTMLSelectElement)) return;
+
+			const field = input.dataset.field as ReviewField | undefined;
+			if (!field) return;
 			const match = rowFromElement(input);
 			if (!match) return;
 
-			match.row[input.dataset.field] = readCellValue(input);
+			applyCellValue(match.row, field, readCellValue(input));
 			markDirty(match.row, match.tr);
-		});
+		}
 
-		tbody.addEventListener('change', (event) => {
-			const input = event.target;
-			if (!input.dataset?.field) return;
-			const match = rowFromElement(input);
-			if (!match) return;
-
-			match.row[input.dataset.field] = readCellValue(input);
-			markDirty(match.row, match.tr);
-		});
+		tbody.addEventListener('input', handleCellEdit);
+		tbody.addEventListener('change', handleCellEdit);
 
 		loadButton.addEventListener('click', loadReviews);
 		addButton.addEventListener('click', addRow);
