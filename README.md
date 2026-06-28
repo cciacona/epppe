@@ -18,7 +18,6 @@ The old hand-written static site has been archived in `legacy-static/` for refer
 - Production: https://epppe.net
 - Alternate host: https://www.epppe.net
 - Pages fallback: https://epppe-portfolio.pages.dev
-- Latest deployment: https://67bbf4fe.epppe-portfolio.pages.dev
 - D1 database: `epppe-reviews`
 - Local copy of production review admin token: `.admin-token`
 
