@@ -1,0 +1,246 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const learningOutcomes = [
+	'Student Learning Outcome 1',
+	'Student Learning Outcome 2',
+	'Student Learning Outcome 3',
+	'Student Learning Outcome 4',
+	'Student Learning Outcome 5'
+];
+
+const majorAssignments = [
+	{
+		title: 'Research Paper',
+		context: 'Prompt, abstract, full paper, and publication-ready version',
+		evidence: 'Primary research artifact'
+	},
+	{
+		title: 'Major Writing Assignment 2',
+		context: 'Prompt, full submission, and short context note',
+		evidence: 'Course outcome evidence'
+	},
+	{
+		title: 'Major Writing Assignment 3',
+		context: 'Prompt, full submission, and short context note',
+		evidence: 'Course outcome evidence'
+	}
+];
+
+const draftStages = [
+	'Draft 1',
+	'Draft 2',
+	'Final'
+];
+
+const writingActivities = [
+	['01', 'Discussion post', 'Course conversation'],
+	['02', 'Reading journal', 'Source engagement'],
+	['03', 'Peer review', 'Feedback practice'],
+	['04', 'Feedback response', 'Revision planning'],
+	['05', 'Free write / short write', 'Invention work'],
+	['06', 'Outside-of-class writing', 'Transfer beyond the course']
+];
+---
+
+<Layout title="Composition Research Portfolio | EPPPE.NET">
+	<div class="mx-auto max-w-6xl px-6 py-16">
+		<header class="mb-14">
+			<a href="/portfolio" class="mb-4 inline-block text-sm font-bold text-purple-300 transition-colors hover:text-purple-200">Portfolio</a>
+			<h1 class="mb-4 text-4xl font-bold text-white">Composition Research Portfolio</h1>
+			<p class="max-w-3xl leading-relaxed text-slate-400">
+				A course portfolio shell for the testimonio or cover letter, learning outcome reflections, major assignments, activity evidence, drafts, and screenshots.
+			</p>
+		</header>
+
+		<div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
+			<aside class="lg:col-span-1">
+				<nav class="lg:sticky lg:top-24">
+					<h2 class="mb-4 text-sm font-bold text-slate-500">Contents</h2>
+					<div class="space-y-3 text-sm font-bold text-slate-400">
+						<a href="#cover" class="block transition-colors hover:text-white">Testimonio / Cover Letter</a>
+						<a href="#outcomes" class="block transition-colors hover:text-white">Student Learning Outcomes</a>
+						<a href="#assignments" class="block transition-colors hover:text-white">Major Assignments</a>
+						<a href="#drafts" class="block transition-colors hover:text-white">Draft Trail</a>
+						<a href="#activities" class="block transition-colors hover:text-white">Writing Activities</a>
+						<a href="#screenshots" class="block transition-colors hover:text-white">Screenshots</a>
+						<a href="#rationale" class="block transition-colors hover:text-white">Selection Rationale</a>
+					</div>
+				</nav>
+			</aside>
+
+			<div class="lg:col-span-3">
+				<section id="cover" class="border-t border-slate-800 py-8">
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+						<div>
+							<p class="text-sm font-bold text-purple-300">Opening</p>
+						</div>
+						<div class="md:col-span-2">
+							<h2 class="mb-3 text-2xl font-bold text-white">Testimonio / Cover Letter</h2>
+							<p class="leading-relaxed text-slate-400">
+								Not posted yet. This section will hold the portfolio introduction, course context, and the main argument for how the selected work shows growth.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section id="outcomes" class="border-t border-slate-800 py-8">
+					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
+						<div>
+							<p class="text-sm font-bold text-purple-300">Reflection</p>
+						</div>
+						<div class="md:col-span-2">
+							<h2 class="mb-3 text-2xl font-bold text-white">Student Learning Outcomes</h2>
+							<p class="leading-relaxed text-slate-400">
+								Each outcome gets a reflection, selected evidence, and a note explaining why the evidence belongs here.
+							</p>
+						</div>
+					</div>
+
+					<div class="divide-y divide-slate-800 border-y border-slate-800">
+						{learningOutcomes.map((outcome) => (
+							<div class="grid grid-cols-1 gap-4 py-5 text-sm md:grid-cols-4">
+								<div>
+									<p class="font-bold text-white">{outcome}</p>
+									<p class="text-slate-500">Course wording</p>
+								</div>
+								<div>
+									<p class="font-bold text-slate-300">Reflection</p>
+									<p class="mt-1 text-slate-500">Open slot</p>
+								</div>
+								<div>
+									<p class="font-bold text-slate-300">Evidence</p>
+									<p class="mt-1 text-slate-500">Open slot</p>
+								</div>
+								<div>
+									<p class="font-bold text-slate-300">Selection Note</p>
+									<p class="mt-1 text-slate-500">Open slot</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
+
+				<section id="assignments" class="border-t border-slate-800 py-8">
+					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
+						<div>
+							<p class="text-sm font-bold text-purple-300">Artifacts</p>
+						</div>
+						<div class="md:col-span-2">
+							<h2 class="mb-3 text-2xl font-bold text-white">Major Writing Assignments</h2>
+							<p class="leading-relaxed text-slate-400">
+								Full versions of major assignments belong here, with prompts when useful and context before each piece.
+							</p>
+						</div>
+					</div>
+
+					<div class="divide-y divide-slate-800 border-y border-slate-800">
+						{majorAssignments.map((assignment) => (
+							<article class="grid grid-cols-1 gap-4 py-5 md:grid-cols-4">
+								<div>
+									<h3 class="text-xl font-bold text-white">{assignment.title}</h3>
+								</div>
+								<div class="md:col-span-2">
+									<p class="leading-relaxed text-slate-400">{assignment.context}</p>
+								</div>
+								<div>
+									<p class="text-sm font-bold text-slate-300">{assignment.evidence}</p>
+									<p class="mt-1 text-sm text-slate-500">Prompt and full version slot</p>
+								</div>
+							</article>
+						))}
+					</div>
+				</section>
+
+				<section id="drafts" class="border-t border-slate-800 py-8">
+					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
+						<div>
+							<p class="text-sm font-bold text-purple-300">Revision</p>
+						</div>
+						<div class="md:col-span-2">
+							<h2 class="mb-3 text-2xl font-bold text-white">Draft Trail</h2>
+							<p class="leading-relaxed text-slate-400">
+								At least one major assignment will include multiple drafts, feedback received, and the revisions made between versions.
+							</p>
+						</div>
+					</div>
+
+					<div class="divide-y divide-slate-800 border-y border-slate-800">
+						{draftStages.map((stage) => (
+							<div class="grid grid-cols-1 gap-4 py-5 text-sm md:grid-cols-4">
+								<p class="text-lg font-bold text-white">{stage}</p>
+								<p class="text-slate-500">Full draft slot</p>
+								<p class="text-slate-500">Feedback note slot</p>
+								<p class="text-slate-500">Revision note slot</p>
+							</div>
+						))}
+					</div>
+				</section>
+
+				<section id="activities" class="border-t border-slate-800 py-8">
+					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
+						<div>
+							<p class="text-sm font-bold text-purple-300">Practice</p>
+						</div>
+						<div class="md:col-span-2">
+							<h2 class="mb-3 text-2xl font-bold text-white">Six Writing Activities</h2>
+							<p class="leading-relaxed text-slate-400">
+								The activity archive is prepared for at least six entries across multiple task types.
+							</p>
+						</div>
+					</div>
+
+					<div class="divide-y divide-slate-800 border-y border-slate-800">
+						{writingActivities.map(([number, kind, role]) => (
+							<div class="grid grid-cols-1 gap-4 py-4 text-sm sm:grid-cols-4">
+								<p class="font-mono text-slate-500">{number}</p>
+								<p class="font-bold text-white">{kind}</p>
+								<p class="text-slate-400">{role}</p>
+								<p class="text-slate-500">Artifact slot</p>
+							</div>
+						))}
+					</div>
+				</section>
+
+				<section id="screenshots" class="border-t border-slate-800 py-8">
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+						<div>
+							<p class="text-sm font-bold text-purple-300">Evidence</p>
+						</div>
+						<div class="md:col-span-2">
+							<h2 class="mb-3 text-2xl font-bold text-white">Screenshots & Moments</h2>
+							<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+								<div class="border border-slate-800 p-4">
+									<p class="font-bold text-white">Feedback</p>
+									<p class="mt-2 text-sm text-slate-500">Screenshot slot</p>
+								</div>
+								<div class="border border-slate-800 p-4">
+									<p class="font-bold text-white">Revision</p>
+									<p class="mt-2 text-sm text-slate-500">Screenshot slot</p>
+								</div>
+								<div class="border border-slate-800 p-4">
+									<p class="font-bold text-white">Learning Moment</p>
+									<p class="mt-2 text-sm text-slate-500">Screenshot slot</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="rationale" class="border-y border-slate-800 py-8">
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+						<div>
+							<p class="text-sm font-bold text-purple-300">Closing</p>
+						</div>
+						<div class="md:col-span-2">
+							<h2 class="mb-3 text-2xl font-bold text-white">Selection Rationale</h2>
+							<p class="leading-relaxed text-slate-400">
+								Not posted yet. This closing reflection will explain why these writings were selected and how they demonstrate the student learning outcomes.
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</Layout>

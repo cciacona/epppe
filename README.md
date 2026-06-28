@@ -69,6 +69,7 @@ This project deploys with Cloudflare Pages, not GitHub Pages. Keep GitHub Pages 
 
 - `/` - home page
 - `/portfolio` - business portfolio and composition research portfolio
+- `/portfolio/composition` - composition research portfolio materials
 - `/vault` - services, Minecraft status, and published reviews
 - `/admin/reviews` - spreadsheet-style review editor
 - `/api/reviews` - public `GET`, admin `GET` and `POST`
