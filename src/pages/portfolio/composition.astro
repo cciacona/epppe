@@ -11,19 +11,32 @@ const learningOutcomes = [
 
 const majorAssignments = [
 	{
+		title: 'Annotated Bibliography',
+		context: 'Research on how college students use class group chats to clarify course expectations and support one another.',
+		evidence: 'Final artifact · July 12, 2026',
+		href: '/portfolio/composition/annotated-bibliography',
+		action: 'Read full artifact'
+	},
+	{
 		title: 'Research Paper',
 		context: 'Prompt, abstract, full paper, and publication-ready version',
-		evidence: 'Primary research artifact'
+		evidence: 'Primary research artifact',
+		href: null,
+		action: 'Prompt and full version slot'
 	},
 	{
 		title: 'Major Writing Assignment 2',
 		context: 'Prompt, full submission, and short context note',
-		evidence: 'Course outcome evidence'
+		evidence: 'Course outcome evidence',
+		href: null,
+		action: 'Prompt and full version slot'
 	},
 	{
 		title: 'Major Writing Assignment 3',
 		context: 'Prompt, full submission, and short context note',
-		evidence: 'Course outcome evidence'
+		evidence: 'Course outcome evidence',
+		href: null,
+		action: 'Prompt and full version slot'
 	}
 ];
 
@@ -49,7 +62,7 @@ const writingActivities = [
 			<a href="/portfolio" class="mb-4 inline-block text-sm font-bold text-purple-300 transition-colors hover:text-purple-200">Portfolio</a>
 			<h1 class="mb-4 text-4xl font-bold text-white">Composition Research Portfolio</h1>
 			<p class="max-w-3xl leading-relaxed text-slate-400">
-				A course portfolio shell for the testimonio or cover letter, learning outcome reflections, major assignments, activity evidence, drafts, and screenshots.
+				A developing course portfolio for the testimonio or cover letter, learning outcome reflections, major assignments, activity evidence, drafts, and screenshots.
 			</p>
 		</header>
 
@@ -145,7 +158,13 @@ const writingActivities = [
 								</div>
 								<div>
 									<p class="text-sm font-bold text-slate-300">{assignment.evidence}</p>
-									<p class="mt-1 text-sm text-slate-500">Prompt and full version slot</p>
+									{assignment.href ? (
+										<a href={assignment.href} class="mt-2 inline-block text-sm font-bold text-purple-300 transition-colors hover:text-purple-200">
+											{assignment.action} →
+										</a>
+									) : (
+										<p class="mt-1 text-sm text-slate-500">{assignment.action}</p>
+									)}
 								</div>
 							</article>
 						))}

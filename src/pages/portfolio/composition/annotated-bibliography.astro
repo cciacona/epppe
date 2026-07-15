@@ -1,0 +1,116 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const coverLetter = [
+	`For this annotated bibliography, I narrowed my project to how college students use class group chats to clarify course expectations and support each other outside official classroom spaces. The initial proposal helped me move from a broad interest in digital communication to a specific community, genre, and purpose. I planned the bibliography around group messaging, student attitudes toward text communication, digital backchannels, and online participation.`,
+	`The research-question and source-finding activities helped me connect the topic to audience, rhetorical situation, and digital literacy. I collected more sources than I needed, read abstracts, checked the journals, and compared methods and findings. The annotation examples showed me that the second paragraph should evaluate credibility, usefulness, limitations, and connections rather than continue summarizing. I removed articles that discussed technology generally without examining communication. Earlier feedback also led me to include complete MLA citations and explain each source’s connection to my question more directly. Stedman’s reading helped me separate the authors’ findings from my own evaluation.`,
+	`This work demonstrates progress toward course outcomes involving inquiry, source evaluation, and academic conversation. It also gives me a clearer plan for primary research on participation, peer support, message interpretation, and personal boundaries.`
+];
+
+const sources = [
+	{
+		authors: 'Baron, David, et al.',
+		title: 'Investigating the Effects of a Backchannel on University Classroom Interactions: A Mixed-Method Case Study',
+		journal: 'Computers and Education',
+		details: 'vol. 94, 2015, pp. 61–76',
+		doi: 'https://doi.org/10.1016/j.compedu.2015.11.007',
+		summary: `Baron, Bestbier, Case, and Collier-Reed examine whether a digital backchannel can increase student participation during university lectures. Their study took place in a third-year engineering course and used a browser-based program called Engage. Students could anonymously ask questions, vote for questions posted by classmates, and tell the lecturer to slow down, speed up, or explain something again. The researchers combined automatically recorded platform data with classroom observations, surveys, lecturer interviews, and student focus groups. They found that the backchannel increased the total number of questions and allowed students who did not normally speak in class to participate. Voting was the most common interaction, showing that students could contribute without writing a complete question. Students generally did not consider the platform a major distraction, and some said it improved their focus. Although lecturers had to adjust how they taught, they valued the immediate feedback.`,
+		evaluation: `This article is credible because it appears in the peer-reviewed journal Computers & Education and uses several forms of evidence instead of relying only on student opinions. It is useful to my project because it shows that brief digital actions, including anonymous questions and likes, can affect who participates in an academic setting. My project focuses on student-run group chats outside class rather than an instructor-controlled backchannel, but that difference gives me something to compare. Students may write differently when professors cannot see the discussion. The mixed-method design also gives me ideas for primary research: a survey could identify general patterns, while interviews could explain why students feel more comfortable asking classmates than speaking publicly. It also reminds me that participation can include reacting to another person’s question, not only writing an original message. Compared with Hrastinski’s theoretical article, this source provides a concrete example of online participation. It also connects with Gronseth and Hebert by showing that a platform’s usefulness depends on its design, audience, and expectations.`
+	},
+	{
+		authors: 'Gronseth, Susie, and Waneta Hebert.',
+		title: 'GroupMe: Investigating Use of Mobile Instant Messaging in Higher Education Courses',
+		journal: 'TechTrends',
+		details: 'vol. 63, no. 1, 2018, pp. 15–22',
+		doi: 'https://doi.org/10.1007/s11528-018-0361-y',
+		summary: `Gronseth and Hebert study how GroupMe was used in two graduate educational technology courses with online and face-to-face sections. Twenty-nine master’s and doctoral students participated. The researchers created a GroupMe for each course and used it for weekly discussion prompts, questions, resource sharing, small-group work, and general communication. After the courses ended, they analyzed more than nine hundred posts by recording features such as message type, length, category, date, and media use. They also collected responses through a follow-up questionnaire. Most posts were related to course content, and students used the platform for discussion, collaboration, assignment questions, and sharing materials. Participants generally described GroupMe as easy to use and appreciated the speed and informal atmosphere. However, some students felt that constant updates made it difficult to separate class time from personal time. The authors conclude that mobile messaging can support community and collaboration, but it should be planned carefully.`,
+		evaluation: `This is one of the most relevant sources for my project because it examines the same type of platform and many of the communication practices I want to study. It is credible because TechTrends is a scholarly journal, the study received institutional approval, and the researchers explain their coding process and agreement checks. The article gives me useful categories for a survey or interview, including content discussion, administrative questions, social communication, resource sharing, and group work. It also keeps me from assuming that class chats are automatically helpful. The concerns about notifications and personal boundaries suggest that I should ask students about stress, pressure to respond, and whether they mute or leave chats. A limitation is that the participants were graduate students in educational technology, so they may be more comfortable with these tools than typical undergraduates. Lauricella and Kay offer a broader undergraduate sample, while this study provides closer analysis of actual messages. Together, they suggest that informal messaging can support learning, but its value depends on the course setting and expectations.`
+	},
+	{
+		authors: 'Hrastinski, Stefan.',
+		title: 'A Theory of Online Learning as Online Participation',
+		journal: 'Computers and Education',
+		details: 'vol. 52, no. 1, 2008, pp. 78–82',
+		doi: 'https://doi.org/10.1016/j.compedu.2008.06.009',
+		summary: `Hrastinski develops a theory that treats online learning as participation rather than simply the transfer of information. Drawing on social learning theory and previous studies, he argues that participation and learning are closely connected. He criticizes research that measures participation only by counting how many messages students post because those numbers do not explain the quality of involvement or the relationships being formed. Instead, he describes online participation as a complex process of taking part, maintaining relationships, thinking, feeling, and developing a sense of belonging. Participation is supported by physical tools, such as computers and messaging platforms, and psychological tools, including language and shared ideas. It also does not always require visible writing. Reading messages, following a discussion, helping someone privately, or feeling connected to a group can all be parts of participation. Hrastinski concludes that improving online learning requires stronger opportunities for meaningful involvement, not simply more posts.`,
+		evaluation: `This peer-reviewed article from Computers & Education gives my project a way to interpret class group chats beyond asking how often students post. Hrastinski supports his theory with established research on constructivism, social learning, collaboration, community, and academic outcomes. Unlike the other sources, this article is theoretical rather than a study of one class or platform. That makes it less useful for describing exactly what students do, but more useful for explaining why their actions matter. I can apply his definition to students who rarely send messages but still read reminders, follow explanations, or feel supported because the chat is available. His argument also warns me not to treat message counts as proof that a group chat is successful. In my primary research, I should ask how the chat affects belonging, confidence, understanding, and willingness to seek help. The source connects with Gronseth and Hebert’s findings about community and Baron and his coauthors’ finding that digital tools reach students who are less likely to speak aloud. Hrastinski provides the broader idea that helps explain those results.`
+	},
+	{
+		authors: 'Lauricella, Sharon, and Robin Kay.',
+		title: 'Exploring the Use of Text and Instant Messaging in Higher Education Classrooms',
+		journal: 'Research in Learning Technology',
+		details: 'vol. 21, 2013, pp. 1–17',
+		doi: 'https://doi.org/10.3402/rlt.v21i0.19061',
+		summary: `Lauricella and Kay examine how college students use text and instant messaging for academic communication with instructors and peers. Their study includes seventy-five students from professional writing and public speaking courses at a small university. Students could communicate with their instructor through text or instant messaging and use the same tools with classmates. At the end of the term, the researchers surveyed students about comfort, frequency, usefulness, and reasons for using each method. Students reported high comfort with both tools, but their use changed depending on the audience. Text messages were used with peers almost daily and with the instructor about weekly, while instant messaging was common among peers but rarely used with the instructor. Students valued speed, convenience, reminders, help with assignments, group work, and the ability to solve administrative problems quickly. Some viewed instant messaging as too personal or informal for a professor. The authors conclude that messaging can support academic communication, but relationships and expectations affect which tools students consider appropriate.`,
+		evaluation: `This article is credible because it was published in the peer-reviewed journal Research in Learning Technology and clearly describes its sample, survey, coding process, and limitations. It is especially relevant because it compares peer communication with student-to-instructor communication. My question asks why students use class group chats instead of official channels, and the study suggests that audience and perceived formality may be major reasons. Students may choose a group chat because it feels faster and more appropriate for quick questions or peer assistance. The source suggests survey questions about comfort, frequency, usefulness, convenience, and the information exchanged. Its limitations matter: the study relies on self-reported behavior, comes from one university, and examines older messaging tools rather than current apps such as GroupMe or WhatsApp. Gronseth and Hebert help update the platform context, while Hrastinski offers a broader explanation of participation and community. Lauricella and Kay remain useful because the rhetorical difference between writing to a professor and writing to classmates is central to my project. Their findings will help me analyze class chats as spaces with their own tone, audience expectations, and unwritten genre conventions.`
+	}
+];
+---
+
+<Layout title="Annotated Bibliography | Composition Research Portfolio">
+	<article class="mx-auto max-w-4xl px-6 py-16">
+		<header class="border-b border-slate-800 pb-10">
+			<a href="/portfolio/composition" class="mb-5 inline-block text-sm font-bold text-purple-300 transition-colors hover:text-purple-200">
+				Composition Research Portfolio
+			</a>
+			<p class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-cyan-300">Major Writing Assignment</p>
+			<h1 class="text-4xl font-bold leading-tight text-white">Annotated Bibliography</h1>
+			<p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-400">
+				Research on how college students use class group chats to clarify course expectations and support one another outside official classroom spaces.
+			</p>
+			<div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold text-slate-500">
+				<span>Carmine Iacona</span>
+				<span>Dr. Rebecca Watkins</span>
+				<span>ENC 1102 · Composition II</span>
+				<time datetime="2026-07-12">July 12, 2026</time>
+			</div>
+		</header>
+
+		<section class="border-b border-slate-800 py-10" aria-labelledby="cover-letter-heading">
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-4">
+				<div>
+					<p class="text-sm font-bold text-purple-300">Reflection</p>
+				</div>
+				<div class="space-y-5 md:col-span-3">
+					<h2 id="cover-letter-heading" class="text-2xl font-bold text-white">Cover Letter</h2>
+					{coverLetter.map((paragraph) => (
+						<p class="leading-8 text-slate-300">{paragraph}</p>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="py-10" aria-labelledby="bibliography-heading">
+			<div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-4">
+				<div>
+					<p class="text-sm font-bold text-purple-300">Four Sources</p>
+				</div>
+				<div class="md:col-span-3">
+					<h2 id="bibliography-heading" class="text-2xl font-bold text-white">Annotated Bibliography</h2>
+					<p class="mt-3 leading-relaxed text-slate-400">
+						Each entry summarizes the source, evaluates its credibility and limitations, and connects it to the research question.
+					</p>
+				</div>
+			</div>
+
+			<div class="space-y-8">
+				{sources.map((source, index) => (
+					<section class="border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby={`source-${index + 1}`}>
+						<p class="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Source {index + 1}</p>
+						<h3 id={`source-${index + 1}`} class="sr-only">{source.title}</h3>
+						<p class="pl-8 leading-8 text-slate-200 [text-indent:-2rem]">
+							{source.authors} “{source.title}.” <em>{source.journal}</em>, {source.details},{' '}
+							<a href={source.doi} target="_blank" rel="noreferrer" class="break-all text-cyan-300 underline decoration-slate-600 underline-offset-4 transition-colors hover:text-cyan-200">
+								{source.doi}
+							</a>.
+						</p>
+						<div class="mt-6 space-y-5 border-t border-slate-800 pt-6">
+							<p class="leading-8 text-slate-300">{source.summary}</p>
+							<p class="leading-8 text-slate-300">{source.evaluation}</p>
+						</div>
+					</section>
+				))}
+			</div>
+		</section>
+	</article>
+</Layout>
