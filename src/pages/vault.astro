@@ -84,7 +84,7 @@ import Layout from '../layouts/Layout.astro';
 				if (data.online) {
 					dot.classList.replace('bg-slate-600', 'bg-green-500');
 					dot.classList.add('shadow-[0_0_10px_rgba(34,197,94,0.5)]'); // Green glow
-					players.innerText = `${data.players.online} / ${data.players.max} Online`;
+					players.innerText = ` ${data.players.online} / ${data.players.max} Online`;
 				} else {
 					dot.classList.replace('bg-slate-600', 'bg-red-500');
 					players.innerText = 'Offline';
