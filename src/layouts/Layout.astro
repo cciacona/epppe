@@ -15,23 +15,23 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/favicon.png" />
-		<!-- Import Quicksand Font -->
+		<!-- Import a cleaner body font -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-black text-neutral-300 min-h-screen flex flex-col relative overflow-x-hidden">
+	<body class="min-h-screen relative flex flex-col overflow-x-hidden bg-slate-950 text-slate-200 antialiased">
 		
 		<!-- CSS Star Background -->
 		<div class="stars-container pointer-events-none"></div>
 
 		<!-- Navigation Bar -->
-		<nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-			<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-				<a href="/" class="text-xl font-bold text-white">EPPPE<span class="text-cyan-400">.NET</span></a>
-				<div class="space-x-6 text-sm font-semibold">
-					<a href="/portfolio" class="hover:text-white transition-colors">Portfolio</a>
-					<a href="/vault" class="hover:text-white transition-colors">The Vault</a>
+		<nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
+			<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+				<a href="/" class="text-lg font-extrabold tracking-[0.22em] text-white uppercase">EPPPE<span class="text-cyan-300">.NET</span></a>
+				<div class="flex items-center gap-2 text-sm font-semibold text-slate-400">
+					<a href="/portfolio" class="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-white">Portfolio</a>
+					<a href="/vault" class="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-white">Vault</a>
 				</div>
 			</div>
 		</nav>
@@ -46,10 +46,12 @@ const { title } = Astro.props;
 		</footer>
 
 		<style is:global>
-			/* Apply Quicksand globally */
 			body {
-				font-family: 'Quicksand', sans-serif;
-				background: #000000;
+				font-family: 'Manrope', sans-serif;
+				background:
+					radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 34%),
+					radial-gradient(circle at 85% 0%, rgba(148, 163, 184, 0.10), transparent 28%),
+					#020617;
 			}
 
 			/* Star Panning Animation */
@@ -74,7 +76,7 @@ const { title } = Astro.props;
 					radial-gradient(1px 1px at 420px 210px, rgba(255,255,255,0.75), rgba(255,255,255,0));
 				background-repeat: repeat;
 				background-size: 460px 260px;
-				opacity: 0.85;
+				opacity: 0.7;
 				/* Move the background diagonally over 90 seconds, looping infinitely */
 				animation: panStars 120s linear infinite;
 			}
