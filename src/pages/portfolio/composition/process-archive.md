@@ -4,18 +4,17 @@ title: Process Archive
 description: Minor assignments, reading responses, and reflective work that show how the research question, method, genre awareness, and revision strategy developed between the three major assignments.
 artifactType: Minor Assignments · Process Work
 date: July 13–27, 2026
-score: Selected course evidence
 status: Six artifacts
 outcomes:
   - All Six Course Outcomes
 downloadLabel: Download archive
 ---
 
-<p class="lead">The major assignments show the finished stages of the project. These smaller pieces show how I got there: finding a gap, planning ethical data analysis, studying a digital genre, reconsidering revision, reflecting on the research process, and redesigning the portfolio for an outside reader.</p>
+<p class="lead">The major assignments show the main stages of the project. These smaller pieces show how I found the research gap, planned my data analysis, studied the genre, and revised the paper and portfolio.</p>
 
 <h2 id="01-cars-model-introduction">01 · CARS Model Introduction</h2>
 
-**Submitted July 15 · 15/15 · Research Genre Production + Generating Inquiry**
+**Submitted July 15 · Research Genre Production + Generating Inquiry**
 
 [Download the original Word document](/portfolio/composition/files/cars-model-introduction.docx)
 
@@ -27,12 +26,12 @@ My research will examine how college students use student-run class group chats 
 
 <div class="artifact-callout">
   <strong>Why I selected it</strong>
-  This short exercise gave the final paper’s introduction its basic structure: establish what scholarship already knows, identify the missing attention to student-run spaces, and state how my study responds to that gap.
+  This short exercise became the outline for the final paper’s introduction. I first describe what earlier studies already cover, then identify what they leave out, and finally state what my study asks.
 </div>
 
 <h2 id="02-reading-response-analyzing-primary-data">02 · Reading Response: Analyzing Primary Data</h2>
 
-**Submitted July 13 · 10/10 · Information Literacy + Contributing Knowledge**
+**Submitted July 13 · Information Literacy + Contributing Knowledge**
 
 [Download the original Word document](/portfolio/composition/files/analyzing-primary-data.docx)
 
@@ -45,13 +44,13 @@ Ethical analysis begins before I write the findings. Because class group chats m
 I am currently planning to use an anonymous survey because it would let me identify broad patterns among college students who have participated in class group chats. The survey would combine closed-ended questions about platforms, frequency, and comfort with open-ended questions asking students why they use these chats and how the chats affect their understanding of coursework. I may also conduct two or three short interviews for more detailed explanations, although privacy and scheduling could limit that option. During the next week, I plan to revise each question so that it clearly supports my research question, write a consent statement, distribute the survey, and begin organizing responses. I will create a blank coding table in advance, but I will wait to develop most of the actual codes until I have read the responses.
 
 <div class="artifact-callout">
-  <strong>How it transferred</strong>
-  The final method changed from a survey to five semi-structured interviews, but the ethical and analytical plan transferred directly: anonymize participants, code openly, compare recurring patterns, preserve exceptions, and avoid claims larger than the sample can support.
+  <strong>How I used it later</strong>
+  I changed the method from a survey to five semi-structured interviews, but I kept the same basic plan: anonymize participants, create codes after reading the data, compare repeated patterns, include exceptions, and avoid claims that the small sample cannot support.
 </div>
 
 <h2 id="03-reading-response-genre-and-discourse-communities">03 · Reading Response: Genre and Discourse Communities</h2>
 
-**Submitted July 27 · Awaiting grade · Multiple Ways of Writing + Research Genre Production**
+**Submitted July 27 · Multiple Ways of Writing + Research Genre Production**
 
 [Download the original Word document](/portfolio/composition/files/understanding-genre.docx)
 
@@ -65,7 +64,7 @@ These moves help the genre succeed because they give classmates enough context t
 
 <h2 id="04-revision-vs-editing">04 · Revision vs. Editing</h2>
 
-**Submitted July 24 · 6/6 · Revision**
+**Submitted July 24 · Revision**
 
 1. Revising focuses on the paper’s larger meaning and effectiveness, such as reorganizing paragraphs, changing the thesis, adding evidence, or addressing the audience. Editing comes later and focuses on sentence-level issues such as grammar, punctuation, wording, and formatting.
 2. Ernest Hemingway said he revised the final page of *A Farewell to Arms* 39 times before he was satisfied.
@@ -76,7 +75,7 @@ These moves help the genre succeed because they give classmates enough context t
 
 <div class="artifact-callout">
   <strong>Visible evidence</strong>
-  The revised field essay applies this distinction. Its changes are not limited to proofreading: it defines the key term, sharpens the claim, reorganizes Findings and Discussion, expands the method and limitations, and rewrites the conclusion around the research question.
+  The revised field essay shows the difference. I defined the key term, made the claim more specific, separated Findings from Discussion, explained the method and limits in more detail, and rewrote the conclusion around the research question.
 </div>
 
 <h2 id="05-mid-project-reflection">05 · Mid-Project Reflection</h2>
@@ -95,6 +94,6 @@ My next step is to complete interviews with friends and one classmate, organize 
 
 <h2 id="06-eportfolio-design-reflection">06 · ePortfolio Design Reflection</h2>
 
-**Submitted July 17 · 10/10 · Multiple Ways of Writing + Revision**
+**Submitted July 17 · Multiple Ways of Writing + Revision**
 
-The original portfolio shell had generic outcome labels, empty artifact slots, and navigation organized around what still needed to be added. I revised it around what an outside reader actually needs: a clear course introduction, the exact six outcomes, substantial reflections, an artifact map, full web versions of the three major assignments, original-file downloads, and a process archive. The dark editorial design stays consistent with the rest of my website, but the composition section now has its own course navigation and visual labels for assignment type, score, status, and outcome connections. These changes make the site more than storage for documents; they make the relationship between the artifacts and my learning visible.
+The original portfolio shell had generic outcome labels, empty artifact slots, and navigation based on what still needed to be added. I revised it around what an outside reader needs: a clear course introduction, the six outcomes, full reflections, an artifact index, web versions of the three major assignments, original-file downloads, and a process archive. The dark design matches the rest of my website, but the composition section now has its own navigation and labels for assignment type, date, status, and outcome connections. This makes it easier to see how each assignment relates to what I learned instead of treating the site as storage for documents.
