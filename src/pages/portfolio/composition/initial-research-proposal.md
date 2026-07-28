@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/CompositionDocumentLayout.astro
 title: Initial Research Proposal
-description: The starting point for a semester-long study of how college students use unofficial class group chats to clarify coursework and support one another.
+description: My first plan for studying how college students use unofficial class group chats to clarify coursework and support one another.
 artifactType: Gordon Rule Assignment 01
 date: July 6, 2026
 status: Submitted
@@ -13,7 +13,7 @@ download: /portfolio/composition/files/initial-research-proposal.docx
 downloadLabel: Download Word document
 ---
 
-<p class="lead">This proposal turns a familiar part of college life—student-run class group chats—into a focused Writing Studies question about genre, audience, tone, digital literacy, and peer support.</p>
+<p class="lead">This is where I first narrowed my topic to student-run class group chats and connected it to genre, audience, tone, digital literacy, and peer support.</p>
 
 <div class="artifact-callout">
   <strong>Central research question</strong>

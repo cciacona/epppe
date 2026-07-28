@@ -1,10 +1,10 @@
 ---
 layout: ../../../layouts/CompositionDocumentLayout.astro
 title: Process Archive
-description: Minor assignments, reading responses, and reflective work that show how the research question, method, genre awareness, and revision strategy developed between the three major assignments.
+description: Six smaller assignments that show what I worked on between the proposal, annotated bibliography, and field essay.
 artifactType: Minor Assignments · Process Work
 date: July 13–27, 2026
-status: Six artifacts
+status: Six pieces
 outcomes:
   - All Six Course Outcomes
 sections:
@@ -23,7 +23,7 @@ sections:
 downloadLabel: Download archive
 ---
 
-<p class="lead">The major assignments show the main stages of the project. These smaller pieces show how I found the research gap, planned my data analysis, studied the genre, and revised the paper and portfolio.</p>
+<p class="lead">These six pieces cover how I found the research gap, planned the interviews and coding, studied the genre, and revised the paper and portfolio.</p>
 
 <h2 id="01-cars-model-introduction">01 · CARS Model Introduction</h2>
 
@@ -38,8 +38,8 @@ However, much of the existing research focuses on messaging platforms created or
 My research will examine how college students use student-run class group chats to clarify assignments and support one another. I also want to explore why students sometimes ask classmates for help instead of contacting the professor. Studying these chats may show how informal digital writing creates its own expectations for audience, tone, participation, and peer support.
 
 <div class="artifact-callout">
-  <strong>Why I selected it</strong>
-  This short exercise became the outline for the final paper’s introduction. I first describe what earlier studies already cover, then identify what they leave out, and finally state what my study asks.
+  <strong>Why I included it</strong>
+  This became the basic outline for the final paper’s introduction. The first paragraph covers earlier research, the second points out what it does not cover, and the last states my question.
 </div>
 
 <h2 id="02-reading-response-analyzing-primary-data">02 · Reading Response: Analyzing Primary Data</h2>
@@ -57,8 +57,8 @@ Ethical analysis begins before I write the findings. Because class group chats m
 I am currently planning to use an anonymous survey because it would let me identify broad patterns among college students who have participated in class group chats. The survey would combine closed-ended questions about platforms, frequency, and comfort with open-ended questions asking students why they use these chats and how the chats affect their understanding of coursework. I may also conduct two or three short interviews for more detailed explanations, although privacy and scheduling could limit that option. During the next week, I plan to revise each question so that it clearly supports my research question, write a consent statement, distribute the survey, and begin organizing responses. I will create a blank coding table in advance, but I will wait to develop most of the actual codes until I have read the responses.
 
 <div class="artifact-callout">
-  <strong>How I used it later</strong>
-  I changed the method from a survey to five semi-structured interviews, but I kept the same basic plan: anonymize participants, create codes after reading the data, compare repeated patterns, include exceptions, and avoid claims that the small sample cannot support.
+  <strong>What changed later</strong>
+  I used five semi-structured interviews instead of a survey. I kept the rest of the plan: remove identifying details, create codes after reading the responses, compare recurring patterns, include exceptions, and keep the claims within what five interviews can show.
 </div>
 
 <h2 id="03-reading-response-genre-and-discourse-communities">03 · Reading Response: Genre and Discourse Communities</h2>
@@ -87,8 +87,8 @@ These moves help the genre succeed because they give classmates enough context t
 6. Outside of class peer review, I could ask my best friend Jacob, who reads often, a classmate outside this course, or my parents to review my paper. Someone unfamiliar with the project could be especially helpful because they may notice explanations that are unclear to a general reader.
 
 <div class="artifact-callout">
-  <strong>Visible evidence</strong>
-  The revised field essay shows the difference. I defined the key term, made the claim more specific, separated Findings from Discussion, explained the method and limits in more detail, and rewrote the conclusion around the research question.
+  <strong>Where it appears in the essay</strong>
+  In Revision 1, I defined the key term, made the claim more specific, separated Findings from Discussion, explained the method and limits in more detail, and rewrote the conclusion around the research question.
 </div>
 
 <h2 id="05-mid-project-reflection">05 · Mid-Project Reflection</h2>
