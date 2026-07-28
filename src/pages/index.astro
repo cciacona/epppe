@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SystemsPlate from '../components/SystemsPlate.astro';
 
 const focusAreas = [
 	{
@@ -46,81 +47,125 @@ const selectedWork = [
 ---
 
 <Layout title="Carmine Iacona | Cloud & Network Engineering">
-	<div class="mx-auto max-w-6xl px-6 py-12 sm:py-16 lg:py-20">
-		<section class="grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
-			<div class="rounded-3xl border border-white/10 bg-slate-950/75 p-8 shadow-[0_24px_80px_rgba(2,6,23,0.35)] sm:p-10">
-				<p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">Carmine Iacona</p>
-				<h1 class="mt-4 max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
-					Cloud infrastructure, systems, and practical troubleshooting.
-				</h1>
-				<p class="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-					B.S. CECS student at UCF focused on infrastructure, network engineering, and automation.
-				</p>
-				<div class="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
-					<a href="/portfolio" class="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-white transition-colors hover:border-cyan-300 hover:bg-cyan-300/10 hover:text-cyan-100">Portfolio</a>
-					<a href="/vault" class="rounded-full border border-white/10 px-5 py-3 text-slate-300 transition-colors hover:border-white/20 hover:bg-white/5 hover:text-white">Vault</a>
+	<section class="hero shell">
+		<div class="hero__copy">
+			<p class="eyebrow">Carmine Iacona · Orlando, Florida</p>
+			<h1>
+				Infrastructure,<br />
+				<span>made practical.</span>
+			</h1>
+			<p class="hero__lede">
+				Information Technology student at UCF focused on cloud infrastructure,
+				network engineering, automation, and the operational details that keep systems useful.
+			</p>
+			<div class="button-row">
+				<a href="/portfolio" class="button button--primary">
+					Explore the work
+					<span aria-hidden="true">↗</span>
+				</a>
+				<a href="/vault" class="button button--quiet">Enter the vault</a>
+			</div>
+		</div>
+
+		<div class="hero__visual">
+			<SystemsPlate />
+			<p class="hero__caption">
+				<span>Practice 01</span>
+				Self-hosted services, network systems, and repeatable troubleshooting.
+			</p>
+		</div>
+	</section>
+
+	<div class="proof-strip">
+		<div class="shell proof-strip__inner">
+			<div class="proof-strip__intro">
+				<span class="status-dot"></span>
+				Building in public
+			</div>
+			<div class="proof-strip__item">
+				<span>01</span>
+				<p>UCF<br /><strong>Information Technology</strong></p>
+			</div>
+			<div class="proof-strip__item">
+				<span>02</span>
+				<p>Primary lane<br /><strong>Cloud + networking</strong></p>
+			</div>
+			<div class="proof-strip__item">
+				<span>03</span>
+				<p>Working method<br /><strong>Build · test · document</strong></p>
+			</div>
+		</div>
+	</div>
+
+	<section class="section shell split-section">
+		<div class="section-heading">
+			<p class="eyebrow">Capabilities · 01</p>
+			<h2>Technical<br /><em>core</em></h2>
+			<p>The tools are only useful when they produce clear, repeatable outcomes.</p>
+		</div>
+
+		<div class="ruled-list">
+			{technicalStack.map(([label, value], index) => (
+				<div class="ruled-list__row">
+					<span class="ruled-list__number">0{index + 1}</span>
+					<h3>{label}</h3>
+					<p>{value}</p>
 				</div>
+			))}
+		</div>
+	</section>
+
+	<section class="section section--forest">
+		<div class="shell">
+			<div class="section-heading section-heading--horizontal">
+				<div>
+					<p class="eyebrow">Practice · 02</p>
+					<h2>Where I<br /><em>work best</em></h2>
+				</div>
+				<p>Problems with enough complexity to require care—and enough practical value to justify it.</p>
 			</div>
 
-			<aside class="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
-				<h2 class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-400">Working Notes</h2>
-				<div class="mt-6 space-y-4 text-sm leading-relaxed">
-					<div class="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
-						<p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Current lane</p>
-						<p class="mt-2 text-slate-300">Cloud infrastructure, networking, and service reliability.</p>
-					</div>
-					<div class="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
-						<p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-300">Useful habit</p>
-						<p class="mt-2 text-slate-300">Start with the system in front of me, then document the fix clearly enough to repeat.</p>
-					</div>
-					<div class="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
-						<p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-200">Course work</p>
-						<p class="mt-2 text-slate-300">Composition portfolio structure is ready for research and reflection artifacts.</p>
-					</div>
-				</div>
-			</aside>
-		</section>
+			<div class="focus-grid">
+				{focusAreas.map((area, index) => (
+					<article class="focus-card">
+						<p class="focus-card__index">0{index + 1} / 03</p>
+						<h3>{area.title}</h3>
+						<p>{area.description}</p>
+						<div class="focus-card__mark" aria-hidden="true"></div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
 
-		<section class="mt-8 grid gap-6 lg:grid-cols-3">
-			<article class="rounded-3xl border border-white/10 bg-slate-950/65 p-6 shadow-[0_18px_60px_rgba(2,6,23,0.25)]">
-				<h2 class="text-lg font-semibold uppercase tracking-[0.22em] text-slate-400">Technical Core</h2>
-				<p class="mt-3 text-sm leading-7 text-slate-300">The tools and systems behind the work.</p>
-				<div class="mt-6 grid gap-3">
-					{technicalStack.map(([label, value]) => (
-						<div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-							<p class="text-sm font-semibold text-white">{label}</p>
-							<p class="mt-1 text-sm leading-6 text-slate-300">{value}</p>
-						</div>
-					))}
-				</div>
-			</article>
+	<section class="section shell">
+		<div class="section-heading section-heading--horizontal">
+			<div>
+				<p class="eyebrow">Selected work · 03</p>
+				<h2>Evidence over<br /><em>adjectives</em></h2>
+			</div>
+			<p>Technical work, course artifacts, and the notes that make each project understandable.</p>
+		</div>
 
-			<article class="rounded-3xl border border-white/10 bg-slate-950/65 p-6 shadow-[0_18px_60px_rgba(2,6,23,0.25)]">
-				<h2 class="text-lg font-semibold uppercase tracking-[0.22em] text-slate-400">Focus Areas</h2>
-				<p class="mt-3 text-sm leading-7 text-slate-300">Where the technical work tends to cluster.</p>
-				<div class="mt-6 space-y-3">
-					{focusAreas.map((area) => (
-						<div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-							<h3 class="text-base font-semibold text-white">{area.title}</h3>
-							<p class="mt-2 text-sm leading-6 text-slate-300">{area.description}</p>
-						</div>
-					))}
-				</div>
-			</article>
+		<div class="work-list">
+			{selectedWork.map((work, index) => (
+				<a href={work.href} class="work-row">
+					<span class="work-row__number">0{index + 1}</span>
+					<div>
+						<p class="work-row__meta">{work.meta}</p>
+						<h3>{work.title}</h3>
+					</div>
+					<p class="work-row__description">{work.description}</p>
+					<span class="work-row__arrow" aria-hidden="true">↗</span>
+				</a>
+			))}
+		</div>
+	</section>
 
-			<article class="rounded-3xl border border-white/10 bg-slate-950/65 p-6 shadow-[0_18px_60px_rgba(2,6,23,0.25)]">
-				<h2 class="text-lg font-semibold uppercase tracking-[0.22em] text-slate-400">Selected Work</h2>
-				<p class="mt-3 text-sm leading-7 text-slate-300">A selection of representative work and supporting material.</p>
-				<div class="mt-6 space-y-3">
-					{selectedWork.map((work) => (
-						<a href={work.href} class="group block rounded-2xl border border-white/10 bg-white/5 p-4 transition-colors hover:border-cyan-300/40 hover:bg-cyan-300/5">
-							<p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">{work.meta}</p>
-							<h3 class="mt-2 text-lg font-semibold text-white group-hover:text-cyan-100">{work.title}</h3>
-							<p class="mt-2 text-sm leading-6 text-slate-300">{work.description}</p>
-						</a>
-					))}
-				</div>
-			</article>
-		</section>
-	</div>
+	<section class="closing-note shell">
+		<p class="eyebrow">Working note · 04</p>
+		<blockquote>
+			Start with the system in front of me. Understand the failure. Leave behind a fix someone can repeat.
+		</blockquote>
+	</section>
 </Layout>

@@ -3,8 +3,23 @@ import '../styles/global.css';
 
 interface Props {
 	title: string;
+	description?: string;
 }
-const { title } = Astro.props;
+
+const {
+	title,
+	description = 'Carmine Iacona builds and documents practical infrastructure, systems, and troubleshooting work.'
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/portfolio', label: 'Portfolio' },
+	{ href: '/vault', label: 'The Vault' }
+];
+
+const isActive = (href: string) =>
+	href === '/' ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
 <!doctype html>
@@ -13,73 +28,57 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#141713" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/favicon.png" />
-		<!-- Import a cleaner body font -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
-	<body class="min-h-screen relative flex flex-col overflow-x-hidden bg-slate-950 text-slate-200 antialiased">
-		
-		<!-- CSS Star Background -->
-		<div class="stars-container pointer-events-none"></div>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<div class="site-grid" aria-hidden="true"></div>
 
-		<!-- Navigation Bar -->
-		<nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
-			<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-				<a href="/" class="text-lg font-extrabold tracking-[0.22em] text-white uppercase">EPPPE<span class="text-cyan-300">.NET</span></a>
-				<div class="flex items-center gap-2 text-sm font-semibold text-slate-400">
-					<a href="/portfolio" class="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-white">Portfolio</a>
-					<a href="/vault" class="rounded-full px-4 py-2 transition-colors hover:bg-white/5 hover:text-white">Vault</a>
-				</div>
+		<header class="site-header">
+			<div class="shell site-header__inner">
+				<a href="/" class="wordmark" aria-label="EPPPE.NET home">
+					<span class="wordmark__name">EPPPE</span><span class="wordmark__dot">.NET</span>
+				</a>
+
+				<nav class="site-nav" aria-label="Primary navigation">
+					{navItems.map((item, index) => (
+						<a
+							href={item.href}
+							class:list={['site-nav__link', { 'is-active': isActive(item.href) }]}
+							aria-current={isActive(item.href) ? 'page' : undefined}
+						>
+							<span aria-hidden="true">0{index + 1}</span>
+							{item.label}
+						</a>
+					))}
+				</nav>
 			</div>
-		</nav>
+		</header>
 
-		<!-- Main Content Area -->
-		<main class="grow relative z-10">
+		<main id="main-content">
 			<slot />
 		</main>
 
-		<footer class="relative z-10 py-8 text-center border-t border-slate-800 text-slate-600 text-sm mt-12 font-medium">
-			&copy; {new Date().getFullYear()} Carmine Iacona. Hosted on Cloudflare Pages.
+		<footer class="site-footer">
+			<div class="shell site-footer__inner">
+				<div>
+					<p class="eyebrow">Carmine Iacona</p>
+					<p class="site-footer__statement">Systems made legible.</p>
+				</div>
+				<div class="site-footer__meta">
+					<p>&copy; {new Date().getFullYear()} Carmine Iacona</p>
+					<p>Built in Florida · Deployed on Cloudflare</p>
+				</div>
+			</div>
 		</footer>
-
-		<style is:global>
-			body {
-				font-family: 'Manrope', sans-serif;
-				background:
-					radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 34%),
-					radial-gradient(circle at 85% 0%, rgba(148, 163, 184, 0.10), transparent 28%),
-					#020617;
-			}
-
-			/* Star Panning Animation */
-			@keyframes panStars {
-				from { background-position: 0 0; }
-				to { background-position: -200px -200px; }
-			}
-
-			.stars-container {
-				position: fixed;
-				inset: 0;
-				z-index: 0;
-				background-color: #000000;
-				background-image:
-					radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.95), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 80px 120px, rgba(255,255,255,0.75), rgba(255,255,255,0)),
-					radial-gradient(2px 2px at 140px 70px, rgba(255,255,255,0.85), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 190px 170px, rgba(255,255,255,0.7), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 240px 40px, rgba(255,255,255,0.8), rgba(255,255,255,0)),
-					radial-gradient(2px 2px at 310px 150px, rgba(255,255,255,0.9), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 360px 90px, rgba(255,255,255,0.65), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 420px 210px, rgba(255,255,255,0.75), rgba(255,255,255,0));
-				background-repeat: repeat;
-				background-size: 460px 260px;
-				opacity: 0.7;
-				/* Move the background diagonally over 90 seconds, looping infinitely */
-				animation: panStars 120s linear infinite;
-			}
-		</style>
 	</body>
 </html>
