@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/CompositionDocumentLayout.astro
 title: Student-Run Class Group Chats as Low-Stakes Academic Support Genres
-description: Revision 1 of an investigative field essay combining five semi-structured interviews with research on mobile messaging, participation, genre, and peer support.
+description: The July 26 version of my field essay, based on five interviews and research on mobile messaging, participation, genre, and peer support.
 artifactType: Gordon Rule Assignment 03 · Revision 1
 date: July 26, 2026
 status: Submitted · Final due July 31
@@ -10,30 +10,45 @@ outcomes:
   - Research Genre Production
   - Contributing Knowledge
   - Revision
+sections:
+  - href: "#revision-map"
+    label: Revision Map
+  - href: "#introduction"
+    label: Introduction
+  - href: "#methods"
+    label: Methods
+  - href: "#findings"
+    label: Findings
+  - href: "#discussion"
+    label: Discussion
+  - href: "#conclusion"
+    label: Conclusion
+  - href: "#works-cited"
+    label: Works Cited
 download: /portfolio/composition/files/investigative-field-essay-revision-1.pdf
 downloadLabel: Download revised PDF
 ---
 
-<p class="lead">Based on five interviews, this essay argues that student-run class group chats operate as low-stakes academic support genres: they help students translate instructions, compare interpretations, participate quietly, and manage stress, but they can also spread misinformation and blur personal boundaries.</p>
+<p class="lead">Five interviews showed that students use class chats to restate instructions, compare interpretations, ask questions with less pressure, and support one another. The chats can help, but they can also spread incorrect information and interfere with personal time.</p>
 
 <div class="artifact-callout">
   <strong>Version note</strong>
-  This is the July 26 Revision 1 submitted after peer review. The final research paper is due July 31. The original <a href="/portfolio/composition/files/investigative-field-essay-draft-1.docx">Draft 1 Word document</a> is also included so readers can compare the two versions.
+  I submitted this version on July 26 after peer review. The final paper is due July 31. I also included the original <a href="/portfolio/composition/files/investigative-field-essay-draft-1.docx">Draft 1 Word document</a> for comparison.
 </div>
 
 ## Revision Map
 
-The revised PDF includes margin comments that explain nine changes made after Draft 1:
+I added nine margin comments to the revised PDF. They point out these changes from Draft 1:
 
-1. Define “student-run class group chat” more clearly.
-2. Follow the CARS model more directly and make the main claim more specific.
-3. Explain participant selection and the limits of the convenience sample.
-4. Explain the open-coding process in more detail.
-5. Separate the findings into distinct themes.
-6. Add analysis of how students translate official course language into peer language.
-7. Explain how the findings relate to rhetoric, genre, audience, and social cost.
-8. Give more attention to the study limits and possible future research.
-9. Revise the conclusion so it directly answers the research question and explains why these small forms of writing matter.
+1. Defined “student-run class group chat” more clearly.
+2. Followed the CARS model more closely and made the main claim more specific.
+3. Explained how I chose participants and what the convenience sample cannot show.
+4. Explained the open-coding process in more detail.
+5. Separated the findings into four sections.
+6. Added a discussion of how students restate official instructions in peer language.
+7. Connected the findings to genre, audience, and the pressure students feel when asking for help.
+8. Added more about the limits of the study and possible future research.
+9. Rewrote the conclusion to answer the research question directly.
 
 ---
 
