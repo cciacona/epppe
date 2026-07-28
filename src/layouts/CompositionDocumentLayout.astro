@@ -27,7 +27,7 @@ const props = Astro.props as Props;
 const meta = props.frontmatter ?? (props as DocumentMeta);
 const {
 	title,
-	description = 'An ENC 1102 assignment from Carmine Iacona’s composition research portfolio.',
+	description = 'Course artifact from Carmine Iacona’s ENC 1102 composition research portfolio.',
 	artifactType = 'Course Artifact',
 	date,
 	status,
@@ -54,7 +54,7 @@ const {
 							<span aria-hidden="true">↓</span>
 						</a>
 					)}
-					<a class="button button--quiet" href="/portfolio/composition#artifacts">Selected work</a>
+					<a class="button button--quiet" href="/portfolio/composition#artifacts">All artifacts</a>
 				</div>
 			</div>
 
@@ -113,7 +113,7 @@ const {
 		<div class="shell document-return__inner">
 			<div>
 				<p class="eyebrow">Continue reading</p>
-				<p>Go back to the overview to see the course outcomes and full list of assignments.</p>
+				<p>Return to the outcome reflections and complete artifact map.</p>
 			</div>
 			<a class="button button--quiet" href="/portfolio/composition">Back to portfolio overview</a>
 		</div>
