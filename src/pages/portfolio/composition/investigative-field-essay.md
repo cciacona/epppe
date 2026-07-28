@@ -10,6 +10,21 @@ outcomes:
   - Research Genre Production
   - Contributing Knowledge
   - Revision
+sections:
+  - href: "#revision-map"
+    label: Revision Map
+  - href: "#introduction"
+    label: Introduction
+  - href: "#methods"
+    label: Methods
+  - href: "#findings"
+    label: Findings
+  - href: "#discussion"
+    label: Discussion
+  - href: "#conclusion"
+    label: Conclusion
+  - href: "#works-cited"
+    label: Works Cited
 download: /portfolio/composition/files/investigative-field-essay-revision-1.pdf
 downloadLabel: Download revised PDF
 ---
