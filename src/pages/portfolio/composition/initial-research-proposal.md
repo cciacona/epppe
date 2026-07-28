@@ -43,7 +43,7 @@ Overall, I want this project to show that informal digital writing can still mat
   “Awesome idea!!!—just think about ethical implications for this. A private space requires that you get permission from peers if using chats from this or previous classes.”
 </div>
 
-That feedback changed the method I eventually used. Instead of collecting private screenshots or directly analyzing conversations involving people who had not consented, I conducted semi-structured interviews, removed course names, and identified the five participants as P1 through P5. This was the first major point where the project became more careful and realistic.
+That feedback changed the method I eventually used. Instead of collecting private screenshots or directly analyzing conversations involving people who had not consented, I conducted semi-structured interviews, removed course names, and identified the five participants as P1 through P5.
 
 ## Works Cited
 
