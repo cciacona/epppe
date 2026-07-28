@@ -4,7 +4,6 @@ title: Student-Run Class Group Chats as Low-Stakes Academic Support Genres
 description: Revision 1 of an investigative field essay combining five semi-structured interviews with research on mobile messaging, participation, genre, and peer support.
 artifactType: Gordon Rule Assignment 03 · Revision 1
 date: July 26, 2026
-score: Ungraded revision
 status: Submitted · Final due July 31
 outcomes:
   - Generating Inquiry
@@ -19,21 +18,21 @@ downloadLabel: Download revised PDF
 
 <div class="artifact-callout">
   <strong>Version note</strong>
-  This is the July 26 Revision 1 submitted after peer review. The final research paper is due July 31. The original <a href="/portfolio/composition/files/investigative-field-essay-draft-1.docx">Draft 1 Word document</a> is also preserved to make the revision trail visible.
+  This is the July 26 Revision 1 submitted after peer review. The final research paper is due July 31. The original <a href="/portfolio/composition/files/investigative-field-essay-draft-1.docx">Draft 1 Word document</a> is also included so readers can compare the two versions.
 </div>
 
 ## Revision Map
 
-The revised PDF uses margin comments to identify the most important changes made after Draft 1:
+The revised PDF includes margin comments that explain nine changes made after Draft 1:
 
 1. Define “student-run class group chat” more clearly.
 2. Follow the CARS model more directly and make the main claim more specific.
 3. Explain participant selection and the limits of the convenience sample.
-4. Expand the open-coding explanation.
+4. Explain the open-coding process in more detail.
 5. Separate the findings into distinct themes.
 6. Add analysis of how students translate official course language into peer language.
-7. Connect the findings more explicitly to rhetoric, genre, audience, and social cost.
-8. Expand the limitations and future-research section.
+7. Explain how the findings relate to rhetoric, genre, audience, and social cost.
+8. Give more attention to the study limits and possible future research.
 9. Revise the conclusion so it directly answers the research question and explains why these small forms of writing matter.
 
 ---
