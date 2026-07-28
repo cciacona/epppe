@@ -4,7 +4,6 @@ title: Initial Research Proposal
 description: The starting point for a semester-long study of how college students use unofficial class group chats to clarify coursework and support one another.
 artifactType: Gordon Rule Assignment 01
 date: July 6, 2026
-score: 20/20 · Complete
 status: Submitted
 outcomes:
   - Generating Inquiry
