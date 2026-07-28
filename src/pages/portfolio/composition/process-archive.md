@@ -7,6 +7,19 @@ date: July 13–27, 2026
 status: Six artifacts
 outcomes:
   - All Six Course Outcomes
+sections:
+  - href: "#01-cars-model-introduction"
+    label: CARS Model
+  - href: "#02-reading-response-analyzing-primary-data"
+    label: Primary Data
+  - href: "#03-reading-response-genre-and-discourse-communities"
+    label: Genre & Community
+  - href: "#04-revision-vs-editing"
+    label: Revision vs. Editing
+  - href: "#05-mid-project-reflection"
+    label: Mid-Project Reflection
+  - href: "#06-eportfolio-design-reflection"
+    label: Design Reflection
 downloadLabel: Download archive
 ---
 
