@@ -4,74 +4,74 @@ import SystemsPlate from '../components/SystemsPlate.astro';
 
 const focusAreas = [
 	{
-		title: 'Cloud and network systems',
-		description: 'Infrastructure, service hosting, and the small operational details that keep a site or server useful after launch.'
+		title: 'Home server',
+		description: 'I run Minecraft and Jellyfin from a dedicated PC using Proxmox VE. I handle the service setup, networking, updates, and troubleshooting.'
 	},
 	{
-		title: 'Windows-first troubleshooting',
-		description: 'Native Windows 11 administration, PowerShell workflows, and practical system cleanup before reaching for heavier tools.'
+		title: 'Factorio mods',
+		description: 'I update older mods for Factorio 2.1, test the changes, and publish the maintained versions on GitHub and the Factorio mod portal.'
 	},
 	{
-		title: 'Engine diagnostics',
-		description: 'Rendering, compilation, and environment issues across Unreal Engine and Godot projects.'
+		title: 'Attractions operations',
+		description: 'I have worked in Attractions Operations at Universal Orlando since August 2023. The job depends on safety procedures, clear communication, and staying calm when something goes wrong.'
 	}
 ];
 
 const technicalStack = [
-	['Languages', 'Python, C++, C, Java'],
-	['Systems', 'Windows 11 Admin, PowerShell'],
-	['Engines', 'Godot 4, Unreal Engine 5'],
-	['Hardware', 'GPU undervolting and tuning']
+	['Systems', 'Proxmox VE, Windows 11'],
+	['Languages', 'Python, Java, C, C++, Lua'],
+	['Tools', 'Git, GitHub, PowerShell'],
+	['Services', 'Minecraft, Jellyfin, Cloudflare Pages']
 ];
 
 const selectedWork = [
 	{
-		title: 'Engine Rendering Diagnostics',
-		meta: 'Unreal Engine 5 / Godot 4',
-		description: 'Diagnosed compile and environment problems, then translated the fix into practical project logic and repeatable notes.',
-		href: '/portfolio'
+		title: 'Factorio 2.1 Mods',
+		meta: 'Lua / Factorio / GitHub',
+		description: 'Four maintained mods: Fire Extinguisher, Flammable Oils, Nicer Fuel Glow, and Ammo & Turret Tweaks.',
+		href: 'https://github.com/cciacona'
 	},
 	{
-		title: 'Personal Service Stack',
-		meta: 'Vault / media / reviews',
-		description: 'A public-facing archive for services, catalog entries, and experiments that benefit from being kept outside a resume.',
+		title: 'Proxmox Home Server',
+		meta: 'Proxmox VE / Minecraft / Jellyfin',
+		description: 'A dedicated PC hosts the Minecraft server and Jellyfin instance linked from the Vault.',
 		href: '/vault'
 	},
 	{
 		title: 'Composition Research Portfolio',
-		meta: 'Course evidence / revision work',
-		description: 'A prepared space for the research paper, reflections, drafts, screenshots, and writing activity evidence.',
+		meta: 'ENC 1102 / Primary research',
+		description: 'A semester project about student-run class group chats, with five interviews, three major assignments, and the revision process.',
 		href: '/portfolio/composition'
 	}
 ];
 ---
 
-<Layout title="Carmine Iacona | Cloud & Network Engineering">
+<Layout title="Carmine Iacona | Information Technology Student">
 	<section class="hero shell">
 		<div class="hero__copy">
 			<p class="eyebrow">Carmine Iacona · Orlando, Florida</p>
 			<h1>
-				Infrastructure,<br />
-				<span>made practical.</span>
+				I build, host,<br />
+				<span>and fix things.</span>
 			</h1>
 			<p class="hero__lede">
-				Information Technology student at UCF focused on cloud infrastructure,
-				network engineering, automation, and the operational details that keep systems useful.
+				I’m an Information Technology student at UCF. Most of my projects involve
+				my Proxmox home server, Factorio mods, or this website.
 			</p>
 			<div class="button-row">
 				<a href="/portfolio" class="button button--primary">
-					Explore the work
+					View projects
 					<span aria-hidden="true">↗</span>
 				</a>
-				<a href="/vault" class="button button--quiet">Enter the vault</a>
+				<a href="/vault" class="button button--quiet">Open the Vault</a>
 			</div>
 		</div>
 
 		<div class="hero__visual">
 			<SystemsPlate />
 			<p class="hero__caption">
-				<span>Practice 01</span>
-				Self-hosted services, network systems, and repeatable troubleshooting.
+				<span>Home lab</span>
+				A dedicated Proxmox PC hosts Minecraft and Jellyfin.
 			</p>
 		</div>
 	</section>
@@ -80,28 +80,28 @@ const selectedWork = [
 		<div class="shell proof-strip__inner">
 			<div class="proof-strip__intro">
 				<span class="status-dot"></span>
-				Building in public
+				Orlando, Florida
 			</div>
 			<div class="proof-strip__item">
 				<span>01</span>
-				<p>UCF<br /><strong>Information Technology</strong></p>
+				<p>UCF<br /><strong>B.S. Information Technology · Dec. 2027</strong></p>
 			</div>
 			<div class="proof-strip__item">
 				<span>02</span>
-				<p>Primary lane<br /><strong>Cloud + networking</strong></p>
+				<p>Universal Orlando<br /><strong>Attractions Operations · Since 2023</strong></p>
 			</div>
 			<div class="proof-strip__item">
 				<span>03</span>
-				<p>Working method<br /><strong>Build · test · document</strong></p>
+				<p>Current projects<br /><strong>Home server · Factorio mods</strong></p>
 			</div>
 		</div>
 	</div>
 
 	<section class="section shell split-section">
 		<div class="section-heading">
-			<p class="eyebrow">Capabilities · 01</p>
-			<h2>Technical<br /><em>core</em></h2>
-			<p>The tools are only useful when they produce clear, repeatable outcomes.</p>
+			<p class="eyebrow">Toolkit · 01</p>
+			<h2>What I<br /><em>use</em></h2>
+			<p>The software and platforms behind the projects on this site.</p>
 		</div>
 
 		<div class="ruled-list">
@@ -119,10 +119,10 @@ const selectedWork = [
 		<div class="shell">
 			<div class="section-heading section-heading--horizontal">
 				<div>
-					<p class="eyebrow">Practice · 02</p>
-					<h2>Where I<br /><em>work best</em></h2>
+					<p class="eyebrow">Experience · 02</p>
+					<h2>What I<br /><em>do</em></h2>
 				</div>
-				<p>Problems with enough complexity to require care—and enough practical value to justify it.</p>
+				<p>My home server, mod projects, and work at Universal.</p>
 			</div>
 
 			<div class="focus-grid">
@@ -142,9 +142,9 @@ const selectedWork = [
 		<div class="section-heading section-heading--horizontal">
 			<div>
 				<p class="eyebrow">Selected work · 03</p>
-				<h2>Evidence over<br /><em>adjectives</em></h2>
+				<h2>Selected<br /><em>projects</em></h2>
 			</div>
-			<p>Technical work, course artifacts, and the notes that make each project understandable.</p>
+			<p>Technical projects, hosted services, and my ENC 1102 portfolio.</p>
 		</div>
 
 		<div class="work-list">
@@ -160,12 +160,5 @@ const selectedWork = [
 				</a>
 			))}
 		</div>
-	</section>
-
-	<section class="closing-note shell">
-		<p class="eyebrow">Working note · 04</p>
-		<blockquote>
-			Start with the system in front of me. Understand the failure. Leave behind a fix someone can repeat.
-		</blockquote>
 	</section>
 </Layout>
