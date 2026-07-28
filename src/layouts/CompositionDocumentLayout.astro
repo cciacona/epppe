@@ -7,7 +7,6 @@ interface DocumentMeta {
 	description?: string;
 	artifactType?: string;
 	date?: string;
-	score?: string;
 	status?: string;
 	outcomes?: string[];
 	download?: string;
@@ -25,7 +24,6 @@ const {
 	description = 'Course artifact from Carmine Iacona’s ENC 1102 composition research portfolio.',
 	artifactType = 'Course Artifact',
 	date,
-	score,
 	status,
 	outcomes = [],
 	download,
@@ -60,12 +58,6 @@ const {
 						<div>
 							<dt>Date</dt>
 							<dd>{date}</dd>
-						</div>
-					)}
-					{score && (
-						<div>
-							<dt>Score</dt>
-							<dd>{score}</dd>
 						</div>
 					)}
 					{status && (
