@@ -3,8 +3,23 @@ import '../styles/global.css';
 
 interface Props {
 	title: string;
+	description?: string;
 }
-const { title } = Astro.props;
+
+const {
+	title,
+	description = 'Carmine Iacona builds and documents practical infrastructure, systems, and troubleshooting work.'
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/portfolio', label: 'Portfolio' },
+	{ href: '/vault', label: 'The Vault' }
+];
+
+const isActive = (href: string) =>
+	href === '/' ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
 <!doctype html>
@@ -13,71 +28,57 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#141713" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/favicon.png" />
-		<!-- Import Quicksand Font -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
-	<body class="bg-black text-neutral-300 min-h-screen flex flex-col relative overflow-x-hidden">
-		
-		<!-- CSS Star Background -->
-		<div class="stars-container pointer-events-none"></div>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<div class="site-grid" aria-hidden="true"></div>
 
-		<!-- Navigation Bar -->
-		<nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-			<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-				<a href="/" class="text-xl font-bold text-white">EPPPE<span class="text-cyan-400">.NET</span></a>
-				<div class="space-x-6 text-sm font-semibold">
-					<a href="/portfolio" class="hover:text-white transition-colors">Portfolio</a>
-					<a href="/vault" class="hover:text-white transition-colors">The Vault</a>
-				</div>
+		<header class="site-header">
+			<div class="shell site-header__inner">
+				<a href="/" class="wordmark" aria-label="EPPPE.NET home">
+					<span class="wordmark__name">EPPPE</span><span class="wordmark__dot">.NET</span>
+				</a>
+
+				<nav class="site-nav" aria-label="Primary navigation">
+					{navItems.map((item, index) => (
+						<a
+							href={item.href}
+							class:list={['site-nav__link', { 'is-active': isActive(item.href) }]}
+							aria-current={isActive(item.href) ? 'page' : undefined}
+						>
+							<span aria-hidden="true">0{index + 1}</span>
+							{item.label}
+						</a>
+					))}
+				</nav>
 			</div>
-		</nav>
+		</header>
 
-		<!-- Main Content Area -->
-		<main class="grow relative z-10">
+		<main id="main-content">
 			<slot />
 		</main>
 
-		<footer class="relative z-10 py-8 text-center border-t border-slate-800 text-slate-600 text-sm mt-12 font-medium">
-			&copy; {new Date().getFullYear()} Carmine Iacona. Hosted on Cloudflare Pages.
+		<footer class="site-footer">
+			<div class="shell site-footer__inner">
+				<div>
+					<p class="eyebrow">Carmine Iacona</p>
+					<p class="site-footer__statement">Systems made legible.</p>
+				</div>
+				<div class="site-footer__meta">
+					<p>&copy; {new Date().getFullYear()} Carmine Iacona</p>
+					<p>Built in Florida · Deployed on Cloudflare</p>
+				</div>
+			</div>
 		</footer>
-
-		<style is:global>
-			/* Apply Quicksand globally */
-			body {
-				font-family: 'Quicksand', sans-serif;
-				background: #000000;
-			}
-
-			/* Star Panning Animation */
-			@keyframes panStars {
-				from { background-position: 0 0; }
-				to { background-position: -200px -200px; }
-			}
-
-			.stars-container {
-				position: fixed;
-				inset: 0;
-				z-index: 0;
-				background-color: #000000;
-				background-image:
-					radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.95), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 80px 120px, rgba(255,255,255,0.75), rgba(255,255,255,0)),
-					radial-gradient(2px 2px at 140px 70px, rgba(255,255,255,0.85), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 190px 170px, rgba(255,255,255,0.7), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 240px 40px, rgba(255,255,255,0.8), rgba(255,255,255,0)),
-					radial-gradient(2px 2px at 310px 150px, rgba(255,255,255,0.9), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 360px 90px, rgba(255,255,255,0.65), rgba(255,255,255,0)),
-					radial-gradient(1px 1px at 420px 210px, rgba(255,255,255,0.75), rgba(255,255,255,0));
-				background-repeat: repeat;
-				background-size: 460px 260px;
-				opacity: 0.85;
-				/* Move the background diagonally over 90 seconds, looping infinitely */
-				animation: panStars 120s linear infinite;
-			}
-		</style>
 	</body>
 </html>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SystemsPlate from '../components/SystemsPlate.astro';
 
 const focusAreas = [
 	{
@@ -46,104 +47,125 @@ const selectedWork = [
 ---
 
 <Layout title="Carmine Iacona | Cloud & Network Engineering">
-	<div class="mx-auto max-w-6xl px-6 py-16">
-		<header class="grid grid-cols-1 gap-10 border-b border-slate-800 pb-14 lg:grid-cols-3">
-			<div class="lg:col-span-2">
-				<p class="mb-3 text-sm font-bold text-cyan-300">Carmine Iacona</p>
-				<h1 class="max-w-3xl text-4xl font-bold leading-tight text-white">
-					Cloud infrastructure, systems, and practical troubleshooting.
-				</h1>
-				<p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-400">
-					B.S. CECS student at UCF focused on infrastructure, network engineering, and automation.
-				</p>
-				<div class="mt-8 flex flex-wrap gap-3 text-sm font-bold">
-					<a href="/portfolio" class="border border-slate-700 px-4 py-2 text-white transition-colors hover:border-cyan-400 hover:text-cyan-200">Portfolio</a>
-					<a href="/vault" class="border border-slate-700 px-4 py-2 text-slate-300 transition-colors hover:border-cyan-300 hover:text-cyan-200">Vault</a>
-				</div>
+	<section class="hero shell">
+		<div class="hero__copy">
+			<p class="eyebrow">Carmine Iacona · Orlando, Florida</p>
+			<h1>
+				Infrastructure,<br />
+				<span>made practical.</span>
+			</h1>
+			<p class="hero__lede">
+				Information Technology student at UCF focused on cloud infrastructure,
+				network engineering, automation, and the operational details that keep systems useful.
+			</p>
+			<div class="button-row">
+				<a href="/portfolio" class="button button--primary">
+					Explore the work
+					<span aria-hidden="true">↗</span>
+				</a>
+				<a href="/vault" class="button button--quiet">Enter the vault</a>
 			</div>
+		</div>
 
-			<aside class="border-t border-slate-800 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-				<h2 class="mb-5 text-lg font-bold text-white">Working Notes</h2>
-				<div class="space-y-5 text-sm leading-relaxed">
-					<div>
-						<p class="font-bold text-cyan-300">Current lane</p>
-						<p class="mt-1 text-slate-400">Cloud infrastructure, networking, and service reliability.</p>
-					</div>
-					<div>
-						<p class="font-bold text-amber-300">Useful habit</p>
-						<p class="mt-1 text-slate-400">Start with the system in front of me, then document the fix clearly enough to repeat.</p>
-					</div>
-					<div>
-						<p class="font-bold text-emerald-300">Course work</p>
-						<p class="mt-1 text-slate-400">Composition portfolio structure is ready for research and reflection artifacts.</p>
-					</div>
-				</div>
-			</aside>
-		</header>
+		<div class="hero__visual">
+			<SystemsPlate />
+			<p class="hero__caption">
+				<span>Practice 01</span>
+				Self-hosted services, network systems, and repeatable troubleshooting.
+			</p>
+		</div>
+	</section>
 
-		<section class="grid grid-cols-1 gap-10 border-b border-slate-800 py-12 lg:grid-cols-3">
-			<div>
-				<h2 class="text-2xl font-bold text-white">Technical Core</h2>
-				<p class="mt-3 leading-relaxed text-slate-500">
-					The tools and systems behind the work.
-				</p>
+	<div class="proof-strip">
+		<div class="shell proof-strip__inner">
+			<div class="proof-strip__intro">
+				<span class="status-dot"></span>
+				Building in public
 			</div>
-
-			<div class="lg:col-span-2">
-				<div class="divide-y divide-slate-800 border-y border-slate-800">
-					{technicalStack.map(([label, value]) => (
-						<div class="grid grid-cols-1 gap-2 py-4 sm:grid-cols-3">
-							<p class="font-bold text-slate-200">{label}</p>
-							<p class="sm:col-span-2 text-slate-400">{value}</p>
-						</div>
-					))}
-				</div>
+			<div class="proof-strip__item">
+				<span>01</span>
+				<p>UCF<br /><strong>Information Technology</strong></p>
 			</div>
-		</section>
-
-		<section class="grid grid-cols-1 gap-10 border-b border-slate-800 py-12 lg:grid-cols-3">
-			<div>
-				<h2 class="text-2xl font-bold text-white">Focus Areas</h2>
-				<p class="mt-3 leading-relaxed text-slate-500">
-					Where the technical work tends to cluster.
-				</p>
+			<div class="proof-strip__item">
+				<span>02</span>
+				<p>Primary lane<br /><strong>Cloud + networking</strong></p>
 			</div>
-
-			<div class="lg:col-span-2">
-				<div class="divide-y divide-slate-800 border-y border-slate-800">
-					{focusAreas.map((area) => (
-						<article class="py-5">
-							<h3 class="text-xl font-bold text-white">{area.title}</h3>
-							<p class="mt-2 leading-relaxed text-slate-400">{area.description}</p>
-						</article>
-					))}
-				</div>
+			<div class="proof-strip__item">
+				<span>03</span>
+				<p>Working method<br /><strong>Build · test · document</strong></p>
 			</div>
-		</section>
-
-		<section class="grid grid-cols-1 gap-10 py-12 lg:grid-cols-3">
-			<div>
-				<h2 class="text-2xl font-bold text-white">Selected Work</h2>
-				<p class="mt-3 leading-relaxed text-slate-500">
-					A selection of representative work and supporting material.
-				</p>
-			</div>
-
-			<div class="lg:col-span-2">
-				<div class="divide-y divide-slate-800 border-y border-slate-800">
-					{selectedWork.map((work) => (
-						<a href={work.href} class="group block py-5 transition-colors hover:bg-slate-900/40">
-							<div class="grid grid-cols-1 gap-3 sm:grid-cols-4">
-								<p class="text-sm font-bold text-cyan-300">{work.meta}</p>
-								<div class="sm:col-span-3">
-									<h3 class="text-xl font-bold text-white group-hover:text-cyan-200">{work.title}</h3>
-									<p class="mt-2 leading-relaxed text-slate-400">{work.description}</p>
-								</div>
-							</div>
-						</a>
-					))}
-				</div>
-			</div>
-		</section>
+		</div>
 	</div>
+
+	<section class="section shell split-section">
+		<div class="section-heading">
+			<p class="eyebrow">Capabilities · 01</p>
+			<h2>Technical<br /><em>core</em></h2>
+			<p>The tools are only useful when they produce clear, repeatable outcomes.</p>
+		</div>
+
+		<div class="ruled-list">
+			{technicalStack.map(([label, value], index) => (
+				<div class="ruled-list__row">
+					<span class="ruled-list__number">0{index + 1}</span>
+					<h3>{label}</h3>
+					<p>{value}</p>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<section class="section section--forest">
+		<div class="shell">
+			<div class="section-heading section-heading--horizontal">
+				<div>
+					<p class="eyebrow">Practice · 02</p>
+					<h2>Where I<br /><em>work best</em></h2>
+				</div>
+				<p>Problems with enough complexity to require care—and enough practical value to justify it.</p>
+			</div>
+
+			<div class="focus-grid">
+				{focusAreas.map((area, index) => (
+					<article class="focus-card">
+						<p class="focus-card__index">0{index + 1} / 03</p>
+						<h3>{area.title}</h3>
+						<p>{area.description}</p>
+						<div class="focus-card__mark" aria-hidden="true"></div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section shell">
+		<div class="section-heading section-heading--horizontal">
+			<div>
+				<p class="eyebrow">Selected work · 03</p>
+				<h2>Evidence over<br /><em>adjectives</em></h2>
+			</div>
+			<p>Technical work, course artifacts, and the notes that make each project understandable.</p>
+		</div>
+
+		<div class="work-list">
+			{selectedWork.map((work, index) => (
+				<a href={work.href} class="work-row">
+					<span class="work-row__number">0{index + 1}</span>
+					<div>
+						<p class="work-row__meta">{work.meta}</p>
+						<h3>{work.title}</h3>
+					</div>
+					<p class="work-row__description">{work.description}</p>
+					<span class="work-row__arrow" aria-hidden="true">↗</span>
+				</a>
+			))}
+		</div>
+	</section>
+
+	<section class="closing-note shell">
+		<p class="eyebrow">Working note · 04</p>
+		<blockquote>
+			Start with the system in front of me. Understand the failure. Leave behind a fix someone can repeat.
+		</blockquote>
+	</section>
 </Layout>
