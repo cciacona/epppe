@@ -4,7 +4,7 @@ title: Process Archive
 description: Six smaller assignments that show what I worked on between the proposal, annotated bibliography, and field essay.
 artifactType: Minor Assignments · Process Work
 date: July 13–27, 2026
-status: Six pieces
+status: Six artifacts
 outcomes:
   - All Six Course Outcomes
 sections:
