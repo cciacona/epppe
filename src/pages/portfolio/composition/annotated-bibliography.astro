@@ -1,5 +1,5 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import CompositionDocumentLayout from '../../../layouts/CompositionDocumentLayout.astro';
 
 const coverLetter = [
 	`For this annotated bibliography, I narrowed my project to how college students use class group chats to clarify course expectations and support each other outside official classroom spaces. The initial proposal helped me move from a broad interest in digital communication to a specific community, genre, and purpose. I planned the bibliography around group messaging, student attitudes toward text communication, digital backchannels, and online participation.`,
@@ -47,70 +47,110 @@ const sources = [
 ];
 ---
 
-<Layout title="Annotated Bibliography | Composition Research Portfolio">
-	<article class="mx-auto max-w-4xl px-6 py-16">
-		<header class="border-b border-slate-800 pb-10">
-			<a href="/portfolio/composition" class="mb-5 inline-block text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-200">
-				Composition Research Portfolio
-			</a>
-			<p class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-cyan-300">Major Writing Assignment</p>
-			<h1 class="text-4xl font-bold leading-tight text-white">Annotated Bibliography</h1>
-			<p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-400">
-				Research on how college students use class group chats to clarify course expectations and support one another outside official classroom spaces.
-			</p>
-			<div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold text-slate-500">
-				<span>Carmine Iacona</span>
-				<span>Dr. Rebecca Watkins</span>
-				<span>ENC 1102 · Composition II</span>
-				<time datetime="2026-07-12">July 12, 2026</time>
-			</div>
-		</header>
+<CompositionDocumentLayout
+	title="Annotated Bibliography"
+	description="Four scholarly sources that establish the research conversation around mobile messaging, digital backchannels, online participation, and student-to-student academic communication."
+	artifactType="Gordon Rule Assignment 02"
+	date="July 12, 2026"
+	score="38/40"
+	status="Submitted"
+	outcomes={['Generating Inquiry', 'Information Literacy', 'Research Genre Production']}
+	download="/portfolio/composition/files/annotated-bibliography.docx"
+	downloadLabel="Download Word document"
+>
+	<p class="lead">
+		This bibliography does more than collect sources. Each annotation summarizes a study, evaluates its credibility and limitations, and explains how it changes the design or interpretation of my own research.
+	</p>
 
-		<section class="border-b border-slate-800 py-10" aria-labelledby="cover-letter-heading">
-			<div class="grid grid-cols-1 gap-6 md:grid-cols-4">
-				<div>
-					<p class="text-sm font-bold text-cyan-300">Reflection</p>
-				</div>
-				<div class="space-y-5 md:col-span-3">
-					<h2 id="cover-letter-heading" class="text-2xl font-bold text-white">Cover Letter</h2>
-					{coverLetter.map((paragraph) => (
-						<p class="leading-8 text-slate-300">{paragraph}</p>
-					))}
-				</div>
-			</div>
-		</section>
+	<section aria-labelledby="cover-letter-heading">
+		<h2 id="cover-letter-heading">Reflective Cover Letter</h2>
+		{coverLetter.map((paragraph) => <p>{paragraph}</p>)}
+	</section>
 
-		<section class="py-10" aria-labelledby="bibliography-heading">
-			<div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-4">
-				<div>
-					<p class="text-sm font-bold text-cyan-300">Four Sources</p>
-				</div>
-				<div class="md:col-span-3">
-					<h2 id="bibliography-heading" class="text-2xl font-bold text-white">Annotated Bibliography</h2>
-					<p class="mt-3 leading-relaxed text-slate-400">
-						Each entry summarizes the source, evaluates its credibility and limitations, and connects it to the research question.
+	<section aria-labelledby="bibliography-heading">
+		<h2 id="bibliography-heading">Annotated Bibliography</h2>
+		<p>
+			The four entries move from classroom backchannels and GroupMe use to a broader theory of participation and a comparison of peer and instructor messaging.
+		</p>
+
+		<div class="bibliography-list">
+			{sources.map((source, index) => (
+				<section class="bibliography-entry" aria-labelledby={`source-${index + 1}`}>
+					<p class="bibliography-entry__number">Source {String(index + 1).padStart(2, '0')}</p>
+					<h3 id={`source-${index + 1}`}>{source.title}</h3>
+					<p class="bibliography-entry__citation">
+						{source.authors} “{source.title}.” <em>{source.journal}</em>, {source.details},{' '}
+						<a href={source.doi} target="_blank" rel="noreferrer">{source.doi}</a>.
 					</p>
-				</div>
-			</div>
-
-			<div class="space-y-8">
-				{sources.map((source, index) => (
-					<section class="border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby={`source-${index + 1}`}>
-						<p class="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Source {index + 1}</p>
-						<h3 id={`source-${index + 1}`} class="sr-only">{source.title}</h3>
-						<p class="-indent-8 pl-8 leading-8 text-slate-200">
-							{source.authors} “{source.title}.” <em>{source.journal}</em>, {source.details},{' '}
-							<a href={source.doi} target="_blank" rel="noreferrer" class="break-all text-cyan-300 underline decoration-slate-600 underline-offset-4 transition-colors hover:text-cyan-200">
-								{source.doi}
-							</a>.
-						</p>
-						<div class="mt-6 space-y-5 border-t border-slate-800 pt-6">
-							<p class="leading-8 text-slate-300">{source.summary}</p>
-							<p class="leading-8 text-slate-300">{source.evaluation}</p>
+					<div class="bibliography-entry__body">
+						<div>
+							<p class="bibliography-entry__label">Summary</p>
+							<p>{source.summary}</p>
 						</div>
-					</section>
-				))}
-			</div>
-		</section>
-	</article>
-</Layout>
+						<div>
+							<p class="bibliography-entry__label">Evaluation & Use</p>
+							<p>{source.evaluation}</p>
+						</div>
+					</div>
+				</section>
+			))}
+		</div>
+	</section>
+</CompositionDocumentLayout>
+
+<style>
+	.bibliography-list {
+		display: grid;
+		gap: 24px;
+		margin-top: 34px;
+	}
+
+	.bibliography-entry {
+		padding: clamp(24px, 4vw, 42px);
+		border: 1px solid var(--rule-strong);
+		background:
+			linear-gradient(135deg, rgba(158, 174, 160, 0.045), transparent 42%),
+			var(--paper-soft);
+	}
+
+	.bibliography-entry__number,
+	.bibliography-entry__label {
+		margin: 0 0 12px !important;
+		color: var(--tan) !important;
+		font-size: 0.64rem !important;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.bibliography-entry h3 {
+		margin: 0 0 18px !important;
+		color: var(--cream) !important;
+		font-family: var(--display);
+		font-size: clamp(1.8rem, 3vw, 2.65rem) !important;
+		font-weight: 400 !important;
+		letter-spacing: -0.025em !important;
+		line-height: 1.12;
+		text-transform: none !important;
+	}
+
+	.bibliography-entry__citation {
+		padding: 18px 0 22px;
+		border-block: 1px solid var(--rule);
+		color: var(--sage-bright) !important;
+		font-size: 0.9rem !important;
+	}
+
+	.bibliography-entry__body {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(24px, 4vw, 44px);
+		margin-top: 26px;
+	}
+
+	@media (max-width: 720px) {
+		.bibliography-entry__body {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

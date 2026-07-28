@@ -1,265 +1,1128 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CompositionNav from '../../components/CompositionNav.astro';
 
-const learningOutcomes = [
-	'Student Learning Outcome 1',
-	'Student Learning Outcome 2',
-	'Student Learning Outcome 3',
-	'Student Learning Outcome 4',
-	'Student Learning Outcome 5'
-];
-
-const majorAssignments = [
+const outcomes = [
 	{
-		title: 'Annotated Bibliography',
-		context: 'Research on how college students use class group chats to clarify course expectations and support one another.',
-		evidence: 'Final artifact · July 12, 2026',
-		href: '/portfolio/composition/annotated-bibliography',
-		action: 'Read full artifact'
+		number: '01',
+		id: 'generating-inquiry',
+		title: 'Generating Inquiry',
+		wording: 'Generate and explore genuine lines of inquiry related to writing, language, literacy, and/or rhetoric.',
+		reflection: [
+			`I understand generating inquiry as starting with a question I genuinely care about and then allowing research to complicate it. My Initial Research Proposal asked how college students use class group chats to clarify course expectations and support one another. That question came from something familiar to me, but the proposal made me explain why short, informal messages still belong in Writing Studies. I connected reactions, tone, timing, and audience to digital literacy and rhetorical situation instead of treating the chats as only a convenient technology.`,
+			`The question became stronger as the project continued. My CARS Model Introduction identified a specific gap: existing studies often examine messaging spaces created or observed by instructors, while my project focuses on chats run entirely by students. My Mid-Project Reflection also records an important change in my thinking. I originally assumed these chats were mainly helpful, but sources and interviews showed that they can spread incorrect information, create notification stress, and exclude quieter students. The final question stayed focused on how students use the chats, but the answer became more complex. That development shows me that inquiry is not just choosing a topic at the beginning; it is repeatedly testing the question against evidence and revising what I thought I knew.`
+		],
+		evidence: [
+			{ title: 'Initial Research Proposal', detail: 'Question, context, and possible methods', href: '/portfolio/composition/initial-research-proposal' },
+			{ title: 'CARS Model Introduction', detail: 'Territory, gap, and research focus', href: '/portfolio/composition/process-archive#01-cars-model-introduction' },
+			{ title: 'Mid-Project Reflection', detail: 'Documents how the question changed', href: '/portfolio/composition/process-archive#05-mid-project-reflection' }
+		]
 	},
 	{
-		title: 'Research Paper',
-		context: 'Prompt, abstract, full paper, and publication-ready version',
-		evidence: 'Primary research artifact',
-		href: null,
-		action: 'Prompt and full version slot'
+		number: '02',
+		id: 'multiple-ways',
+		title: 'Multiple Ways of Writing',
+		wording: 'Purposefully integrate multimodality, multiple languages, and/or multiliteracies into writing products to support their goals.',
+		reflection: [
+			`To me, this outcome means understanding that writing changes across media, audiences, and situations. It does not mean adding an image just to call a project multimodal. In my Genre and Discourse Communities response, I separated a medium from a genre: GroupMe, Discord, and email can carry many kinds of writing, while an assignment-clarification question is a recurring genre because it performs a recognizable action. My moves analysis shows how context, hedging, a direct question, inclusive wording, and reactions work together to make that genre fast and low pressure.`,
+			`This ePortfolio is another example. The major assignments still appear as complete texts, but the digital format adds a different reading path through outcome reflections, artifact labels, scores, version notes, downloads, and internal navigation. I made those choices because a professor assessing the portfolio should be able to move either by course outcome or by the chronological research process. The field essay also treats reactions and quiet reading as meaningful forms of digital participation, drawing on Hrastinski rather than defining literacy only as long-form writing. Across these artifacts, I learned to ask what a form allows, what its audience expects, and which design or language choices help it accomplish its purpose.`
+		],
+		evidence: [
+			{ title: 'Genre and Discourse Communities', detail: 'Moves analysis of a chat-based genre', href: '/portfolio/composition/process-archive#03-reading-response-genre-and-discourse-communities' },
+			{ title: 'Composition ePortfolio', detail: 'Digital organization, navigation, and visual hierarchy', href: '/portfolio/composition' },
+			{ title: 'Investigative Field Essay', detail: 'Analyzes reactions and silent reading as participation', href: '/portfolio/composition/investigative-field-essay' }
+		]
 	},
 	{
-		title: 'Major Writing Assignment 2',
-		context: 'Prompt, full submission, and short context note',
-		evidence: 'Course outcome evidence',
-		href: null,
-		action: 'Prompt and full version slot'
+		number: '03',
+		id: 'information-literacy',
+		title: 'Information Literacy',
+		wording: 'Evaluate and act on criteria for relevance, credibility, and ethics when gathering, analyzing, and presenting primary and secondary source materials.',
+		reflection: [
+			`Information literacy means making deliberate decisions about what evidence deserves to be used, what it can support, and how to handle it ethically. In the Annotated Bibliography, I collected more sources than I needed, checked where they were published, compared their methods, and removed articles that discussed technology without really examining communication. Each second paragraph evaluates credibility, limitations, and usefulness instead of simply continuing the summary. For example, I note that Gronseth and Hebert studied graduate educational-technology students, which makes the study highly relevant but limits how easily its results can represent typical undergraduates.`,
+			`The ethical side became just as important. Instructor feedback on my proposal warned me that private group-chat messages would require permission from everyone involved. I acted on that feedback by using semi-structured interviews, avoiding screenshots, removing course names, and identifying participants as P1 through P5. My Analyzing Primary Data response also explains why I should not create codes too early, cherry-pick supportive responses, or present a small sample as if it represents all college students. The final essay reports recurring patterns while naming exceptions and limitations. These artifacts show that information literacy is not a checklist completed before writing; it continues through collection, interpretation, citation, and the limits placed on the final claim.`
+		],
+		evidence: [
+			{ title: 'Annotated Bibliography', detail: 'Source credibility, relevance, methods, and limitations', href: '/portfolio/composition/annotated-bibliography' },
+			{ title: 'Analyzing Primary Data', detail: 'Ethical coding and honest reporting', href: '/portfolio/composition/process-archive#02-reading-response-analyzing-primary-data' },
+			{ title: 'Research Proposal Feedback', detail: 'Privacy concern changed the research method', href: '/portfolio/composition/initial-research-proposal#instructor-feedback-and-next-decision' }
+		]
 	},
 	{
-		title: 'Major Writing Assignment 3',
-		context: 'Prompt, full submission, and short context note',
-		evidence: 'Course outcome evidence',
-		href: null,
-		action: 'Prompt and full version slot'
+		number: '04',
+		id: 'research-genre',
+		title: 'Research Genre Production',
+		wording: 'Produce writing that navigates choices and constraints in public and/or academic research genres that matter to specific communities.',
+		reflection: [
+			`I understand research genre production as knowing what a genre needs to accomplish while still making choices within it. The Initial Research Proposal introduces a focused question, connects it to Writing Studies, and suggests methods without pretending the research is already finished. The Annotated Bibliography uses a different structure because its purpose is to organize and evaluate a research conversation. The CARS exercise then helped me build an academic introduction by establishing the territory, identifying the underexplored student-run setting, and occupying that niche with my own question.`,
+			`The Investigative Field Essay brings those earlier genres together in a recognizable research-paper structure: Introduction, Methods, Findings, Discussion, Conclusion, and Works Cited. I chose clear headings because the reader needs to distinguish what I did from what I found and what I think the findings mean. At the same time, I did not treat IMRD as a rigid template. The Discussion returns to genre, audience, authority, and the “social cost” of asking questions because those concepts are necessary to answer a Writing Studies audience’s larger “so what?” question. Moving through these assignments taught me that genre conventions are constraints, but they are also useful tools for guiding readers through different stages of a research project.`
+		],
+		evidence: [
+			{ title: 'Initial Research Proposal', detail: 'Proposal conventions and forward-looking method', href: '/portfolio/composition/initial-research-proposal' },
+			{ title: 'Annotated Bibliography', detail: 'Four source summaries and evaluations', href: '/portfolio/composition/annotated-bibliography' },
+			{ title: 'Investigative Field Essay', detail: 'Academic field-research structure and argument', href: '/portfolio/composition/investigative-field-essay' }
+		]
+	},
+	{
+		number: '05',
+		id: 'contributing-knowledge',
+		title: 'Contributing Knowledge',
+		wording: 'Draw conclusions from primary evidence and place that work in conversation with other source materials.',
+		reflection: [
+			`Contributing knowledge means using primary evidence to add something that the secondary sources could not answer on their own. I conducted semi-structured interviews with five people who had used student-run class group chats: four friends who are current or recent college students and one classmate. I coded the notes for patterns such as assignment clarification, deadline checking, reactions, professor avoidance, reassurance, misinformation, humor, and notification stress. Those codes became four major findings: low-stakes clarification, participation without frequent posting, emotional support, and limitations involving accuracy, boundaries, and academic integrity.`,
+			`The field essay places those findings in conversation with the scholarship rather than using sources as decoration. Lauricella and Kay help explain why audience changes students’ platform choices; Baron et al. and Hrastinski help interpret reactions and quiet reading as participation; Gronseth and Hebert help explain both community and notification stress. My main contribution is the claim that student-run chats informally translate official course language into peer language and reduce the social cost of asking a question. I also limit that claim: five convenience-sample interviews cannot represent every college student, and interview notes capture memory rather than exact chat language. Acknowledging that boundary makes the contribution smaller, but also more honest and useful.`
+		],
+		evidence: [
+			{ title: 'Investigative Field Essay', detail: 'Five interviews, coded findings, and synthesis', href: '/portfolio/composition/investigative-field-essay' },
+			{ title: 'Analyzing Primary Data', detail: 'Plan for moving from codes to defensible claims', href: '/portfolio/composition/process-archive#02-reading-response-analyzing-primary-data' }
+		]
+	},
+	{
+		number: '06',
+		id: 'revision',
+		title: 'Revision',
+		wording: 'Negotiate differences in and act with intention on feedback from readers when drafting, revising, and editing writing.',
+		reflection: [
+			`Earlier in the semester, I thought revision and editing were almost the same and mostly involved fixing grammar or improving wording. The Revision vs. Editing assignment gave me a more useful distinction: revision changes a paper’s meaning, structure, evidence, or relationship with its audience, while editing happens later at the sentence level. My two field-essay drafts show that difference more clearly than a definition alone. Draft 1 already had the complete research project, but several sections repeated ideas and some methodological choices were not explained enough.`,
+			`Revision 1 defines “student-run class group chat” in the opening paragraph, sharpens the claim around low-stakes academic support, explains participant selection and sample limits, expands the open-coding process, and separates Findings from Discussion. I added analysis of how students translate official instructions into peer language, connected the findings more directly to genre and social pressure, expanded future-research possibilities, and rewrote the conclusion to answer the research question. Nine margin comments make the reasons for those changes visible. My Mid-Project Reflection also helped me identify what still needed work before drafting. I still need a final editing and citation pass before July 31, but the larger revision has already changed what the paper argues and how a reader moves through it.`
+		],
+		evidence: [
+			{ title: 'Draft 1 → Revision 1', detail: 'Structural and argumentative changes across two versions', href: '/portfolio/composition/investigative-field-essay#revision-map' },
+			{ title: 'Revision vs. Editing', detail: 'Process reflection and revision strategy', href: '/portfolio/composition/process-archive#04-revision-vs-editing' },
+			{ title: 'Mid-Project Reflection', detail: 'Names uncertainties before drafting', href: '/portfolio/composition/process-archive#05-mid-project-reflection' }
+		]
 	}
 ];
 
-const draftStages = [
-	'Draft 1',
-	'Draft 2',
-	'Final'
+const artifacts = [
+	{
+		number: '01',
+		type: 'Major · Gordon Rule',
+		title: 'Initial Research Proposal',
+		summary: 'Introduces the question, connects informal messaging to Writing Studies, and proposes ethical primary-research options.',
+		date: 'Jul 06',
+		score: '20/20 · Complete',
+		href: '/portfolio/composition/initial-research-proposal',
+		download: '/portfolio/composition/files/initial-research-proposal.docx'
+	},
+	{
+		number: '02',
+		type: 'Major · Gordon Rule',
+		title: 'Annotated Bibliography',
+		summary: 'Summarizes and evaluates four scholarly sources while mapping their methods, limitations, and relationships.',
+		date: 'Jul 12',
+		score: '38/40',
+		href: '/portfolio/composition/annotated-bibliography',
+		download: '/portfolio/composition/files/annotated-bibliography.docx'
+	},
+	{
+		number: '03',
+		type: 'Major · Gordon Rule',
+		title: 'Investigative Field Essay',
+		summary: 'Revision 1 combines five interviews with secondary research and documents nine substantive revisions.',
+		date: 'Jul 26',
+		score: 'Final due Jul 31',
+		href: '/portfolio/composition/investigative-field-essay',
+		download: '/portfolio/composition/files/investigative-field-essay-revision-1.pdf'
+	},
+	{
+		number: '04',
+		type: 'Process',
+		title: 'CARS Model Introduction',
+		summary: 'Establishes the research territory, identifies the instructor-observation gap, and occupies the niche.',
+		date: 'Jul 15',
+		score: '15/15',
+		href: '/portfolio/composition/process-archive#01-cars-model-introduction',
+		download: '/portfolio/composition/files/cars-model-introduction.docx'
+	},
+	{
+		number: '05',
+		type: 'Reading Response',
+		title: 'Analyzing Primary Data',
+		summary: 'Plans open coding, anonymization, pattern comparison, and ethical limits for primary-data claims.',
+		date: 'Jul 13',
+		score: '10/10',
+		href: '/portfolio/composition/process-archive#02-reading-response-analyzing-primary-data',
+		download: '/portfolio/composition/files/analyzing-primary-data.docx'
+	},
+	{
+		number: '06',
+		type: 'Reading Response',
+		title: 'Genre and Discourse Communities',
+		summary: 'Analyzes the moves of an assignment-clarification question in a student-run class chat.',
+		date: 'Jul 27',
+		score: 'Awaiting grade',
+		href: '/portfolio/composition/process-archive#03-reading-response-genre-and-discourse-communities',
+		download: '/portfolio/composition/files/understanding-genre.docx'
+	},
+	{
+		number: '07',
+		type: 'Process Reflection',
+		title: 'Revision vs. Editing',
+		summary: 'Reframes revision as developing meaning, structure, evidence, and purpose before sentence-level editing.',
+		date: 'Jul 24',
+		score: '6/6',
+		href: '/portfolio/composition/process-archive#04-revision-vs-editing',
+		download: null
+	},
+	{
+		number: '08',
+		type: 'Process Reflection',
+		title: 'Mid-Project Reflection',
+		summary: 'Records how the question changed, which resources helped, and what the interview stage still required.',
+		date: 'Jul 20',
+		score: 'Submitted',
+		href: '/portfolio/composition/process-archive#05-mid-project-reflection',
+		download: null
+	},
+	{
+		number: '09',
+		type: 'Digital Composition',
+		title: 'ePortfolio Design Reflection',
+		summary: 'Explains how the site’s navigation, visual hierarchy, and artifact framing support an academic reader.',
+		date: 'Jul 17–28',
+		score: '10/10 + final revision',
+		href: '/portfolio/composition/process-archive#06-eportfolio-design-reflection',
+		download: null
+	}
 ];
 
-const writingActivities = [
-	['01', 'Discussion post', 'Course conversation'],
-	['02', 'Reading journal', 'Source engagement'],
-	['03', 'Peer review', 'Feedback practice'],
-	['04', 'Feedback response', 'Revision planning'],
-	['05', 'Free write / short write', 'Invention work'],
-	['06', 'Outside-of-class writing', 'Transfer beyond the course']
+const researchArc = [
+	{ date: 'Jul 06', title: 'Propose', note: 'Ask how student-run chats clarify coursework and provide support.' },
+	{ date: 'Jul 12', title: 'Map', note: 'Evaluate four sources and identify useful methods, limits, and concepts.' },
+	{ date: 'Jul 15', title: 'Find the gap', note: 'Separate instructor-observed messaging from unofficial student-run spaces.' },
+	{ date: 'Jul 16–19', title: 'Collect & code', note: 'Interview five participants and organize recurring patterns and exceptions.' },
+	{ date: 'Jul 19–26', title: 'Draft & revise', note: 'Turn coded findings into an argument, then document nine substantive changes.' }
 ];
 ---
 
-<Layout title="Composition Research Portfolio | EPPPE.NET">
-	<div class="mx-auto max-w-6xl px-6 py-16">
-		<header class="mb-14">
-			<a href="/portfolio" class="mb-4 inline-block text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-200">Portfolio</a>
-			<h1 class="mb-4 text-4xl font-bold text-white">Composition Research Portfolio</h1>
-			<p class="max-w-3xl leading-relaxed text-slate-400">
-				A developing course portfolio for the testimonio or cover letter, learning outcome reflections, major assignments, activity evidence, drafts, and screenshots.
-			</p>
-		</header>
-
-		<div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
-			<aside class="lg:col-span-1">
-				<nav class="lg:sticky lg:top-24">
-					<h2 class="mb-4 text-sm font-bold text-slate-500">Contents</h2>
-					<div class="space-y-3 text-sm font-bold text-slate-400">
-						<a href="#cover" class="block transition-colors hover:text-white">Testimonio / Cover Letter</a>
-						<a href="#outcomes" class="block transition-colors hover:text-white">Student Learning Outcomes</a>
-						<a href="#assignments" class="block transition-colors hover:text-white">Major Assignments</a>
-						<a href="#drafts" class="block transition-colors hover:text-white">Draft Trail</a>
-						<a href="#activities" class="block transition-colors hover:text-white">Writing Activities</a>
-						<a href="#screenshots" class="block transition-colors hover:text-white">Screenshots</a>
-						<a href="#rationale" class="block transition-colors hover:text-white">Selection Rationale</a>
-					</div>
-				</nav>
-			</aside>
-
-			<div class="lg:col-span-3">
-				<section id="cover" class="border-t border-slate-800 py-8">
-					<div class="grid grid-cols-1 gap-5 md:grid-cols-3">
-						<div>
-							<p class="text-sm font-bold text-cyan-300">Opening</p>
-						</div>
-						<div class="md:col-span-2">
-							<h2 class="mb-3 text-2xl font-bold text-white">Testimonio / Cover Letter</h2>
-							<p class="leading-relaxed text-slate-400">
-								Not posted yet. This section will hold the portfolio introduction, course context, and the main argument for how the selected work shows growth.
-							</p>
-						</div>
-					</div>
-				</section>
-
-				<section id="outcomes" class="border-t border-slate-800 py-8">
-					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
-						<div>
-							<p class="text-sm font-bold text-cyan-300">Reflection</p>
-						</div>
-						<div class="md:col-span-2">
-							<h2 class="mb-3 text-2xl font-bold text-white">Student Learning Outcomes</h2>
-							<p class="leading-relaxed text-slate-400">
-								Each outcome gets a reflection, selected evidence, and a note explaining why the evidence belongs here.
-							</p>
-						</div>
-					</div>
-
-					<div class="divide-y divide-slate-800 border-y border-slate-800">
-						{learningOutcomes.map((outcome) => (
-							<div class="grid grid-cols-1 gap-4 py-5 text-sm md:grid-cols-4">
-								<div>
-									<p class="font-bold text-white">{outcome}</p>
-									<p class="text-slate-500">Course wording</p>
-								</div>
-								<div>
-									<p class="font-bold text-slate-300">Reflection</p>
-									<p class="mt-1 text-slate-500">Open slot</p>
-								</div>
-								<div>
-									<p class="font-bold text-slate-300">Evidence</p>
-									<p class="mt-1 text-slate-500">Open slot</p>
-								</div>
-								<div>
-									<p class="font-bold text-slate-300">Selection Note</p>
-									<p class="mt-1 text-slate-500">Open slot</p>
-								</div>
-							</div>
-						))}
-					</div>
-				</section>
-
-				<section id="assignments" class="border-t border-slate-800 py-8">
-					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
-						<div>
-							<p class="text-sm font-bold text-cyan-300">Artifacts</p>
-						</div>
-						<div class="md:col-span-2">
-							<h2 class="mb-3 text-2xl font-bold text-white">Major Writing Assignments</h2>
-							<p class="leading-relaxed text-slate-400">
-								Full versions of major assignments belong here, with prompts when useful and context before each piece.
-							</p>
-						</div>
-					</div>
-
-					<div class="divide-y divide-slate-800 border-y border-slate-800">
-						{majorAssignments.map((assignment) => (
-							<article class="grid grid-cols-1 gap-4 py-5 md:grid-cols-4">
-								<div>
-									<h3 class="text-xl font-bold text-white">{assignment.title}</h3>
-								</div>
-								<div class="md:col-span-2">
-									<p class="leading-relaxed text-slate-400">{assignment.context}</p>
-								</div>
-								<div>
-									<p class="text-sm font-bold text-slate-300">{assignment.evidence}</p>
-									{assignment.href ? (
-										<a href={assignment.href} class="mt-2 inline-block text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-200">
-											{assignment.action} →
-										</a>
-									) : (
-										<p class="mt-1 text-sm text-slate-500">{assignment.action}</p>
-									)}
-								</div>
-							</article>
-						))}
-					</div>
-				</section>
-
-				<section id="drafts" class="border-t border-slate-800 py-8">
-					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
-						<div>
-							<p class="text-sm font-bold text-cyan-300">Revision</p>
-						</div>
-						<div class="md:col-span-2">
-							<h2 class="mb-3 text-2xl font-bold text-white">Draft Trail</h2>
-							<p class="leading-relaxed text-slate-400">
-								At least one major assignment will include multiple drafts, feedback received, and the revisions made between versions.
-							</p>
-						</div>
-					</div>
-
-					<div class="divide-y divide-slate-800 border-y border-slate-800">
-						{draftStages.map((stage) => (
-							<div class="grid grid-cols-1 gap-4 py-5 text-sm md:grid-cols-4">
-								<p class="text-lg font-bold text-white">{stage}</p>
-								<p class="text-slate-500">Full draft slot</p>
-								<p class="text-slate-500">Feedback note slot</p>
-								<p class="text-slate-500">Revision note slot</p>
-							</div>
-						))}
-					</div>
-				</section>
-
-				<section id="activities" class="border-t border-slate-800 py-8">
-					<div class="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
-						<div>
-							<p class="text-sm font-bold text-cyan-300">Practice</p>
-						</div>
-						<div class="md:col-span-2">
-							<h2 class="mb-3 text-2xl font-bold text-white">Six Writing Activities</h2>
-							<p class="leading-relaxed text-slate-400">
-								The activity archive is prepared for at least six entries across multiple task types.
-							</p>
-						</div>
-					</div>
-
-					<div class="divide-y divide-slate-800 border-y border-slate-800">
-						{writingActivities.map(([number, kind, role]) => (
-							<div class="grid grid-cols-1 gap-4 py-4 text-sm sm:grid-cols-4">
-								<p class="font-mono text-slate-500">{number}</p>
-								<p class="font-bold text-white">{kind}</p>
-								<p class="text-slate-400">{role}</p>
-								<p class="text-slate-500">Artifact slot</p>
-							</div>
-						))}
-					</div>
-				</section>
-
-				<section id="screenshots" class="border-t border-slate-800 py-8">
-					<div class="grid grid-cols-1 gap-5 md:grid-cols-3">
-						<div>
-							<p class="text-sm font-bold text-cyan-300">Evidence</p>
-						</div>
-						<div class="md:col-span-2">
-							<h2 class="mb-3 text-2xl font-bold text-white">Screenshots & Moments</h2>
-							<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-								<div class="border border-slate-800 p-4">
-									<p class="font-bold text-white">Feedback</p>
-									<p class="mt-2 text-sm text-slate-500">Screenshot slot</p>
-								</div>
-								<div class="border border-slate-800 p-4">
-									<p class="font-bold text-white">Revision</p>
-									<p class="mt-2 text-sm text-slate-500">Screenshot slot</p>
-								</div>
-								<div class="border border-slate-800 p-4">
-									<p class="font-bold text-white">Learning Moment</p>
-									<p class="mt-2 text-sm text-slate-500">Screenshot slot</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section id="rationale" class="border-y border-slate-800 py-8">
-					<div class="grid grid-cols-1 gap-5 md:grid-cols-3">
-						<div>
-							<p class="text-sm font-bold text-cyan-300">Closing</p>
-						</div>
-						<div class="md:col-span-2">
-							<h2 class="mb-3 text-2xl font-bold text-white">Selection Rationale</h2>
-							<p class="leading-relaxed text-slate-400">
-								Not posted yet. This closing reflection will explain why these writings were selected and how they demonstrate the student learning outcomes.
-							</p>
-						</div>
-					</div>
-				</section>
+<Layout
+	title="Composition Research Portfolio | EPPPE.NET"
+	description="Carmine Iacona’s ENC 1102 ePortfolio: six course-outcome reflections, three Gordon Rule assignments, primary research, process work, and revision evidence."
+>
+	<header class="composition-hero">
+		<div class="shell composition-hero__inner">
+			<div class="composition-hero__copy">
+				<p class="eyebrow">ENC 1102 · Summer 2026</p>
+				<h1>Writing beyond<br />the <em>classroom.</em></h1>
+				<p class="composition-hero__deck">
+					A course portfolio about inquiry, genre, ethical research, and the unofficial writing college students use to help one another.
+				</p>
+				<div class="composition-hero__meta">
+					<span>Carmine Iacona</span>
+					<span>Dr. Rebecca Watkins</span>
+					<span>Composition II</span>
+				</div>
 			</div>
+
+			<aside class="research-card">
+				<p class="research-card__label">Semester research question</p>
+				<p class="research-card__question">
+					How do college students use student-run class group chats to clarify course expectations and support one another outside official classroom spaces?
+				</p>
+				<div class="research-card__stats">
+					<div><strong>03</strong><span>Gordon Rule artifacts</span></div>
+					<div><strong>06</strong><span>Course outcomes</span></div>
+					<div><strong>09</strong><span>Selected artifacts</span></div>
+					<div><strong>05</strong><span>Interviews</span></div>
+				</div>
+			</aside>
+		</div>
+	</header>
+
+	<CompositionNav />
+
+	<div class="shell composition-body">
+		<aside class="composition-contents">
+			<p class="composition-contents__label">On this page</p>
+			<nav aria-label="Portfolio contents">
+				<a href="#letter"><span>01</span> Cover Letter</a>
+				<a href="#outcomes"><span>02</span> Outcomes</a>
+				<a href="#research-arc"><span>03</span> Research Arc</a>
+				<a href="#artifacts"><span>04</span> Artifact Index</a>
+				<a href="#revision-trail"><span>05</span> Revision Trail</a>
+				<a href="#selection-rationale"><span>06</span> Rationale</a>
+			</nav>
+		</aside>
+
+		<div class="composition-main">
+			<section id="letter" class="portfolio-section portfolio-letter">
+				<div class="section-heading">
+					<p class="eyebrow">Opening · 01</p>
+					<h2>Cover Letter</h2>
+				</div>
+				<div class="portfolio-letter__copy">
+					<p>
+						At the beginning of ENC 1102, I mostly thought of research as choosing a topic, finding enough sources, and putting them together into a paper. This semester made the process feel much less linear. My project began with a familiar observation: college students often create unofficial class group chats to ask questions and compare what they think an assignment means. Turning that observation into research required me to define what kind of writing I was actually studying, find a gap in existing scholarship, make ethical choices about private conversations, collect primary evidence, and revise the claim when the evidence complicated my assumptions.
+					</p>
+					<p>
+						The project also gave the course outcomes one shared thread. The Initial Research Proposal generated the question. The Annotated Bibliography placed it in a scholarly conversation. The CARS exercise identified the gap between instructor-managed messaging and student-run spaces. Five semi-structured interviews gave me primary evidence, and open coding helped me organize that evidence without pretending the small sample could represent every college student. Drafting and revision then turned the patterns into a more specific argument: these chats work as low-stakes academic support genres because they reduce the social pressure of asking questions, translate official instructions into peer language, and allow participation through reading or reacting. They are useful, but not automatically accurate or inclusive.
+					</p>
+					<p>
+						I organized this portfolio so it can be read in two ways. The six reflections below connect specific artifacts to every course outcome, while the research arc and artifact index show how the work developed over time. The three major assignments have full web versions and original-file downloads, and the process archive preserves smaller assignments that shaped the final research. The investigative field essay shown here is Revision 1, submitted July 26; the final version is due July 31. Keeping that status visible is intentional because this portfolio is evidence of writing in progress, not a claim that every piece stopped changing the moment it was submitted.
+					</p>
+				</div>
+			</section>
+
+			<section id="outcomes" class="portfolio-section">
+				<div class="section-heading">
+					<p class="eyebrow">Reflection · 02</p>
+					<h2>Six Course Outcomes</h2>
+					<p class="section-heading__note">
+						Each reflection defines the outcome in my own words, identifies specific evidence, and explains what changed in my writing or research process.
+					</p>
+				</div>
+
+				<div class="outcome-list">
+					{outcomes.map((outcome) => (
+						<article id={outcome.id} class="outcome">
+							<div class="outcome__rail">
+								<p>{outcome.number}</p>
+								<span>Outcome</span>
+							</div>
+							<div class="outcome__body">
+								<h3>{outcome.title}</h3>
+								<p class="outcome__wording">{outcome.wording}</p>
+								<div class="outcome__reflection">
+									{outcome.reflection.map((paragraph) => <p>{paragraph}</p>)}
+								</div>
+								<div class="outcome__evidence">
+									<p class="outcome__evidence-label">Selected evidence</p>
+									{outcome.evidence.map((item) => (
+										<a href={item.href}>
+											<strong>{item.title}</strong>
+											<span>{item.detail}</span>
+											<i aria-hidden="true">↗</i>
+										</a>
+									))}
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="research-arc" class="portfolio-section">
+				<div class="section-heading">
+					<p class="eyebrow">Development · 03</p>
+					<h2>One Question, Five Stages</h2>
+				</div>
+				<ol class="research-arc">
+					{researchArc.map((stage, index) => (
+						<li>
+							<div class="research-arc__marker">{String(index + 1).padStart(2, '0')}</div>
+							<div>
+								<p class="research-arc__date">{stage.date}</p>
+								<h3>{stage.title}</h3>
+								<p>{stage.note}</p>
+							</div>
+						</li>
+					))}
+				</ol>
+			</section>
+
+			<section id="artifacts" class="portfolio-section">
+				<div class="section-heading section-heading--split">
+					<div>
+						<p class="eyebrow">Evidence · 04</p>
+						<h2>Artifact Index</h2>
+					</div>
+					<p class="section-heading__note">
+						Three major assignments, three minor assignments, two process reflections, and the digital portfolio itself.
+					</p>
+				</div>
+
+				<div class="artifact-list">
+					{artifacts.map((artifact) => (
+						<article class="artifact">
+							<div class="artifact__number">{artifact.number}</div>
+							<div class="artifact__title">
+								<p>{artifact.type}</p>
+								<h3>{artifact.title}</h3>
+							</div>
+							<p class="artifact__summary">{artifact.summary}</p>
+							<div class="artifact__status">
+								<span>{artifact.date}</span>
+								<strong>{artifact.score}</strong>
+							</div>
+							<div class="artifact__actions">
+								<a href={artifact.href}>Read <span aria-hidden="true">↗</span></a>
+								{artifact.download && <a href={artifact.download}>Original <span aria-hidden="true">↓</span></a>}
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="revision-trail" class="portfolio-section">
+				<div class="section-heading">
+					<p class="eyebrow">Revision · 05</p>
+					<h2>Draft 1 → Revision 1</h2>
+					<p class="section-heading__note">
+						The clearest evidence of revision is not a cleaner sentence. It is a paper that makes a more specific claim and gives readers more reason to trust how the evidence was produced.
+					</p>
+				</div>
+
+				<div class="revision-compare">
+					<div>
+						<p class="revision-compare__label">Draft 1 · July 19</p>
+						<h3>Complete research, still provisional</h3>
+						<ul>
+							<li>The key term appears before it is fully defined.</li>
+							<li>Findings and analysis share one section and occasionally repeat in Discussion.</li>
+							<li>The convenience sample and coding choices need more explanation.</li>
+							<li>The conclusion summarizes the topic but can answer the research question more directly.</li>
+						</ul>
+						<a href="/portfolio/composition/files/investigative-field-essay-draft-1.docx">Download Draft 1 ↓</a>
+					</div>
+					<div>
+						<p class="revision-compare__label">Revision 1 · July 26</p>
+						<h3>Sharper claim, method, and structure</h3>
+						<ul>
+							<li>Defines the genre immediately and follows the CARS model more clearly.</li>
+							<li>Separates four findings from the larger interpretation in Discussion.</li>
+							<li>Explains participant selection, anonymization, open coding, and study limits.</li>
+							<li>Adds nine margin comments identifying what changed and why.</li>
+						</ul>
+						<a href="/portfolio/composition/investigative-field-essay#revision-map">Read the revision map ↗</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="selection-rationale" class="portfolio-section portfolio-closing">
+				<div class="section-heading">
+					<p class="eyebrow">Closing · 06</p>
+					<h2>Selection Rationale</h2>
+				</div>
+				<div class="portfolio-closing__copy">
+					<p>
+						I did not choose artifacts only because they received high grades. I chose pieces that make the movement of the project visible. The proposal captures the original question and the instructor feedback that changed my ethical approach. The bibliography shows how I evaluated the scholarly conversation. The CARS and primary-data responses show planning that later appears inside the field essay. The genre response connects the project’s subject to a course concept, while the two research-paper drafts provide direct evidence that revision changed the argument and structure.
+					</p>
+					<p>
+						Together, the artifacts show my strongest growth in three connected areas: treating ordinary writing as something worth studying, making claims that fit the evidence instead of my expectations, and seeing revision as part of thinking rather than a final cleanup step. The portfolio’s digital design supports that argument by keeping full work available while also giving readers shorter paths through outcomes, stages, and versions. The result is not just a folder of assignments. It is a record of how one question became more focused, ethical, and useful over the semester.
+					</p>
+				</div>
+				<div class="portfolio-closing__links">
+					<a class="button button--primary" href="/portfolio/composition/investigative-field-essay">
+						Read the field essay <span aria-hidden="true">↗</span>
+					</a>
+					<a class="button button--quiet" href="/portfolio/composition/process-archive">
+						Open the process archive
+					</a>
+				</div>
+			</section>
 		</div>
 	</div>
 </Layout>
+
+<style>
+	.composition-hero {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid var(--rule);
+		background:
+			linear-gradient(90deg, transparent 0 66%, rgba(193, 165, 126, 0.07) 66% 66.1%, transparent 66.1%),
+			radial-gradient(circle at 78% 12%, rgba(92, 126, 100, 0.25), transparent 27rem);
+	}
+
+	.composition-hero::after {
+		position: absolute;
+		top: -200px;
+		right: -150px;
+		width: 520px;
+		height: 520px;
+		border: 1px solid rgba(193, 165, 126, 0.18);
+		border-radius: 50%;
+		content: "";
+	}
+
+	.composition-hero__inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(330px, 0.42fr);
+		gap: clamp(52px, 8vw, 116px);
+		align-items: end;
+		min-height: 680px;
+		padding-block: clamp(80px, 10vw, 132px);
+	}
+
+	.composition-hero h1 {
+		max-width: 860px;
+		margin: 22px 0 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(4.2rem, 8.4vw, 8.5rem);
+		font-weight: 400;
+		letter-spacing: -0.055em;
+		line-height: 0.82;
+	}
+
+	.composition-hero h1 em {
+		color: var(--sage);
+		font-weight: 400;
+	}
+
+	.composition-hero__deck {
+		max-width: 680px;
+		margin: 36px 0 0;
+		padding-left: 22px;
+		border-left: 1px solid var(--tan);
+		color: var(--muted);
+		font-size: clamp(1rem, 1.5vw, 1.16rem);
+		line-height: 1.78;
+	}
+
+	.composition-hero__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 24px;
+		margin-top: 30px;
+		color: var(--sage-bright);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+	}
+
+	.research-card {
+		border: 1px solid var(--rule-strong);
+		background: rgba(16, 35, 28, 0.86);
+	}
+
+	.research-card__label {
+		margin: 0;
+		padding: 18px 22px;
+		border-bottom: 1px solid var(--rule);
+		color: var(--tan);
+		font-size: 0.64rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.research-card__question {
+		margin: 0;
+		padding: 28px 22px 32px;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(1.65rem, 2.8vw, 2.4rem);
+		line-height: 1.18;
+	}
+
+	.research-card__stats {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		border-top: 1px solid var(--rule);
+	}
+
+	.research-card__stats div {
+		display: grid;
+		gap: 2px;
+		padding: 16px 20px;
+	}
+
+	.research-card__stats div:nth-child(even) {
+		border-left: 1px solid var(--rule);
+	}
+
+	.research-card__stats div:nth-child(n + 3) {
+		border-top: 1px solid var(--rule);
+	}
+
+	.research-card__stats strong {
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: 1.7rem;
+		font-weight: 400;
+	}
+
+	.research-card__stats span {
+		color: var(--muted);
+		font-size: 0.58rem;
+		font-weight: 700;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+	}
+
+	.composition-body {
+		display: grid;
+		grid-template-columns: 210px minmax(0, 1fr);
+		gap: clamp(50px, 7vw, 102px);
+		padding-block: 82px 120px;
+	}
+
+	.composition-contents {
+		align-self: start;
+		position: sticky;
+		top: 112px;
+	}
+
+	.composition-contents__label {
+		margin: 0 0 15px;
+		color: var(--tan);
+		font-size: 0.62rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.composition-contents nav {
+		border-top: 1px solid var(--rule-strong);
+	}
+
+	.composition-contents a {
+		display: flex;
+		gap: 11px;
+		padding: 12px 0;
+		border-bottom: 1px solid var(--rule);
+		color: var(--muted);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		transition: color 180ms ease, padding-left 180ms ease;
+	}
+
+	.composition-contents a span {
+		color: var(--rule-strong);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	}
+
+	.composition-contents a:hover {
+		padding-left: 6px;
+		color: var(--cream);
+	}
+
+	.composition-main {
+		min-width: 0;
+	}
+
+	.portfolio-section {
+		padding: 0 0 clamp(84px, 11vw, 140px);
+		scroll-margin-top: 120px;
+	}
+
+	.portfolio-section + .portfolio-section {
+		padding-top: clamp(70px, 9vw, 110px);
+		border-top: 1px solid var(--rule-strong);
+	}
+
+	.section-heading {
+		max-width: 850px;
+		margin-bottom: 42px;
+	}
+
+	.section-heading--split {
+		display: flex;
+		gap: 40px;
+		align-items: end;
+		justify-content: space-between;
+		max-width: none;
+	}
+
+	.section-heading h2 {
+		margin: 12px 0 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(3.2rem, 6vw, 6rem);
+		font-weight: 400;
+		letter-spacing: -0.048em;
+		line-height: 0.92;
+	}
+
+	.section-heading__note {
+		max-width: 680px;
+		margin: 22px 0 0;
+		color: var(--muted);
+		font-size: 0.95rem;
+		line-height: 1.8;
+	}
+
+	.section-heading--split .section-heading__note {
+		max-width: 390px;
+		margin: 0;
+	}
+
+	.portfolio-letter__copy,
+	.portfolio-closing__copy {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 22px clamp(32px, 5vw, 62px);
+		max-width: 1040px;
+	}
+
+	.portfolio-letter__copy p,
+	.portfolio-closing__copy p {
+		margin: 0;
+		color: var(--cream-soft);
+		font-size: clamp(1rem, 1.35vw, 1.08rem);
+		line-height: 1.9;
+	}
+
+	.portfolio-letter__copy p:first-child {
+		grid-column: 1 / -1;
+		color: var(--sage-bright);
+		font-family: var(--display);
+		font-size: clamp(1.7rem, 3vw, 2.6rem);
+		line-height: 1.34;
+	}
+
+	.outcome-list {
+		border-top: 1px solid var(--rule-strong);
+	}
+
+	.outcome {
+		display: grid;
+		grid-template-columns: 90px minmax(0, 1fr);
+		scroll-margin-top: 120px;
+		border-bottom: 1px solid var(--rule-strong);
+	}
+
+	.outcome__rail {
+		padding: 36px 22px 0 0;
+		border-right: 1px solid var(--rule);
+	}
+
+	.outcome__rail p {
+		margin: 0;
+		color: var(--tan);
+		font-family: var(--display);
+		font-size: 2.25rem;
+		line-height: 1;
+	}
+
+	.outcome__rail span {
+		display: block;
+		margin-top: 7px;
+		color: var(--muted);
+		font-size: 0.56rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.outcome__body {
+		padding: 34px 0 48px clamp(26px, 4vw, 48px);
+	}
+
+	.outcome h3 {
+		margin: 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(2.4rem, 4vw, 4rem);
+		font-weight: 400;
+		letter-spacing: -0.035em;
+		line-height: 1;
+	}
+
+	.outcome__wording {
+		max-width: 760px;
+		margin: 15px 0 0;
+		color: var(--sage);
+		font-size: 0.84rem;
+		font-weight: 600;
+		line-height: 1.65;
+	}
+
+	.outcome__reflection {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 26px 38px;
+		margin-top: 30px;
+	}
+
+	.outcome__reflection p {
+		margin: 0;
+		color: var(--cream-soft);
+		font-size: 0.95rem;
+		line-height: 1.86;
+	}
+
+	.outcome__evidence {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1px;
+		margin-top: 30px;
+		background: var(--rule);
+		border: 1px solid var(--rule);
+	}
+
+	.outcome__evidence-label {
+		grid-column: 1 / -1;
+		margin: 0;
+		padding: 10px 14px;
+		background: var(--forest-deep);
+		color: var(--tan);
+		font-size: 0.58rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.outcome__evidence a {
+		position: relative;
+		display: grid;
+		gap: 4px;
+		min-height: 104px;
+		padding: 15px 34px 15px 15px;
+		background: var(--paper-soft);
+		transition: background-color 180ms ease;
+	}
+
+	.outcome__evidence a:hover {
+		background: var(--paper-raised);
+	}
+
+	.outcome__evidence strong {
+		color: var(--cream);
+		font-size: 0.76rem;
+	}
+
+	.outcome__evidence span {
+		color: var(--muted);
+		font-size: 0.68rem;
+		line-height: 1.5;
+	}
+
+	.outcome__evidence i {
+		position: absolute;
+		top: 13px;
+		right: 13px;
+		color: var(--tan);
+		font-style: normal;
+	}
+
+	.research-arc {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		margin: 0;
+		padding: 0;
+		border: 1px solid var(--rule-strong);
+		list-style: none;
+	}
+
+	.research-arc li {
+		min-height: 270px;
+		padding: 20px;
+	}
+
+	.research-arc li + li {
+		border-left: 1px solid var(--rule);
+	}
+
+	.research-arc__marker {
+		width: 32px;
+		height: 32px;
+		display: grid;
+		place-items: center;
+		margin-bottom: 45px;
+		border: 1px solid var(--tan);
+		border-radius: 50%;
+		color: var(--tan);
+		font-size: 0.58rem;
+		font-weight: 700;
+	}
+
+	.research-arc__date {
+		margin: 0;
+		color: var(--muted);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.62rem;
+	}
+
+	.research-arc h3 {
+		margin: 9px 0 10px;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: 1.85rem;
+		font-weight: 400;
+		line-height: 1;
+	}
+
+	.research-arc li p:last-child {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.74rem;
+		line-height: 1.65;
+	}
+
+	.artifact-list {
+		border-top: 1px solid var(--rule-strong);
+	}
+
+	.artifact {
+		display: grid;
+		grid-template-columns: 54px 1.15fr 1.6fr 0.65fr 0.58fr;
+		gap: 22px;
+		align-items: center;
+		padding: 24px 0;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.artifact__number {
+		color: var(--rule-strong);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+	}
+
+	.artifact__title p {
+		margin: 0 0 5px;
+		color: var(--tan);
+		font-size: 0.56rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.artifact__title h3 {
+		margin: 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: 1.45rem;
+		font-weight: 400;
+		line-height: 1.1;
+	}
+
+	.artifact__summary {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.75rem;
+		line-height: 1.6;
+	}
+
+	.artifact__status {
+		display: grid;
+		gap: 3px;
+	}
+
+	.artifact__status span {
+		color: var(--muted);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.6rem;
+	}
+
+	.artifact__status strong {
+		color: var(--sage-bright);
+		font-size: 0.68rem;
+	}
+
+	.artifact__actions {
+		display: grid;
+		gap: 6px;
+		justify-items: end;
+	}
+
+	.artifact__actions a {
+		color: var(--cream-soft);
+		font-size: 0.64rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.artifact__actions a:hover {
+		color: var(--tan);
+	}
+
+	.revision-compare {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		border: 1px solid var(--rule-strong);
+	}
+
+	.revision-compare > div {
+		padding: clamp(26px, 4vw, 42px);
+	}
+
+	.revision-compare > div + div {
+		border-left: 1px solid var(--rule-strong);
+		background: var(--forest-deep);
+	}
+
+	.revision-compare__label {
+		margin: 0 0 12px;
+		color: var(--tan);
+		font-size: 0.62rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.revision-compare h3 {
+		margin: 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(2rem, 3vw, 2.9rem);
+		font-weight: 400;
+		line-height: 1;
+	}
+
+	.revision-compare ul {
+		margin: 28px 0;
+		padding-left: 1.1rem;
+	}
+
+	.revision-compare li {
+		color: var(--cream-soft);
+		font-size: 0.83rem;
+		line-height: 1.7;
+	}
+
+	.revision-compare li + li {
+		margin-top: 10px;
+	}
+
+	.revision-compare a {
+		color: var(--sage-bright);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.portfolio-closing__copy p {
+		color: var(--cream-soft);
+	}
+
+	.portfolio-closing__links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 38px;
+	}
+
+	@media (max-width: 1100px) {
+		.composition-hero__inner {
+			grid-template-columns: 1fr;
+			min-height: 0;
+		}
+
+		.research-card {
+			max-width: 620px;
+		}
+
+		.composition-body {
+			grid-template-columns: 1fr;
+		}
+
+		.composition-contents {
+			position: static;
+		}
+
+		.composition-contents nav {
+			display: flex;
+			overflow-x: auto;
+		}
+
+		.composition-contents a {
+			flex: 0 0 auto;
+			padding: 12px 18px;
+			border-right: 1px solid var(--rule);
+		}
+
+		.research-arc {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.research-arc li + li {
+			border-left: 0;
+		}
+
+		.research-arc li:nth-child(even) {
+			border-left: 1px solid var(--rule);
+		}
+
+		.research-arc li:nth-child(n + 3) {
+			border-top: 1px solid var(--rule);
+		}
+
+		.artifact {
+			grid-template-columns: 40px 1fr 1.2fr 0.62fr;
+		}
+
+		.artifact__actions {
+			grid-column: 2 / -1;
+			display: flex;
+			justify-content: flex-start;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.composition-hero__inner {
+			width: min(100% - 32px, 1180px);
+			padding-block: 64px;
+		}
+
+		.composition-hero h1 {
+			font-size: clamp(3.4rem, 17vw, 5.2rem);
+		}
+
+		.composition-body {
+			width: min(100% - 32px, 1180px);
+			padding-top: 54px;
+		}
+
+		.section-heading--split,
+		.portfolio-letter__copy,
+		.portfolio-closing__copy,
+		.outcome__reflection,
+		.revision-compare {
+			display: grid;
+			grid-template-columns: 1fr;
+		}
+
+		.section-heading--split {
+			align-items: start;
+		}
+
+		.portfolio-letter__copy p:first-child {
+			grid-column: auto;
+		}
+
+		.outcome {
+			grid-template-columns: 58px minmax(0, 1fr);
+		}
+
+		.outcome__rail {
+			padding-right: 12px;
+		}
+
+		.outcome__body {
+			padding-left: 20px;
+		}
+
+		.outcome__evidence {
+			grid-template-columns: 1fr;
+		}
+
+		.research-arc {
+			grid-template-columns: 1fr;
+		}
+
+		.research-arc li,
+		.research-arc li:nth-child(even) {
+			border-left: 0;
+		}
+
+		.research-arc li + li {
+			border-top: 1px solid var(--rule);
+		}
+
+		.artifact {
+			grid-template-columns: 32px 1fr;
+			gap: 15px;
+		}
+
+		.artifact__summary,
+		.artifact__status,
+		.artifact__actions {
+			grid-column: 2;
+		}
+
+		.revision-compare > div + div {
+			border-top: 1px solid var(--rule-strong);
+			border-left: 0;
+		}
+	}
+</style>
