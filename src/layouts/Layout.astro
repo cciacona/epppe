@@ -8,7 +8,7 @@ interface Props {
 
 const {
 	title,
-	description = 'Carmine Iacona builds and documents practical infrastructure, systems, and troubleshooting work.'
+	description = 'Personal website of Carmine Iacona, an Information Technology student at UCF in Orlando, Florida.'
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
@@ -72,11 +72,11 @@ const isActive = (href: string) =>
 			<div class="shell site-footer__inner">
 				<div>
 					<p class="eyebrow">Carmine Iacona</p>
-					<p class="site-footer__statement">Systems made legible.</p>
+					<p class="site-footer__statement">Information Technology student at UCF.</p>
 				</div>
 				<div class="site-footer__meta">
 					<p>&copy; {new Date().getFullYear()} Carmine Iacona</p>
-					<p>Built in Florida · Deployed on Cloudflare</p>
+					<p>Astro · Cloudflare Pages</p>
 				</div>
 			</div>
 		</footer>
