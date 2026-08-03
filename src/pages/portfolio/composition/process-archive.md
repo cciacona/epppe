@@ -1,10 +1,10 @@
 ---
 layout: ../../../layouts/CompositionDocumentLayout.astro
 title: Process Archive
-description: Six smaller assignments that show what I worked on between the proposal, annotated bibliography, and field essay.
+description: Smaller assignments, research ethics training, and peer feedback from the work between my proposal and final research paper.
 artifactType: Minor Assignments · Process Work
-date: July 13–27, 2026
-status: Six artifacts
+date: July 3–29, 2026
+status: Eight artifacts
 outcomes:
   - All Six Course Outcomes
 sections:
@@ -20,10 +20,14 @@ sections:
     label: Mid-Project Reflection
   - href: "#06-eportfolio-design-reflection"
     label: Design Reflection
+  - href: "#07-citi-human-subjects-research-training"
+    label: CITI Training
+  - href: "#08-eportfolio-peer-review"
+    label: Peer Review
 downloadLabel: Download archive
 ---
 
-<p class="lead">These six pieces cover how I found the research gap, planned the interviews and coding, studied the genre, and revised the paper and portfolio.</p>
+<p class="lead">These eight artifacts cover how I found the research gap, planned the interviews and coding, studied the genre, handled research ethics, and used feedback while revising the paper and portfolio.</p>
 
 <h2 id="01-cars-model-introduction">01 · CARS Model Introduction</h2>
 
@@ -88,7 +92,7 @@ These moves help the genre succeed because they give classmates enough context t
 
 <div class="artifact-callout">
   <strong>Where it appears in the essay</strong>
-  In Revision 1, I defined the key term, made the claim more specific, separated Findings from Discussion, explained the method and limits in more detail, and rewrote the conclusion around the research question.
+  Revision 1 changes the claim, organization, method, and conclusion. The final paper adds the reflective cover letter, coding table and chart, more source-based discussion, a future-research plan, and four appendices.
 </div>
 
 <h2 id="05-mid-project-reflection">05 · Mid-Project Reflection</h2>
@@ -109,4 +113,24 @@ My next step is to complete interviews with friends and one classmate, organize 
 
 **Submitted July 17 · Multiple Ways of Writing + Revision**
 
-The original portfolio shell had generic outcome labels, empty artifact slots, and navigation based on what still needed to be added. I revised it around what an outside reader needs: a clear course introduction, the six outcomes, full reflections, an artifact index, web versions of the three major assignments, original-file downloads, and a process archive. The dark design matches the rest of my website, but the composition section now has its own navigation and labels for assignment type, date, status, and outcome connections. This makes it easier to see how each assignment relates to what I learned instead of treating the site as storage for documents.
+The original portfolio shell had generic outcome labels, empty artifact slots, and navigation based on what still needed to be added. I revised it around what an outside reader needs: a clear course introduction, the six outcomes, full reflections, an artifact index, web pages for the three major assignments, original-file downloads, and a process archive. The dark design matches the rest of my website, but the composition section has its own navigation, page contents menus, and labels for assignment type, date, and outcome connections. The final-paper page also includes the coding table and chart from the submitted document. These choices help readers see how each artifact relates to what I learned instead of treating the site as storage for files.
+
+<h2 id="07-citi-human-subjects-research-training">07 · CITI Human Subjects Research Training</h2>
+
+**Submitted July 3 · Information Literacy**
+
+**Credential:** *Human Subjects Research – Group 2: Social / Behavioral Research Investigators and Key Personnel*
+
+**Issuer:** CITI Program
+
+**Valid:** July 2026–July 2029
+
+This was a required research-ethics assignment that I completed before conducting the interviews. My project avoided private group-chat screenshots, used written notes instead of recordings, removed course and instructor names, and referred to participants as P1 through P5 in the paper. I have not posted the completion report itself because it contains a credential ID; the course title, issuer, and dates are enough to document the training here.
+
+<h2 id="08-eportfolio-peer-review">08 · ePortfolio Peer Review</h2>
+
+**Portfolio posted July 27 · Feedback received July 29 · Multiple Ways of Writing + Revision**
+
+My peer reviewer said the homepage was clear, the navigation made the artifacts easy to find, the style was consistent, and the color contrast and mobile layout worked well. The main criticism was that the portfolio did not use much multimodality. The reviewer also said that the outcome reflections had enough support and that the artifacts were clearly labeled.
+
+I agreed with the multimodality comment, but I did not want to add unrelated images just to check a box. The final paper gave me a useful place to respond. I added a coding table that defines the interview themes and a bar chart that lets readers compare the theme counts. I also put both visuals on the final-paper web page with alt text and a caption. This kept the visuals tied to the research instead of using them as decoration.
