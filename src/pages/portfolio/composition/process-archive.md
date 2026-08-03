@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/CompositionDocumentLayout.astro
 title: Process Archive
-description: Smaller assignments, research ethics training, and peer feedback from the work between my proposal and final research paper.
+description: Smaller assignments, research ethics training, and peer feedback that helped me develop the project from the first proposal to the final paper.
 artifactType: Minor Assignments · Process Work
 date: July 3–29, 2026
 status: Eight artifacts
@@ -27,7 +27,7 @@ sections:
 downloadLabel: Download archive
 ---
 
-<p class="lead">These eight artifacts cover how I found the research gap, planned the interviews and coding, studied the genre, handled research ethics, and used feedback while revising the paper and portfolio.</p>
+<p class="lead">This archive includes the smaller assignments and other work that helped me move from the first proposal to the final paper. It shows how I planned the interviews, coded the answers, studied genre, handled research ethics, and responded to feedback.</p>
 
 <h2 id="01-cars-model-introduction">01 · CARS Model Introduction</h2>
 
@@ -113,7 +113,7 @@ My next step is to complete interviews with friends and one classmate, organize 
 
 **Submitted July 17 · Multiple Ways of Writing + Revision**
 
-The original portfolio shell had generic outcome labels, empty artifact slots, and navigation based on what still needed to be added. I revised it around what an outside reader needs: a clear course introduction, the six outcomes, full reflections, an artifact index, web pages for the three major assignments, original-file downloads, and a process archive. The dark design matches the rest of my website, but the composition section has its own navigation, page contents menus, and labels for assignment type, date, and outcome connections. The final-paper page also includes the coding table and chart from the submitted document. These choices help readers see how each artifact relates to what I learned instead of treating the site as storage for files.
+When I first started the ePortfolio, it mostly had placeholder headings and empty spaces for assignments. I reorganized it around the six course outcomes and added an artifact index, a project timeline, web pages for the three major assignments, original-file downloads, and a process archive. The composition section uses the same dark design as the rest of my website, but it has its own navigation and page menus because there is much more to read here. I also added the coding table and chart from the final paper to its web page. This makes it easier for a reader to see how the assignments connect instead of opening a page that is only a list of files.
 
 <h2 id="07-citi-human-subjects-research-training">07 · CITI Human Subjects Research Training</h2>
 
@@ -125,7 +125,7 @@ The original portfolio shell had generic outcome labels, empty artifact slots, a
 
 **Valid:** July 2026–July 2029
 
-This was a required research-ethics assignment that I completed before conducting the interviews. My project avoided private group-chat screenshots, used written notes instead of recordings, removed course and instructor names, and referred to participants as P1 through P5 in the paper. I have not posted the completion report itself because it contains a credential ID; the course title, issuer, and dates are enough to document the training here.
+This was a required research-ethics assignment that I completed before conducting the interviews. My project avoided private group-chat screenshots, used written notes instead of recordings, removed course and instructor names, and referred to participants as P1 through P5 in the paper. I left the completion report off the public site because it includes my credential ID.
 
 <h2 id="08-eportfolio-peer-review">08 · ePortfolio Peer Review</h2>
 
@@ -133,4 +133,4 @@ This was a required research-ethics assignment that I completed before conductin
 
 My peer reviewer said the homepage was clear, the navigation made the artifacts easy to find, the style was consistent, and the color contrast and mobile layout worked well. The main criticism was that the portfolio did not use much multimodality. The reviewer also said that the outcome reflections had enough support and that the artifacts were clearly labeled.
 
-I agreed with the multimodality comment, but I did not want to add unrelated images just to check a box. The final paper gave me a useful place to respond. I added a coding table that defines the interview themes and a bar chart that lets readers compare the theme counts. I also put both visuals on the final-paper web page with alt text and a caption. This kept the visuals tied to the research instead of using them as decoration.
+I agreed with the multimodality comment, but I did not want to add unrelated images just to check a box. The final paper gave me a useful place to respond. I added a coding table that defines the interview themes and a bar chart that lets readers compare the theme counts. I also put both visuals on the final-paper web page with alt text and a caption. That way, the visuals add information instead of just filling space.
