@@ -1,44 +1,85 @@
 ---
 layout: ../../../layouts/CompositionDocumentLayout.astro
 title: Student-Run Class Group Chats as Low-Stakes Academic Support Genres
-description: The July 26 version of my field essay, based on five interviews and research on mobile messaging, participation, genre, and peer support.
-artifactType: Gordon Rule Assignment 03 · Revision 1
-date: July 26, 2026
-status: Submitted · Final due July 31
+description: My final research paper, based on five interviews, open coding, and research on genre, mobile messaging, participation, and peer support.
+artifactType: Gordon Rule Assignment 03 · Final Research Paper
+date: August 2, 2026
+status: Final submission
 outcomes:
   - Generating Inquiry
+  - Multiple Ways of Writing
+  - Information Literacy
   - Research Genre Production
   - Contributing Knowledge
   - Revision
 sections:
+  - href: "#reflective-cover-letter"
+    label: Cover Letter
+  - href: "#final-paper"
+    label: Final Paper
+  - href: "#data-display"
+    label: Data Display
   - href: "#revision-map"
     label: Revision Map
-  - href: "#introduction"
-    label: Introduction
-  - href: "#methods"
-    label: Methods
-  - href: "#findings"
-    label: Findings
-  - href: "#discussion"
-    label: Discussion
-  - href: "#conclusion"
-    label: Conclusion
-  - href: "#works-cited"
-    label: Works Cited
-download: /portfolio/composition/files/investigative-field-essay-revision-1.pdf
-downloadLabel: Download revised PDF
+  - href: "#appendices"
+    label: Appendices
+download: /portfolio/composition/files/final-research-paper.docx
+downloadLabel: Download paper + appendices
 ---
 
-<p class="lead">Five interviews showed that students use class chats to restate instructions, compare interpretations, ask questions with less pressure, and support one another. The chats can help, but they can also spread incorrect information and interfere with personal time.</p>
+<p class="lead">Five interviews showed that students use class chats to ask low-pressure questions, restate instructions in peer language, participate by reading or reacting, and support one another. The same chats can also spread incorrect information, create notification stress, and blur academic-integrity boundaries.</p>
 
 <div class="artifact-callout">
-  <strong>Version note</strong>
-  I submitted this version on July 26 after peer review. The final paper is due July 31. I also included the original <a href="/portfolio/composition/files/investigative-field-essay-draft-1.docx">Draft 1 Word document</a> for comparison.
+  <strong>Public portfolio copy</strong>
+  The downloadable Word document contains the reflective cover letter, full paper, Works Cited, coding table and chart, and all four appendices. Participant names in the consent records are replaced with P1–P5. Draft 1 and <a href="/portfolio/composition/files/investigative-field-essay-revision-1.pdf">Revision 1</a> remain available for comparison.
 </div>
+
+## Reflective Cover Letter
+
+The purpose of this paper is to explain how student-run class group chats function as academic writing spaces. I want readers to see that these chats do more than spread reminders: they help students interpret assignments, recognize shared confusion, and participate without always contacting the professor. I imagined you and my classmates as the main audience, but I also wrote for readers unfamiliar with the project. This made me define the topic clearly and avoid treating five interviews as representative of every college student.
+
+The project developed through the proposal, annotated bibliography, CARS activity, interviews, coding exercise, and two drafts. Feedback showed that I needed to make the coding visible, use more secondary sources in the Discussion, add more support for the analysis, and explain where the research could go next. I added a coding table and chart, expanded the Discussion, separated Results from interpretation more clearly, and developed the conclusion into a future research plan. Because I took written interview notes rather than recordings, I use paraphrase instead of saying I have exact quotations.
+
+This paper demonstrates progress in inquiry, information literacy, genre awareness, knowledge production, and revision. The question became more focused over time, the sources helped me interpret the primary data, and the genre framework helped me explain class chats as recurring social actions rather than simply as apps.
+
+## Final Paper
+
+**Research question:** How do college students use student-run class group chats to clarify course expectations and support one another outside official classroom spaces?
+
+**Method:** Five semi-structured interviews, written interview notes, participant labels P1–P5, and a simplified open-coding process.
+
+**Main claim:** Student-run class group chats act as low-stakes academic support genres. They reduce the pressure of asking questions, allow students to translate official course language into peer language, and make room for participation through reading and reacting. Their usefulness depends on trust, reasonable boundaries, and knowing when to check official information.
+
+**Research used:** The Discussion compares the interviews with nine sources on genre, messaging, audience, participation, engagement, coding, and peer support.
+
+[Download the final paper and appendices](/portfolio/composition/files/final-research-paper.docx)
+
+## Data Display
+
+The final version includes both a codebook and a chart. The table explains how I grouped the interview codes, while the chart shows how many of the five participants mentioned each main pattern.
+
+**Table 1**
+
+*Coding Framework for Interview Notes*
+
+| Broad theme | Initial codes combined | Operational meaning | Participants |
+| --- | --- | --- | --- |
+| Quick academic information | Clarification; deadline checking; missed-class information | Messages seeking or confirming course facts and instructions | 5 of 5 |
+| Audience and rhetorical cost | Professor avoidance; informality; speed | Reasons peers felt easier to contact than instructors for simple questions | 4 of 5 |
+| Quiet participation | Reading; reacting; answering selectively | Receiving or confirming information without frequent original posts | 5 of 5 |
+| Emotional and social support | Reassurance; shared frustration; humor | Messages that reduced isolation or normalized difficulty | 4 of 5 |
+| Risks and boundaries | Notification stress; misinformation; integrity concern | Problems caused by volume, unreliable answers, or inappropriate sharing | 1–3 of 5 |
+
+*Note.* Counts show whether a participant mentioned a theme at least once; they do not measure the total number of messages or the strength of each opinion.
+
+<figure class="research-figure">
+  <img src="/portfolio/composition/files/final-research-paper-theme-chart.png" alt="Horizontal bar chart showing that five participants mentioned fast clarification, four mentioned asking peers before professors, four mentioned emotional support, three mentioned notification overload, two mentioned misinformation, and one mentioned an academic-integrity concern." />
+  <figcaption>Figure 1. Number of participants who mentioned each major interview theme (n = 5).</figcaption>
+</figure>
 
 ## Revision Map
 
-I added nine margin comments to the revised PDF. They point out these changes from Draft 1:
+### Draft 1 to Revision 1
 
 1. Defined “student-run class group chat” more clearly.
 2. Followed the CARS model more closely and made the main claim more specific.
@@ -50,62 +91,25 @@ I added nine margin comments to the revised PDF. They point out these changes fr
 8. Added more about the limits of the study and possible future research.
 9. Rewrote the conclusion to answer the research question directly.
 
----
+### Revision 1 to the Final Paper
 
-## Introduction
+1. Added the reflective cover letter.
+2. Added the coding table and theme-frequency chart.
+3. Added more secondary sources and used them throughout the Discussion.
+4. Explained the choice to use written notes and paraphrase rather than recordings and direct quotations.
+5. Reworked the findings around clearer theme labels and added more support for the analysis.
+6. Turned the conclusion into a specific plan for larger surveys, message analysis with consent, student-created chat norms, and research on assignment design.
+7. Added four appendices containing the records behind the study.
 
-Class group chats have become a routine part of many college courses, even when an instructor never creates, approves, or enters one. Students build these spaces through GroupMe, Discord, text messaging, and similar platforms to ask what an assignment means, confirm a deadline, share reminders, and find out whether other people are confused. I use the term *student-run class group chat* to mean an unofficial messaging space created and managed by students enrolled in the same course, without the instructor serving as a regular participant or moderator. The messages in these chats may appear casual compared with an email to a professor or a formal discussion post, but students still make choices about audience, tone, timing, credibility, and purpose. For that reason, these chats can be studied as writing genres that perform academic work outside the platforms instructors directly observe.
+The original [Draft 1 Word document](/portfolio/composition/files/investigative-field-essay-draft-1.docx), [Revision 1 PDF](/portfolio/composition/files/investigative-field-essay-revision-1.pdf), and [final Word document](/portfolio/composition/files/final-research-paper.docx) are all available.
 
-Previous research suggests that mobile messaging can support academic communication, but it also shows that the value of a platform depends on the rhetorical situation surrounding it. Gronseth and Hebert studied GroupMe in graduate courses and found that students used it for course discussion, assignment questions, collaboration, resource sharing, and social communication. Participants valued its speed and informal atmosphere, although some felt that frequent notifications blurred the boundary between school and personal time (Gronseth and Hebert). Lauricella and Kay similarly found that college students used text and instant messaging for academic purposes but changed their communication choices depending on the audience. Messaging peers felt more natural than messaging instructors, partly because some students considered instant messaging too personal or informal for professor communication (Lauricella and Kay). Together, these studies show that convenience alone does not explain students’ platform choices. The writer’s relationship with the audience helps determine which type of communication feels appropriate.
+## Appendices
 
-Other scholarship helps explain why short responses, reactions, and silent reading should not automatically be treated as meaningless participation. Baron et al. examined an instructor-controlled digital backchannel in a university engineering course. The system increased the number of questions students asked and gave quieter students another way to participate. Students frequently voted for existing questions rather than composing new ones, showing that participation can happen through small actions (Baron et al.). Hrastinski makes a related argument in his theory of online participation. He explains that participation includes reading, maintaining relationships, following a discussion, and feeling connected, not merely producing a measurable number of posts (80–81). This broader definition is useful for class group chats, where many students may receive information, react to messages, or monitor the conversation without becoming frequent posters.
+The submitted Word document includes:
 
-However, much of the existing research examines messaging spaces that were introduced, managed, or directly observed by instructors. Less attention has been given to chats created entirely by students, where professors are absent and the expectations are negotiated informally. That absence may affect what students are willing to ask, how they translate course instructions for one another, and how they respond to shared confusion or stress. My research question is: How do college students use student-run class group chats to clarify course expectations and support one another outside official classroom spaces? Based on my interviews and secondary research, I argue that these chats function as low-stakes academic support genres. They reduce the social pressure of asking questions, allow students to compare interpretations quickly, and provide forms of participation that do not require contacting the instructor directly. At the same time, their value depends on trust, shared expectations, and students’ ability to separate peer advice from official course information.
+1. **Appendix A:** Completed interview consent records.
+2. **Appendix B:** Semi-structured interview protocol.
+3. **Appendix C:** Participant-level coding matrix and open-code table.
+4. **Appendix D:** Dated interview-note records for P1–P5.
 
-## Methods
-
-To investigate this question, I conducted semi-structured interviews with five participants: four friends who are current or recent college students and one classmate. I selected participants who had used at least one student-run class group chat because they could describe both the communication that occurred in those spaces and their own decisions about whether to post, react, or remain mostly silent. This was a convenience sample rather than a representative sample of all college students. The small group fits the exploratory purpose of the project, but it limits the claims I can make. My goal is to understand how these participants interpret their experiences, not to claim that every college student uses class group chats in the same way.
-
-The interview questions addressed the platforms participants had used, the kinds of messages that appeared most often, the reasons students asked classmates instead of instructors, the meanings of reactions or short replies, and the problems participants had encountered. I also asked whether each participant usually posted, reacted, answered questions, or mostly read the chat. The interviews were informal and semi-structured, allowing me to ask follow-up questions when a response raised an issue relevant to my research question. I took written notes rather than collecting screenshots or copying private conversations. Participants are identified as P1 through P5, and I excluded specific course names and other identifying details. This approach protects the interviewees as well as students who appeared in the group chats but did not consent to participate in my study.
-
-I analyzed the interview notes through a simplified open-coding process. Denny and Clark explain that open coding begins without predetermined categories so that significant ideas can emerge from the data (91). First, I organized the notes by participant and read all five interviews to gain a general sense of the responses. During a second reading, I marked individual statements with short labels such as assignment clarification, deadline checking, reassurance, reactions, professor avoidance, misinformation, humor, notification stress, and academic-integrity concern. Denny and Clark describe coding as assigning shorthand labels that make pieces of data easier to retrieve and compare (92–93). I then combined related labels into broader categories. Assignment clarification and deadline checking became part of quick academic information, while reassurance, shared frustration, and humor became part of emotional and social support.
-
-Although I allowed the interviews to guide the categories, the secondary research also helped me recognize patterns that might matter. Gronseth and Hebert’s discussion of assignment questions, collaboration, resource sharing, and social communication helped me distinguish several functions of a class chat. Hrastinski’s theory encouraged me to treat reading and reacting as forms of participation instead of assuming that quieter members were uninvolved. After identifying the main categories, I compared them across participants and recorded both recurring patterns and exceptions. Denny and Clark warn against cherry-picking unusual responses or making broad claims from data that is too thin (97–98). I therefore focused the findings on themes that appeared across multiple interviews and treated individual examples as illustrations rather than proof of a universal pattern.
-
-## Findings
-
-The clearest pattern was that participants used class chats for fast, low-stakes clarification. All five described seeing questions about due dates, assignment directions, class cancellations, or material missed during an absence. Four participants said they would normally ask the group before emailing the professor when a question seemed simple. Speed mattered, but it was not the only reason. Participants also described peer questions as requiring less formality and carrying less risk of appearing unprepared. This supports Lauricella and Kay’s finding that students choose communication tools partly according to their audience. An email to a professor may require a greeting, explanation, and carefully managed tone, while a group-chat question may consist of a single sentence or fragment. The chat therefore operates as a recognizable genre whose conventions favor quickness, informality, and immediate peer response.
-
-These responses suggest that student-run chats fill a space between official course documents and direct instructor communication. Students do not always use the chat because the professor is inaccessible. Instead, they may want a second interpretation of a prompt or reassurance that they did not miss something obvious. Several participants described checking the chat when an assignment seemed unclear because another student might restate the directions in more familiar language. In this sense, the group does more than distribute information: it informally translates official course language into peer language. That translation can help students act with greater confidence, but it also introduces the possibility that a confident peer explanation may be inaccurate.
-
-A second pattern involved participation without frequent posting. Two participants described themselves as active posters, while three said they mostly read messages and responded only when they knew the answer or shared the same question. These quieter participants still considered the chat useful because they received reminders, saw questions they had not yet asked, and could determine whether confusion was individual or shared. Reactions such as a thumbs-up were used to confirm an answer, acknowledge that a message had been seen, or show that several people had the same concern. Baron et al. found that students in a backchannel often supported an existing question rather than composing a new one, and Hrastinski argues that online participation includes more than visible message production. The interview responses suggest that this broader understanding also applies to unofficial class chats. Students can benefit from and contribute to a group without becoming its most recognizable voices.
-
-The third major pattern was emotional support. Four participants described moments when the chat made them feel less alone in their confusion or stress. When several students admitted that an assignment was difficult, participants were less likely to view their own difficulty as a personal failure. Humor and complaints sometimes served the same purpose. A joke about an unclear prompt did not solve the assignment, but it recognized a shared experience and reduced some of the tension surrounding it. Gronseth and Hebert connect mobile messaging to social presence, while Hrastinski describes participation as maintaining relationships in addition to exchanging information. These ideas explain why messages that are not directly instructional can still support academic work. The social side of a chat may make students more comfortable asking for help later.
-
-The interviews also revealed limits that complicate a purely positive view of class group chats. Three participants had muted a chat because of frequent notifications or unrelated conversation. Two remembered cases in which students confidently circulated incorrect information about a deadline or requirement. One participant was cautious about group chats because clarification could shift into sharing answers in ways that felt academically questionable. These concerns show that more communication does not automatically produce better learning. Gronseth and Hebert also found that mobile messaging could interfere with personal boundaries. In an unofficial chat, no instructor is responsible for moderating accuracy, frequency, or academic-integrity concerns. The same informality that makes the space comfortable can make its information less dependable.
-
-## Discussion
-
-The findings support a more specific claim than simply stating that class group chats are convenient. These chats create unofficial academic support systems because they reduce the social cost of asking questions. Students can test an interpretation with peers before contacting an instructor, and they can see visible evidence that other people are also working through the course. Their usefulness develops from the rhetorical situation: the audience consists of peers, the tone is informal, the expected response time is short, and participation can be as small as reading or reacting. The same question would function differently in an email, a Canvas announcement, or a graded discussion board because each genre carries different expectations about formality, authority, and response.
-
-Treating class chats as genres also makes their repeated actions easier to recognize. Students ask for clarification, translate instructions, confirm interpretations, share reminders, and manage emotions. These actions become familiar enough that participants understand what kinds of messages belong in the space and how much explanation is expected. The genre remains flexible because each class develops its own norms, but the interviews suggest that students still recognize a general purpose: receiving fast peer support without entering the more formal relationship between student and instructor. This helps explain why students may use a chat even when the same information is available elsewhere.
-
-The findings do not suggest that unofficial chats should replace communication with instructors. The risk of misinformation demonstrates why official sources remain necessary. A useful approach is to treat the chat as a first step for low-stakes peer support while confirming important requirements through the syllabus, assignment page, or professor. Instructors may not need to enter or supervise these chats, since their absence helps make the space feel less formal. Still, acknowledging that such chats exist could help instructors understand how students respond to unclear directions. If many students independently reinterpret the same prompt, repeated confusion may indicate that the assignment language needs clarification.
-
-This project has several limitations. The participant group is small and consists mainly of people I already know, which may produce responses that are more similar than those from a broader sample. I also relied on interview notes rather than recordings or direct analysis of group-chat messages. That choice protects privacy, but it means the study examines participants’ memories and interpretations instead of the exact language used in the chats. Because the sample is exploratory, the numerical counts identify patterns within these interviews rather than percentages that can be generalized to all college students. A larger study could use an anonymous survey, compare majors or course formats, or analyze selected chat excerpts with informed consent from everyone involved. Future research could also examine whether students use chats differently in online courses, difficult prerequisite courses, or classes where they already know their peers.
-
-## Conclusion
-
-Student-run class group chats occupy an unusual position between academic and social communication. They are unofficial, informal, and sometimes disorganized, but they also help students interpret course expectations, ask questions with less pressure, and recognize that other students share their concerns. The interviews suggest that these chats are most useful when they provide quick clarification and reassurance without being treated as replacements for official information. Looking at them as writing genres makes their importance easier to see. Even brief questions, reactions, reminders, and jokes respond to an audience and accomplish purposes within a specific community. Studying these small forms of writing shows that a meaningful amount of academic work occurs outside the assignments and platforms instructors directly observe.
-
-## Works Cited
-
-Baron, David, Andrew Bestbier, Jennifer M. Case, and Brandon I. Collier-Reed. “Investigating the Effects of a Backchannel on University Classroom Interactions: A Mixed-Method Case Study.” *Computers & Education*, vol. 94, 2016, pp. 61–76. [https://doi.org/10.1016/j.compedu.2015.11.007](https://doi.org/10.1016/j.compedu.2015.11.007).
-
-Denny, Melody, and Lindsay Clark. “How to Analyze Data in a Primary Research Study.” *Writing Spaces: Readings on Writing*, vol. 4, edited by Dana Driscoll, Megan Heise, Mary Stewart, and Matthew Vetter, Parlor Press, 2021, pp. 85–109. [https://wacclearinghouse.org/docs/books/writingspaces4/denny.pdf](https://wacclearinghouse.org/docs/books/writingspaces4/denny.pdf).
-
-Gronseth, Susie, and Waneta Hebert. “‘GroupMe’: Investigating Use of Mobile Instant Messaging in Higher Education Courses.” *TechTrends*, vol. 63, no. 1, 2019, pp. 15–22. [https://doi.org/10.1007/s11528-018-0361-y](https://doi.org/10.1007/s11528-018-0361-y).
-
-Hrastinski, Stefan. “A Theory of Online Learning as Online Participation.” *Computers & Education*, vol. 52, no. 1, 2009, pp. 78–82. [https://doi.org/10.1016/j.compedu.2008.06.009](https://doi.org/10.1016/j.compedu.2008.06.009).
-
-Lauricella, Sharon, and Robin Kay. “Exploring the Use of Text and Instant Messaging in Higher Education Classrooms.” *Research in Learning Technology*, vol. 21, 2013, article 19061, pp. 1–17. [https://doi.org/10.3402/rlt.v21i0.19061](https://doi.org/10.3402/rlt.v21i0.19061).
+I kept the appendices in the downloadable file instead of on this page. In that public copy, the consent records use P1–P5 in place of participant names.

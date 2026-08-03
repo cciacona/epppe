@@ -388,6 +388,54 @@ const {
 		border-top: 1px solid var(--rule);
 	}
 
+	.document-content :global(table) {
+		display: block;
+		width: 100%;
+		margin: 1.4rem 0 2.4rem;
+		overflow-x: auto;
+		border-collapse: collapse;
+		font-size: 0.82rem;
+		line-height: 1.55;
+	}
+
+	.document-content :global(th),
+	.document-content :global(td) {
+		min-width: 150px;
+		padding: 12px 14px;
+		border: 1px solid var(--rule-strong);
+		color: var(--cream-soft);
+		text-align: left;
+		vertical-align: top;
+	}
+
+	.document-content :global(th) {
+		background: var(--forest-deep);
+		color: var(--sage-bright);
+		font-size: 0.72rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.document-content :global(.research-figure) {
+		margin: 2.8rem 0;
+		padding: 18px;
+		border: 1px solid var(--rule-strong);
+		background: #fff;
+	}
+
+	.document-content :global(.research-figure img) {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.document-content :global(.research-figure figcaption) {
+		margin-top: 14px;
+		color: #34463d;
+		font-size: 0.74rem;
+		line-height: 1.5;
+	}
+
 	.document-content :global(.lead) {
 		margin-bottom: 3rem;
 		padding-bottom: 2.4rem;
