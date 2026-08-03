@@ -24,14 +24,14 @@ sections:
   - href: "#appendices"
     label: Appendices
 download: /portfolio/composition/files/final-research-paper.docx
-downloadLabel: Download paper + appendices
+downloadLabel: Download redacted paper + appendices
 ---
 
 <p class="lead">Five interviews showed that students use class chats to ask low-pressure questions, restate instructions in peer language, participate by reading or reacting, and support one another. The same chats can also spread incorrect information, create notification stress, and blur academic-integrity boundaries.</p>
 
 <div class="artifact-callout">
   <strong>Public portfolio copy</strong>
-  The downloadable Word document contains the reflective cover letter, full paper, Works Cited, coding table and chart, and all four appendices. Participant names in the consent records are replaced with P1–P5. Draft 1 and <a href="/portfolio/composition/files/investigative-field-essay-revision-1.pdf">Revision 1</a> remain available for comparison.
+  The downloadable Word document is a public copy of my final submission. It includes the reflective cover letter, full paper, Works Cited, coding table, chart, and all four appendices. I replaced the names on the consent forms with P1–P5, but I did not change the Canvas submission. Draft 1 and <a href="/portfolio/composition/files/investigative-field-essay-revision-1.pdf">Revision 1</a> are still available for comparison.
 </div>
 
 ## Reflective Cover Letter
@@ -52,7 +52,7 @@ This paper demonstrates progress in inquiry, information literacy, genre awarene
 
 **Research used:** The Discussion compares the interviews with nine sources on genre, messaging, audience, participation, engagement, coding, and peer support.
 
-[Download the final paper and appendices](/portfolio/composition/files/final-research-paper.docx)
+[Download the redacted final paper and appendices](/portfolio/composition/files/final-research-paper.docx)
 
 ## Data Display
 
@@ -101,7 +101,7 @@ The final version includes both a codebook and a chart. The table explains how I
 6. Turned the conclusion into a specific plan for larger surveys, message analysis with consent, student-created chat norms, and research on assignment design.
 7. Added four appendices containing the records behind the study.
 
-The original [Draft 1 Word document](/portfolio/composition/files/investigative-field-essay-draft-1.docx), [Revision 1 PDF](/portfolio/composition/files/investigative-field-essay-revision-1.pdf), and [final Word document](/portfolio/composition/files/final-research-paper.docx) are all available.
+The original [Draft 1 Word document](/portfolio/composition/files/investigative-field-essay-draft-1.docx), [Revision 1 PDF](/portfolio/composition/files/investigative-field-essay-revision-1.pdf), and [redacted final Word document](/portfolio/composition/files/final-research-paper.docx) are all available so readers can compare the versions directly.
 
 ## Appendices
 
@@ -112,4 +112,4 @@ The submitted Word document includes:
 3. **Appendix C:** Participant-level coding matrix and open-code table.
 4. **Appendix D:** Dated interview-note records for P1–P5.
 
-I kept the appendices in the downloadable file instead of on this page. In that public copy, the consent records use P1–P5 in place of participant names.
+I kept the appendices in the downloadable file instead of reproducing them on this public page. In that public copy, the consent records use P1–P5 in place of participant names. The submitted Canvas document remains unchanged.
