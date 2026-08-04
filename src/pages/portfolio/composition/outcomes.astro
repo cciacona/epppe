@@ -403,6 +403,10 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		background: var(--paper-raised);
 	}
 
+	.outcome__evidence-grid a:last-child:nth-child(odd) {
+		grid-column: 1 / -1;
+	}
+
 	.outcome__evidence-number {
 		color: var(--rule-strong);
 		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
