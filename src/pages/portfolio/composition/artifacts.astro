@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import CompositionNav from '../../../components/CompositionNav.astro';
-import { artifacts, outcomeById, researchArc } from '../../../data/composition';
+import { artifacts, connectionsForArtifact, researchArc } from '../../../data/composition';
 
 const artifactGroups = [
 	{
@@ -24,26 +24,26 @@ const artifactGroups = [
 <Layout
 	title="Artifact Index | Composition Research Portfolio"
 	description="All eleven artifacts in Carmine Iacona’s ENC 1102 ePortfolio, with links to the course outcomes each artifact supports."
+	image="/portfolio/composition/og.png"
 >
+	<CompositionNav />
+
 	<header class="artifacts-masthead">
 		<div class="shell artifacts-masthead__inner">
 			<div>
-				<a class="artifacts-masthead__back" href="/portfolio/composition">Composition Research Portfolio</a>
 				<p class="eyebrow">ENC 1102 · Selected Work</p>
-				<h1>Artifact<br /><em>Index</em></h1>
+				<h1>Artifact <em>Index</em></h1>
 				<p class="artifacts-masthead__deck">
-					This page contains all eleven selected artifacts. Every entry lists the outcomes it supports, so readers can move directly between the work and the reflection about it.
+					This page lists all eleven artifacts. Each entry links to the outcome reflections where I explain why I chose it as evidence.
 				</p>
 			</div>
 			<aside class="artifacts-masthead__summary" aria-label="Artifact summary">
 				<div><strong>03</strong><span>Major assignments</span></div>
-				<div><strong>08</strong><span>Supporting artifacts</span></div>
 				<div><strong>11</strong><span>Total artifacts</span></div>
+				<div><strong>26</strong><span>Artifact connections</span></div>
 			</aside>
 		</div>
 	</header>
-
-	<CompositionNav />
 
 	<div class="shell artifacts-layout">
 		<aside class="artifacts-contents">
@@ -58,7 +58,7 @@ const artifactGroups = [
 			<a class="artifacts-contents__outcomes" href="/portfolio/composition/outcomes">Read outcome reflections →</a>
 		</aside>
 
-		<main class="artifacts-main">
+		<div class="artifacts-main">
 			{artifactGroups.map((group) => (
 				<section id={group.id} class="artifact-section" aria-labelledby={`${group.id}-heading`}>
 					<header class="section-heading section-heading--split">
@@ -70,9 +70,11 @@ const artifactGroups = [
 					</header>
 
 					<div class="artifact-list">
-						{group.items.map((artifact) => (
+						{group.items.map((artifact) => {
+							const connections = connectionsForArtifact(artifact.title);
+							return (
 							<article class="artifact">
-								<div class="artifact__number">{artifact.number}</div>
+								<div class="artifact__number" aria-hidden="true">{artifact.number}</div>
 								<div class="artifact__main">
 									<div class="artifact__meta">
 										<span>{artifact.type}</span>
@@ -81,19 +83,19 @@ const artifactGroups = [
 									<h3>{artifact.title}</h3>
 									<p class="artifact__summary">{artifact.summary}</p>
 
-									<div class="artifact__outcomes">
-										<p>Connected outcomes</p>
-										<div>
-											{artifact.outcomeIds.map((outcomeId) => {
-												const outcome = outcomeById.get(outcomeId);
-												return outcome && (
+									<div class="artifact__connections">
+										<h4>Outcome evidence</h4>
+										<ul>
+											{connections.map(({ outcome, evidence }) => (
+												<li>
 													<a href={`/portfolio/composition/outcomes#${outcome.id}`}>
-														<span>{outcome.number}</span>
-														{outcome.title}
+														<span aria-hidden="true">{outcome.number}</span>
+														Read the {outcome.title} reflection
 													</a>
-												);
-											})}
-										</div>
+													<p>{evidence.connection}</p>
+												</li>
+											))}
+										</ul>
 									</div>
 								</div>
 								<div class="artifact__actions">
@@ -101,7 +103,8 @@ const artifactGroups = [
 									{artifact.download && <a href={artifact.download}>Download original <span aria-hidden="true">↓</span></a>}
 								</div>
 							</article>
-						))}
+							);
+						})}
 					</div>
 				</section>
 			))}
@@ -176,7 +179,7 @@ const artifactGroups = [
 					<a class="button button--quiet" href="/portfolio/composition/process-archive">Open the Process Archive</a>
 				</div>
 			</section>
-		</main>
+		</div>
 	</div>
 </Layout>
 
@@ -184,7 +187,7 @@ const artifactGroups = [
 	.artifacts-masthead {
 		position: relative;
 		overflow: hidden;
-		padding-block: clamp(72px, 9vw, 126px);
+		padding-block: clamp(44px, 6vw, 68px);
 		border-bottom: 1px solid var(--rule);
 		background:
 			linear-gradient(90deg, transparent 0 68%, rgba(193, 165, 126, 0.055) 68% 68.1%, transparent 68.1%),
@@ -218,10 +221,10 @@ const artifactGroups = [
 		margin: 16px 0 0;
 		color: var(--cream);
 		font-family: var(--display);
-		font-size: clamp(4rem, 8vw, 7.6rem);
+		font-size: clamp(3.2rem, 6vw, 5.6rem);
 		font-weight: 400;
 		letter-spacing: -0.052em;
-		line-height: 0.84;
+		line-height: 0.9;
 	}
 
 	.artifacts-masthead h1 em {
@@ -231,7 +234,7 @@ const artifactGroups = [
 
 	.artifacts-masthead__deck {
 		max-width: 720px;
-		margin: 30px 0 0;
+		margin: 22px 0 0;
 		color: var(--muted);
 		font-size: clamp(1rem, 1.5vw, 1.14rem);
 		line-height: 1.8;
@@ -273,7 +276,7 @@ const artifactGroups = [
 		display: grid;
 		grid-template-columns: 210px minmax(0, 1fr);
 		gap: clamp(50px, 7vw, 94px);
-		padding-block: 76px 120px;
+		padding-block: 58px 110px;
 	}
 
 	.artifacts-contents {
@@ -438,47 +441,56 @@ const artifactGroups = [
 		line-height: 1.65;
 	}
 
-	.artifact__outcomes {
-		margin-top: 20px;
+	.artifact__connections {
+		margin-top: 24px;
+		padding-top: 20px;
+		border-top: 1px solid var(--rule);
 	}
 
-	.artifact__outcomes > p {
-		margin: 0 0 9px;
-		color: var(--sage-bright);
-		font-size: 0.62rem;
-		font-weight: 700;
-		letter-spacing: 0.11em;
-		text-transform: uppercase;
+	.artifact__connections h4 {
+		margin: 0 0 12px;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: 1.45rem;
+		font-weight: 400;
 	}
 
-	.artifact__outcomes > div {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 6px;
+	.artifact__connections ul {
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid var(--rule);
+		list-style: none;
 	}
 
-	.artifact__outcomes a {
+	.artifact__connections li {
+		display: grid;
+		grid-template-columns: minmax(170px, 0.34fr) minmax(0, 1fr);
+		gap: 18px;
+		padding: 14px 0;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.artifact__connections a {
 		display: inline-flex;
-		gap: 6px;
-		align-items: center;
-		padding: 6px 8px;
-		border: 1px solid var(--rule);
-		color: var(--cream-soft);
-		font-size: 0.66rem;
-		font-weight: 700;
-		line-height: 1.2;
-		transition: border-color 180ms ease, color 180ms ease;
-	}
-
-	.artifact__outcomes a:hover {
-		border-color: var(--sage);
+		gap: 8px;
+		align-items: baseline;
 		color: var(--sage-bright);
+		font-size: 0.76rem;
+		font-weight: 700;
+		line-height: 1.45;
 	}
 
-	.artifact__outcomes a span {
+	.artifact__connections a span {
 		color: var(--tan);
 		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.6rem;
+		font-size: 0.66rem;
+	}
+
+	.artifact__connections p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.84rem;
+		line-height: 1.65;
 	}
 
 	.artifact__actions {
@@ -649,12 +661,12 @@ const artifactGroups = [
 		}
 
 		.artifacts-contents nav {
-			display: flex;
-			overflow-x: auto;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			border-left: 1px solid var(--rule);
 		}
 
 		.artifacts-contents nav a {
-			flex: 0 0 auto;
 			padding: 13px 16px;
 			border-right: 1px solid var(--rule);
 		}
@@ -683,11 +695,11 @@ const artifactGroups = [
 		}
 
 		.artifacts-masthead h1 {
-			font-size: clamp(3.7rem, 17vw, 5.3rem);
+			font-size: clamp(3rem, 14vw, 4.4rem);
 		}
 
 		.artifact-section {
-			scroll-margin-top: 148px;
+			scroll-margin-top: 82px;
 		}
 
 		.section-heading--split,
@@ -711,6 +723,19 @@ const artifactGroups = [
 
 		.artifact__actions a {
 			text-align: left;
+		}
+
+		.artifact__connections li {
+			grid-template-columns: 1fr;
+			gap: 7px;
+		}
+
+		.artifacts-contents nav {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.artifacts-contents nav a:last-child {
+			grid-column: 1 / -1;
 		}
 
 		.research-arc {

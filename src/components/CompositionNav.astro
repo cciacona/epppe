@@ -22,7 +22,7 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 
 <nav class="composition-nav" aria-label="Composition portfolio">
 	<div class="shell composition-nav__inner">
-		<p class="composition-nav__label">ENC 1102</p>
+		<p class="composition-nav__label">ENC 1102 Portfolio</p>
 		<div class="composition-nav__links">
 			{links.map((link, index) => (
 				<a
@@ -71,17 +71,17 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 
 	.composition-nav__links {
 		display: flex;
-		overflow-x: auto;
 	}
 
 	.composition-nav__link {
 		display: inline-flex;
 		gap: 8px;
 		align-items: center;
+		min-height: 58px;
 		padding: 0 18px;
 		border-left: 1px solid var(--rule);
 		color: var(--muted);
-		font-size: 0.72rem;
+		font-size: 0.76rem;
 		font-weight: 700;
 		letter-spacing: 0.07em;
 		text-transform: uppercase;
@@ -91,7 +91,7 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 
 	.composition-nav__link span {
 		color: var(--rule-strong);
-		font-size: 0.62rem;
+		font-size: 0.68rem;
 	}
 
 	.composition-nav__link:hover,
@@ -104,9 +104,14 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 		color: var(--tan);
 	}
 
-	@media (max-width: 820px) {
+	@media (max-width: 1100px) {
+		.composition-nav {
+			position: static;
+		}
+
 		.composition-nav__inner {
 			width: 100%;
+			min-height: 0;
 		}
 
 		.composition-nav__label {
@@ -114,20 +119,41 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 		}
 
 		.composition-nav__links {
+			display: grid;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
 			width: 100%;
-			padding-right: 34px;
-			mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 34px), transparent 100%);
 		}
 
 		.composition-nav__link {
-			flex: 0 0 auto;
-			padding: 0 16px;
+			justify-content: center;
+			min-width: 0;
+			min-height: 54px;
+			padding: 9px 8px;
+			border-bottom: 1px solid var(--rule);
+			font-size: 0.72rem;
+			line-height: 1.28;
+			text-align: center;
+			white-space: normal;
+		}
+
+		.composition-nav__link:nth-child(-n + 3) {
+			grid-column: span 2;
+		}
+
+		.composition-nav__link:nth-child(n + 4) {
+			grid-column: span 3;
 		}
 	}
 
-	@media (max-width: 680px) {
-		.composition-nav {
-			top: 67px;
+	@media (max-width: 440px) {
+		.composition-nav__link {
+			gap: 5px;
+			padding-inline: 5px;
+			font-size: 0.69rem;
+		}
+
+		.composition-nav__link span {
+			font-size: 0.62rem;
 		}
 	}
 </style>

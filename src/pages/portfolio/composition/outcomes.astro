@@ -9,28 +9,39 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 <Layout
 	title="Outcomes & Reflections | Composition Research Portfolio"
 	description="Carmine Iacona’s reflections on all six ENC 1102 course outcomes, with direct explanations of how each selected artifact demonstrates the outcome."
+	image="/portfolio/composition/og.png"
 >
+	<CompositionNav />
+
 	<header class="outcomes-masthead">
 		<div class="shell outcomes-masthead__inner">
 			<div>
-				<a class="outcomes-masthead__back" href="/portfolio/composition">Composition Research Portfolio</a>
 				<p class="eyebrow">ENC 1102 · Final ePortfolio</p>
-				<h1>Outcomes &<br /><em>Reflections</em></h1>
+				<h1>Outcomes & <em>Reflections</em></h1>
 				<p class="outcomes-masthead__deck">
-					Each section includes the official course outcome, my reflection, and the artifacts I use as evidence. I also explain the specific connection between each artifact and the outcome.
+					Each section shows the official course outcome, what I learned, and the artifacts I chose as evidence. Under each artifact, I explain why I connected it to that outcome.
 				</p>
 			</div>
 			<aside class="outcomes-masthead__summary" aria-label="Page summary">
 				<div><strong>06</strong><span>Course outcomes</span></div>
-				<div><strong>{String(connectionCount).padStart(2, '0')}</strong><span>Explained connections</span></div>
+				<div><strong>{String(connectionCount).padStart(2, '0')}</strong><span>Artifact connections</span></div>
 				<p>Use the outcome menu below to jump directly to a reflection.</p>
 			</aside>
 		</div>
 	</header>
 
-	<CompositionNav />
+	<div class="outcome-jump-mobile">
+		<div class="shell outcome-jump-mobile__inner">
+			<label for="outcome-select">Jump to an outcome</label>
+			<select id="outcome-select">
+				<option value="">Choose a reflection</option>
+				{outcomes.map((outcome) => <option value={`#${outcome.id}`}>{outcome.number} · {outcome.title}</option>)}
+			</select>
+			<button id="outcome-select-go" type="button">Go</button>
+		</div>
+	</div>
 
-	<div class="shell outcomes-layout">
+	<section id="outcome-map" class="shell outcomes-layout" aria-label="Outcome map" tabindex="-1">
 		<aside class="outcome-jump">
 			<p class="outcome-jump__label">Jump to an outcome</p>
 			<nav aria-label="Course outcome reflections">
@@ -44,8 +55,8 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 			<a class="outcome-jump__artifacts" href="/portfolio/composition/artifacts">View the Artifact Index →</a>
 		</aside>
 
-		<main class="outcome-reflections">
-			{outcomes.map((outcome) => (
+		<div class="outcome-reflections">
+			{outcomes.map((outcome, outcomeIndex) => (
 				<article id={outcome.id} class="outcome" aria-labelledby={`${outcome.id}-title`}>
 					<header class="outcome__header">
 						<div class="outcome__number">
@@ -62,7 +73,7 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 					</header>
 
 					<section class="outcome__reflection" aria-labelledby={`${outcome.id}-reflection`}>
-						<h3 id={`${outcome.id}-reflection`}>My Reflection</h3>
+						<h3 id={`${outcome.id}-reflection`}>My Reflection: What I Learned</h3>
 						<div>
 							{outcome.reflection.map((paragraph) => <p>{paragraph}</p>)}
 						</div>
@@ -70,41 +81,56 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 
 					<section class="outcome__evidence" aria-labelledby={`${outcome.id}-evidence`}>
 						<div class="outcome__evidence-heading">
-							<h3 id={`${outcome.id}-evidence`}>Artifacts Connected to This Outcome</h3>
+							<h3 id={`${outcome.id}-evidence`}>How the Artifacts Demonstrate This Outcome</h3>
 							<p>{outcome.evidence.length} {outcome.evidence.length === 1 ? 'artifact' : 'artifacts'}</p>
 						</div>
 						<div class="outcome__evidence-grid">
 							{outcome.evidence.map((item, index) => (
-								<a href={item.href}>
-									<span class="outcome__evidence-number">{String(index + 1).padStart(2, '0')}</span>
-									<strong>{item.title}</strong>
-									<span class="outcome__connection-label">Why it connects</span>
-									<span class="outcome__connection">{item.connection}</span>
-									<i aria-hidden="true">Read artifact →</i>
-								</a>
+								<article>
+									<span class="outcome__evidence-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+									<h4>{item.title}</h4>
+									<p class="outcome__connection-label">Why it connects</p>
+									<p class="outcome__connection">{item.connection}</p>
+									<a href={item.href} aria-label={`Open ${item.title}`}>Open artifact <span aria-hidden="true">→</span></a>
+								</article>
 							))}
 						</div>
 					</section>
+
+					<nav class="outcome__pager" aria-label={`${outcome.title} navigation`}>
+						{outcomeIndex > 0 && <a href={`#${outcomes[outcomeIndex - 1].id}`}><span aria-hidden="true">←</span> Previous outcome</a>}
+						<a class="outcome__pager-map" href="#outcome-map">Back to outcome map <span aria-hidden="true">↑</span></a>
+						{outcomeIndex < outcomes.length - 1 && <a href={`#${outcomes[outcomeIndex + 1].id}`}>Next outcome <span aria-hidden="true">→</span></a>}
+					</nav>
 				</article>
 			))}
 
 			<aside class="outcomes-return">
 				<div>
 					<p class="eyebrow">Next</p>
-					<h2>Browse the work itself.</h2>
-					<p>The Artifact Index lists all eleven pieces and links each one back to the outcomes it supports.</p>
+					<h2>View all eleven artifacts.</h2>
+					<p>The Artifact Index links each artifact back to the reflections where I discuss it.</p>
 				</div>
 				<a class="button button--primary" href="/portfolio/composition/artifacts">Open the Artifact Index <span aria-hidden="true">→</span></a>
 			</aside>
-		</main>
-	</div>
+		</div>
+	</section>
+
+	<script>
+		const outcomeSelect = document.querySelector<HTMLSelectElement>('#outcome-select');
+		const outcomeGo = document.querySelector<HTMLButtonElement>('#outcome-select-go');
+		outcomeGo?.addEventListener('click', () => {
+			const target = outcomeSelect?.value;
+			if (target) window.location.hash = target;
+		});
+	</script>
 </Layout>
 
 <style>
 	.outcomes-masthead {
 		position: relative;
 		overflow: hidden;
-		padding-block: clamp(72px, 9vw, 126px);
+		padding-block: clamp(44px, 6vw, 68px);
 		border-bottom: 1px solid var(--rule);
 		background:
 			linear-gradient(90deg, transparent 0 68%, rgba(193, 165, 126, 0.055) 68% 68.1%, transparent 68.1%),
@@ -138,10 +164,10 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		margin: 16px 0 0;
 		color: var(--cream);
 		font-family: var(--display);
-		font-size: clamp(4rem, 8vw, 7.6rem);
+		font-size: clamp(3.2rem, 6vw, 5.6rem);
 		font-weight: 400;
 		letter-spacing: -0.052em;
-		line-height: 0.84;
+		line-height: 0.9;
 	}
 
 	.outcomes-masthead h1 em {
@@ -151,7 +177,7 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 
 	.outcomes-masthead__deck {
 		max-width: 720px;
-		margin: 30px 0 0;
+		margin: 22px 0 0;
 		color: var(--muted);
 		font-size: clamp(1rem, 1.5vw, 1.14rem);
 		line-height: 1.8;
@@ -203,19 +229,19 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		display: grid;
 		grid-template-columns: 230px minmax(0, 1fr);
 		gap: clamp(52px, 7vw, 94px);
-		padding-block: 76px 120px;
+		padding-block: 58px 110px;
 	}
 
 	.outcome-jump {
 		position: sticky;
-		top: 164px;
+		top: 154px;
 		align-self: start;
 	}
 
 	.outcome-jump__label {
 		margin: 0 0 15px;
 		color: var(--tan);
-		font-size: 0.68rem;
+		font-size: 0.78rem;
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
@@ -232,7 +258,7 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		padding: 13px 0;
 		border-bottom: 1px solid var(--rule);
 		color: var(--muted);
-		font-size: 0.72rem;
+		font-size: 0.78rem;
 		font-weight: 700;
 		line-height: 1.35;
 		transition: color 180ms ease, padding-left 180ms ease;
@@ -253,7 +279,7 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		display: inline-block;
 		margin-top: 22px;
 		color: var(--sage-bright);
-		font-size: 0.68rem;
+		font-size: 0.76rem;
 		font-weight: 700;
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
@@ -264,7 +290,7 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 	}
 
 	.outcome {
-		scroll-margin-top: 164px;
+		scroll-margin-top: 154px;
 		padding-bottom: clamp(84px, 11vw, 136px);
 	}
 
@@ -342,12 +368,13 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 
 	.outcome__reflection > h3,
 	.outcome__evidence-heading h3 {
-		margin: 0 0 18px;
-		color: var(--tan);
-		font-size: 0.7rem;
-		font-weight: 700;
-		letter-spacing: 0.13em;
-		text-transform: uppercase;
+		margin: 0 0 22px;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		line-height: 1;
 	}
 
 	.outcome__reflection > div {
@@ -390,20 +417,15 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		background: var(--rule);
 	}
 
-	.outcome__evidence-grid a {
+	.outcome__evidence-grid > article {
 		display: flex;
 		flex-direction: column;
 		min-height: 270px;
 		padding: 24px;
 		background: var(--paper-soft);
-		transition: background-color 180ms ease;
 	}
 
-	.outcome__evidence-grid a:hover {
-		background: var(--paper-raised);
-	}
-
-	.outcome__evidence-grid a:last-child:nth-child(odd) {
+	.outcome__evidence-grid > article:last-child:nth-child(odd) {
 		grid-column: 1 / -1;
 	}
 
@@ -413,8 +435,9 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		font-size: 0.68rem;
 	}
 
-	.outcome__evidence-grid strong {
+	.outcome__evidence-grid h4 {
 		margin-top: 24px;
+		margin-bottom: 0;
 		color: var(--cream);
 		font-family: var(--display);
 		font-size: clamp(1.7rem, 2.8vw, 2.5rem);
@@ -424,8 +447,9 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 
 	.outcome__connection-label {
 		margin-top: 22px;
+		margin-bottom: 0;
 		color: var(--sage-bright);
-		font-size: 0.62rem;
+		font-size: 0.78rem;
 		font-weight: 700;
 		letter-spacing: 0.11em;
 		text-transform: uppercase;
@@ -433,20 +457,48 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 
 	.outcome__connection {
 		margin-top: 7px;
+		margin-bottom: 0;
 		color: var(--muted);
-		font-size: 0.82rem;
+		font-size: 0.9rem;
 		line-height: 1.65;
 	}
 
-	.outcome__evidence-grid i {
+	.outcome__evidence-grid article > a {
 		margin-top: auto;
 		padding-top: 24px;
-		color: var(--tan);
-		font-size: 0.65rem;
-		font-style: normal;
+		color: var(--sage-bright);
+		font-size: 0.76rem;
 		font-weight: 700;
 		letter-spacing: 0.07em;
 		text-transform: uppercase;
+	}
+
+	.outcome__pager {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 24px;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 28px;
+		padding-top: 20px;
+		border-top: 1px solid var(--rule);
+	}
+
+	.outcome__pager a {
+		color: var(--sage-bright);
+		font-size: 0.76rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.outcome__pager-map {
+		margin-inline: auto;
+		color: var(--muted) !important;
+	}
+
+	.outcome-jump-mobile {
+		display: none;
 	}
 
 	.outcomes-return {
@@ -476,7 +528,7 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		line-height: 1.65;
 	}
 
-	@media (max-width: 980px) {
+	@media (max-width: 1100px) {
 		.outcomes-masthead__inner,
 		.outcomes-layout {
 			grid-template-columns: 1fr;
@@ -487,18 +539,73 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		}
 
 		.outcome-jump {
-			position: static;
+			display: none;
 		}
 
-		.outcome-jump nav {
-			display: grid;
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-			border-left: 1px solid var(--rule);
+		.outcome-jump-mobile {
+			position: sticky;
+			top: 78px;
+			z-index: 45;
+			display: block;
+			border-block: 1px solid var(--rule);
+			background: rgba(16, 35, 28, 0.97);
+			backdrop-filter: blur(14px);
 		}
 
-		.outcome-jump nav a {
-			padding: 14px;
-			border-right: 1px solid var(--rule);
+		.outcome-jump-mobile__inner {
+			display: flex;
+			gap: 14px;
+			align-items: center;
+			min-height: 58px;
+		}
+
+		.outcome-jump-mobile label {
+			color: var(--cream);
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			white-space: nowrap;
+		}
+
+		.outcome-jump-mobile select {
+			width: 100%;
+			min-width: 0;
+			min-height: 42px;
+			padding: 7px 34px 7px 12px;
+			border: 1px solid var(--rule-strong);
+			border-radius: 0;
+			background: var(--paper-soft);
+			color: var(--cream);
+			font: inherit;
+			font-size: 0.86rem;
+		}
+
+		.outcome-jump-mobile button {
+			flex: none;
+			min-width: 48px;
+			min-height: 42px;
+			padding: 7px 12px;
+			border: 1px solid var(--tan);
+			border-radius: 0;
+			background: var(--tan);
+			color: var(--forest);
+			font: inherit;
+			font-size: 0.78rem;
+			font-weight: 800;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			cursor: pointer;
+		}
+
+		.outcome-jump-mobile button:hover,
+		.outcome-jump-mobile button:focus-visible {
+			background: var(--cream);
+			border-color: var(--cream);
+		}
+
+		.outcome {
+			scroll-margin-top: 137px;
 		}
 	}
 
@@ -509,15 +616,7 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 		}
 
 		.outcomes-masthead h1 {
-			font-size: clamp(3.7rem, 17vw, 5.3rem);
-		}
-
-		.outcome-jump nav {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.outcome {
-			scroll-margin-top: 148px;
+			font-size: clamp(3rem, 14vw, 4.4rem);
 		}
 
 		.outcome__header {
@@ -535,12 +634,40 @@ const connectionCount = outcomes.reduce((total, outcome) => total + outcome.evid
 			grid-template-columns: 1fr;
 		}
 
-		.outcome__evidence-grid a {
+		.outcome__evidence-grid > article {
 			min-height: 0;
+		}
+
+		.outcome__pager {
+			justify-content: center;
 		}
 
 		.outcomes-return {
 			align-items: start;
+		}
+	}
+
+	@media (max-width: 680px) {
+		.outcome-jump-mobile {
+			top: 67px;
+		}
+
+		.outcome {
+			scroll-margin-top: 126px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.outcome-jump-mobile label {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border: 0;
 		}
 	}
 </style>

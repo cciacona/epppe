@@ -41,6 +41,16 @@ export const outcomes: CourseOutcome[] = [
 				connection: 'This is where I turned a general interest in class group chats into a question I could study and laid out the first version of my method.'
 			},
 			{
+				title: 'Annotated Bibliography',
+				href: '/portfolio/composition/annotated-bibliography',
+				connection: 'Comparing four sources helped me see what existing studies covered and narrow my inquiry to student-run chats outside official course spaces.'
+			},
+			{
+				title: 'Final Research Paper',
+				href: '/portfolio/composition/investigative-field-essay',
+				connection: 'In the final paper, I answer the question with evidence from my interviews and explain both how the chats help and where they can cause problems.'
+			},
+			{
 				title: 'CARS Model Introduction',
 				href: '/portfolio/composition/process-archive#01-cars-model-introduction',
 				connection: 'This exercise helped me identify what earlier studies had not covered and narrow the project to chats run by students.'
@@ -63,19 +73,19 @@ export const outcomes: CourseOutcome[] = [
 		],
 		evidence: [
 			{
+				title: 'Final Research Paper',
+				href: '/portfolio/composition/investigative-field-essay#data-display',
+				connection: 'I use a coding table and bar chart to make the interview patterns easier to see. Headings and appendices keep the longer paper organized.'
+			},
+			{
 				title: 'Genre and Discourse Communities',
 				href: '/portfolio/composition/process-archive#03-reading-response-genre-and-discourse-communities',
 				connection: 'I analyze the assignment-clarification message as a genre and explain how short messages, reactions, and informal wording work together.'
 			},
 			{
-				title: 'Composition ePortfolio',
-				href: '/portfolio/composition',
-				connection: 'The site uses page structure, links, labels, and responsive design to guide readers through the same research in a digital format.'
-			},
-			{
-				title: 'Final Research Paper',
-				href: '/portfolio/composition/investigative-field-essay#data-display',
-				connection: 'The coding table and bar chart present the interview patterns visually, while headings and appendices help readers move through a long research paper.'
+				title: 'ePortfolio Design Reflection',
+				href: '/portfolio/composition/process-archive#06-eportfolio-design-reflection',
+				connection: 'I explain why I used separate pages, clear labels, and a mobile layout to make the project easier to read online.'
 			},
 			{
 				title: 'ePortfolio Peer Review',
@@ -95,19 +105,24 @@ export const outcomes: CourseOutcome[] = [
 		],
 		evidence: [
 			{
+				title: 'Initial Research Proposal',
+				href: '/portfolio/composition/initial-research-proposal#instructor-feedback-and-next-decision',
+				connection: 'My instructor’s privacy concern led me to stop considering group-chat screenshots and use interviews instead.'
+			},
+			{
 				title: 'Annotated Bibliography',
 				href: '/portfolio/composition/annotated-bibliography',
 				connection: 'Each annotation evaluates the source’s credibility, relevance, methods, and limits instead of only summarizing it.'
 			},
 			{
+				title: 'Final Research Paper',
+				href: '/portfolio/composition/investigative-field-essay',
+				connection: 'The paper explains which sources I used, how I protected participants, how I analyzed the interviews, and what five interviews can and cannot show.'
+			},
+			{
 				title: 'Analyzing Primary Data',
 				href: '/portfolio/composition/process-archive#02-reading-response-analyzing-primary-data',
 				connection: 'I planned how to code interviews without forcing categories, protect participant privacy, and keep my claims within the sample.'
-			},
-			{
-				title: 'Research Proposal Feedback',
-				href: '/portfolio/composition/initial-research-proposal#instructor-feedback-and-next-decision',
-				connection: 'My instructor’s privacy concern led me to stop considering group-chat screenshots and use interviews instead.'
 			},
 			{
 				title: 'CITI Human Subjects Research Training',
@@ -140,6 +155,16 @@ export const outcomes: CourseOutcome[] = [
 				title: 'Final Research Paper',
 				href: '/portfolio/composition/investigative-field-essay',
 				connection: 'I use the sections of an academic research paper to explain the method, report findings, discuss sources, and document the study in appendices.'
+			},
+			{
+				title: 'CARS Model Introduction',
+				href: '/portfolio/composition/process-archive#01-cars-model-introduction',
+				connection: 'I use the CARS model to explain what earlier research covers, what it leaves out, and why I focused on student-run chats.'
+			},
+			{
+				title: 'Genre and Discourse Communities',
+				href: '/portfolio/composition/process-archive#03-reading-response-genre-and-discourse-communities',
+				connection: 'I analyze the assignment-clarification question as a genre by identifying its usual parts and explaining what each part does.'
 			}
 		]
 	},
@@ -176,9 +201,9 @@ export const outcomes: CourseOutcome[] = [
 		],
 		evidence: [
 			{
-				title: 'Draft 1 → Final Paper',
+				title: 'Final Research Paper',
 				href: '/portfolio/composition/investigative-field-essay#revision-map',
-				connection: 'The revision map shows changes to the claim, method, organization, evidence display, source use, and conclusion across three versions.'
+				connection: 'The revision map shows changes to the claim, method, organization, evidence display, source use, and conclusion across three versions. The cover letter explains why I made the final round of changes and what I would keep working on.'
 			},
 			{
 				title: 'Revision vs. Editing',
@@ -186,14 +211,19 @@ export const outcomes: CourseOutcome[] = [
 				connection: 'This assignment helped me separate large changes to meaning and structure from sentence-level editing.'
 			},
 			{
+				title: 'Mid-Project Reflection',
+				href: '/portfolio/composition/process-archive#05-mid-project-reflection',
+				connection: 'In this reflection, I explain how the interviews challenged my first assumptions and what I needed to change in the next draft.'
+			},
+			{
+				title: 'ePortfolio Design Reflection',
+				href: '/portfolio/composition/process-archive#06-eportfolio-design-reflection',
+				connection: 'I explain why I replaced the early placeholder pages with separate pages for the outcomes, artifacts, assignments, and process work.'
+			},
+			{
 				title: 'ePortfolio Peer Review',
 				href: '/portfolio/composition/process-archive#08-eportfolio-peer-review',
 				connection: 'I record feedback about multimodality and navigation, then explain the specific design changes I made in response.'
-			},
-			{
-				title: 'Final Reflective Cover Letter',
-				href: '/portfolio/composition/investigative-field-essay#reflective-cover-letter',
-				connection: 'The cover letter explains why I made the final round of changes and what I would keep working on.'
 			}
 		]
 	}
@@ -321,6 +351,31 @@ export const researchArc = [
 ];
 
 export const outcomeById = new Map(outcomes.map((outcome) => [outcome.id, outcome]));
+
+export const artifactByTitle = new Map(artifacts.map((artifact) => [artifact.title, artifact]));
+
+const evidencePairs = new Set(
+	outcomes.flatMap((outcome) => outcome.evidence.map((item) => `${outcome.id}::${item.title}`))
+);
+const taggedPairs = new Set(
+	artifacts.flatMap((artifact) => artifact.outcomeIds.map((outcomeId) => `${outcomeId}::${artifact.title}`))
+);
+const relationshipDrift = [
+	...[...evidencePairs].filter((pair) => !taggedPairs.has(pair)),
+	...[...taggedPairs].filter((pair) => !evidencePairs.has(pair))
+];
+
+if (artifacts.length !== 11 || evidencePairs.size !== 26 || taggedPairs.size !== 26 || relationshipDrift.length > 0) {
+	throw new Error(
+		`Composition portfolio data is out of sync: ${artifacts.length} artifacts, ${evidencePairs.size} explained connections, ${taggedPairs.size} tagged connections, drift: ${relationshipDrift.join(', ') || 'none'}.`
+	);
+}
+
+export const connectionsForArtifact = (artifactTitle: string) =>
+	outcomes.flatMap((outcome) => {
+		const evidence = outcome.evidence.find((item) => item.title === artifactTitle);
+		return evidence ? [{ outcome, evidence }] : [];
+	});
 
 export const outcomeHref = (title: string) => {
 	if (title === 'All Six Course Outcomes') return '/portfolio/composition/outcomes';
