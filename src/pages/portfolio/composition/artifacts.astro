@@ -1,0 +1,734 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CompositionNav from '../../../components/CompositionNav.astro';
+import { artifacts, outcomeById, researchArc } from '../../../data/composition';
+
+const artifactGroups = [
+	{
+		id: 'major-artifacts',
+		label: 'Gordon Rule',
+		title: 'Major Assignments',
+		note: 'The proposal, annotated bibliography, and final research paper are the three Gordon Rule artifacts.',
+		items: artifacts.slice(0, 3)
+	},
+	{
+		id: 'supporting-artifacts',
+		label: 'Process Work',
+		title: 'Supporting Artifacts',
+		note: 'These assignments show the planning, ethics, feedback, and revision work behind the three major assignments.',
+		items: artifacts.slice(3)
+	}
+];
+---
+
+<Layout
+	title="Artifact Index | Composition Research Portfolio"
+	description="All eleven artifacts in Carmine Iacona’s ENC 1102 ePortfolio, with links to the course outcomes each artifact supports."
+>
+	<header class="artifacts-masthead">
+		<div class="shell artifacts-masthead__inner">
+			<div>
+				<a class="artifacts-masthead__back" href="/portfolio/composition">Composition Research Portfolio</a>
+				<p class="eyebrow">ENC 1102 · Selected Work</p>
+				<h1>Artifact<br /><em>Index</em></h1>
+				<p class="artifacts-masthead__deck">
+					This page contains all eleven selected artifacts. Every entry lists the outcomes it supports, so readers can move directly between the work and the reflection about it.
+				</p>
+			</div>
+			<aside class="artifacts-masthead__summary" aria-label="Artifact summary">
+				<div><strong>03</strong><span>Major assignments</span></div>
+				<div><strong>08</strong><span>Supporting artifacts</span></div>
+				<div><strong>11</strong><span>Total artifacts</span></div>
+			</aside>
+		</div>
+	</header>
+
+	<CompositionNav />
+
+	<div class="shell artifacts-layout">
+		<aside class="artifacts-contents">
+			<p class="artifacts-contents__label">On this page</p>
+			<nav aria-label="Artifact Index contents">
+				<a href="#major-artifacts"><span>01</span> Major Assignments</a>
+				<a href="#supporting-artifacts"><span>02</span> Supporting Artifacts</a>
+				<a href="#project-timeline"><span>03</span> Project Timeline</a>
+				<a href="#draft-comparison"><span>04</span> Draft Comparison</a>
+				<a href="#why-these-artifacts"><span>05</span> Why I Chose Them</a>
+			</nav>
+			<a class="artifacts-contents__outcomes" href="/portfolio/composition/outcomes">Read outcome reflections →</a>
+		</aside>
+
+		<main class="artifacts-main">
+			{artifactGroups.map((group) => (
+				<section id={group.id} class="artifact-section" aria-labelledby={`${group.id}-heading`}>
+					<header class="section-heading section-heading--split">
+						<div>
+							<p class="eyebrow">{group.label}</p>
+							<h2 id={`${group.id}-heading`}>{group.title}</h2>
+						</div>
+						<p>{group.note}</p>
+					</header>
+
+					<div class="artifact-list">
+						{group.items.map((artifact) => (
+							<article class="artifact">
+								<div class="artifact__number">{artifact.number}</div>
+								<div class="artifact__main">
+									<div class="artifact__meta">
+										<span>{artifact.type}</span>
+										<time>{artifact.date}</time>
+									</div>
+									<h3>{artifact.title}</h3>
+									<p class="artifact__summary">{artifact.summary}</p>
+
+									<div class="artifact__outcomes">
+										<p>Connected outcomes</p>
+										<div>
+											{artifact.outcomeIds.map((outcomeId) => {
+												const outcome = outcomeById.get(outcomeId);
+												return outcome && (
+													<a href={`/portfolio/composition/outcomes#${outcome.id}`}>
+														<span>{outcome.number}</span>
+														{outcome.title}
+													</a>
+												);
+											})}
+										</div>
+									</div>
+								</div>
+								<div class="artifact__actions">
+									<a class="artifact__read" href={artifact.href}>Read artifact <span aria-hidden="true">↗</span></a>
+									{artifact.download && <a href={artifact.download}>Download original <span aria-hidden="true">↓</span></a>}
+								</div>
+							</article>
+						))}
+					</div>
+				</section>
+			))}
+
+			<section id="project-timeline" class="artifact-section" aria-labelledby="timeline-heading">
+				<header class="section-heading">
+					<p class="eyebrow">Development</p>
+					<h2 id="timeline-heading">Project Timeline</h2>
+				</header>
+				<ol class="research-arc">
+					{researchArc.map((stage, index) => (
+						<li>
+							<div class="research-arc__marker">{String(index + 1).padStart(2, '0')}</div>
+							<div>
+								<p class="research-arc__date">{stage.date}</p>
+								<h3>{stage.title}</h3>
+								<p>{stage.note}</p>
+							</div>
+						</li>
+					))}
+				</ol>
+			</section>
+
+			<section id="draft-comparison" class="artifact-section" aria-labelledby="draft-heading">
+				<header class="section-heading">
+					<p class="eyebrow">Revision</p>
+					<h2 id="draft-heading">From Draft 1 to the Final Paper</h2>
+					<p>The final paper keeps the main question but changes the claim, organization, evidence display, source use, and conclusion.</p>
+				</header>
+
+				<div class="revision-compare">
+					<div>
+						<p class="revision-compare__label">Draft 1 · July 19</p>
+						<h3>What I still needed to fix</h3>
+						<ul>
+							<li>I use the key term before I fully define it.</li>
+							<li>Findings and analysis share one section, which causes some repetition later.</li>
+							<li>I do not explain the convenience sample or coding choices enough.</li>
+							<li>The conclusion summarizes the topic without directly answering the research question.</li>
+						</ul>
+						<a href="/portfolio/composition/files/investigative-field-essay-draft-1.docx">Download Draft 1 ↓</a>
+					</div>
+					<div>
+						<p class="revision-compare__label">Final Paper · August 2</p>
+						<h3>What changed in the final paper</h3>
+						<ul>
+							<li>I define the genre in the opening paragraph and follow the CARS model more closely.</li>
+							<li>I explain participant selection, privacy, written note-taking, open coding, and the limits of the study.</li>
+							<li>I add a coding table and bar chart, then use nine secondary sources in the Discussion.</li>
+							<li>I add a reflective cover letter, a future-research plan, and four appendices.</li>
+						</ul>
+						<a href="/portfolio/composition/investigative-field-essay#revision-map">Read the revision map ↗</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="why-these-artifacts" class="artifact-section artifact-rationale" aria-labelledby="rationale-heading">
+				<header class="section-heading">
+					<p class="eyebrow">Selection</p>
+					<h2 id="rationale-heading">Why I Chose These Artifacts</h2>
+				</header>
+				<div class="artifact-rationale__copy">
+					<p>
+						I chose these eleven artifacts because each one shows a different part of the project. The proposal contains my original question and the instructor feedback that changed my method. The bibliography shows how I chose and evaluated sources. The CARS and primary-data responses contain planning that I later used in the final paper. The genre response connects the topic to one of the main ideas from the course, while Draft 1, Revision 1, and the final paper show how the project changed over time. The CITI training documents the ethics work I completed before interviewing anyone, and the peer review records feedback from a reader outside the project.
+					</p>
+					<p>
+						Looking back at my early work, I was more likely to think of informal messages as separate from “real” writing. I also made broader assumptions about class chats before I had any interview data. By the end of the project, I was more careful about what five interviews could support, and I treated revision as a way to rethink the paper instead of just cleaning it up. The site keeps the assignments in one place, but it also shows how my question and my thinking changed during the semester.
+					</p>
+				</div>
+				<div class="artifact-rationale__links">
+					<a class="button button--primary" href="/portfolio/composition/outcomes">Read Outcomes & Reflections <span aria-hidden="true">→</span></a>
+					<a class="button button--quiet" href="/portfolio/composition/process-archive">Open the Process Archive</a>
+				</div>
+			</section>
+		</main>
+	</div>
+</Layout>
+
+<style>
+	.artifacts-masthead {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(72px, 9vw, 126px);
+		border-bottom: 1px solid var(--rule);
+		background:
+			linear-gradient(90deg, transparent 0 68%, rgba(193, 165, 126, 0.055) 68% 68.1%, transparent 68.1%),
+			radial-gradient(circle at 82% 14%, rgba(91, 123, 100, 0.2), transparent 24rem);
+	}
+
+	.artifacts-masthead__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(270px, 0.34fr);
+		gap: clamp(48px, 8vw, 112px);
+		align-items: end;
+	}
+
+	.artifacts-masthead__back {
+		display: inline-block;
+		margin-bottom: 34px;
+		color: var(--sage);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.artifacts-masthead__back::before {
+		margin-right: 10px;
+		content: "←";
+		color: var(--tan);
+	}
+
+	.artifacts-masthead h1 {
+		margin: 16px 0 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(4rem, 8vw, 7.6rem);
+		font-weight: 400;
+		letter-spacing: -0.052em;
+		line-height: 0.84;
+	}
+
+	.artifacts-masthead h1 em {
+		color: var(--sage);
+		font-weight: 400;
+	}
+
+	.artifacts-masthead__deck {
+		max-width: 720px;
+		margin: 30px 0 0;
+		color: var(--muted);
+		font-size: clamp(1rem, 1.5vw, 1.14rem);
+		line-height: 1.8;
+	}
+
+	.artifacts-masthead__summary {
+		border: 1px solid var(--rule-strong);
+		background: rgba(16, 35, 28, 0.78);
+	}
+
+	.artifacts-masthead__summary div {
+		display: grid;
+		grid-template-columns: 72px 1fr;
+		gap: 16px;
+		align-items: center;
+		padding: 18px 22px;
+	}
+
+	.artifacts-masthead__summary div + div {
+		border-top: 1px solid var(--rule);
+	}
+
+	.artifacts-masthead__summary strong {
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: 2rem;
+		font-weight: 400;
+	}
+
+	.artifacts-masthead__summary span {
+		color: var(--muted);
+		font-size: 0.66rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.artifacts-layout {
+		display: grid;
+		grid-template-columns: 210px minmax(0, 1fr);
+		gap: clamp(50px, 7vw, 94px);
+		padding-block: 76px 120px;
+	}
+
+	.artifacts-contents {
+		position: sticky;
+		top: 164px;
+		align-self: start;
+	}
+
+	.artifacts-contents__label {
+		margin: 0 0 15px;
+		color: var(--tan);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.artifacts-contents nav {
+		border-top: 1px solid var(--rule-strong);
+	}
+
+	.artifacts-contents nav a {
+		display: grid;
+		grid-template-columns: 26px 1fr;
+		gap: 9px;
+		padding: 13px 0;
+		border-bottom: 1px solid var(--rule);
+		color: var(--muted);
+		font-size: 0.72rem;
+		font-weight: 700;
+		line-height: 1.35;
+		transition: color 180ms ease, padding-left 180ms ease;
+	}
+
+	.artifacts-contents nav a:hover {
+		padding-left: 5px;
+		color: var(--cream);
+	}
+
+	.artifacts-contents nav span {
+		color: var(--rule-strong);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.65rem;
+	}
+
+	.artifacts-contents__outcomes {
+		display: inline-block;
+		margin-top: 22px;
+		color: var(--sage-bright);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.artifacts-main {
+		min-width: 0;
+	}
+
+	.artifact-section {
+		scroll-margin-top: 164px;
+		padding-bottom: clamp(84px, 11vw, 136px);
+	}
+
+	.artifact-section + .artifact-section {
+		padding-top: clamp(76px, 9vw, 112px);
+		border-top: 1px solid var(--rule-strong);
+	}
+
+	.section-heading {
+		max-width: 860px;
+		margin-bottom: 40px;
+	}
+
+	.section-heading--split {
+		display: grid;
+		grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.42fr);
+		gap: 28px clamp(42px, 7vw, 88px);
+		align-items: end;
+		max-width: none;
+	}
+
+	.section-heading .eyebrow {
+		margin-bottom: 14px;
+	}
+
+	.section-heading h2 {
+		margin: 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(3.1rem, 5.8vw, 5.6rem);
+		font-weight: 400;
+		letter-spacing: -0.046em;
+		line-height: 0.94;
+	}
+
+	.section-heading > p,
+	.section-heading--split > p {
+		margin: 20px 0 0;
+		color: var(--muted);
+		font-size: 0.9rem;
+		line-height: 1.7;
+	}
+
+	.section-heading--split > p {
+		margin: 0;
+	}
+
+	.artifact-list {
+		border-top: 1px solid var(--rule-strong);
+	}
+
+	.artifact {
+		display: grid;
+		grid-template-columns: 54px minmax(0, 1fr) 165px;
+		gap: 24px;
+		padding: 30px 0;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.artifact__number {
+		padding-top: 4px;
+		color: var(--rule-strong);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.72rem;
+	}
+
+	.artifact__meta {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+		justify-content: space-between;
+		color: var(--tan);
+		font-size: 0.64rem;
+		font-weight: 700;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+	}
+
+	.artifact__meta time {
+		color: var(--muted);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-weight: 500;
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	.artifact h3 {
+		margin: 8px 0 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(1.9rem, 3vw, 2.7rem);
+		font-weight: 400;
+		line-height: 1.02;
+	}
+
+	.artifact__summary {
+		max-width: 720px;
+		margin: 14px 0 0;
+		color: var(--muted);
+		font-size: 0.84rem;
+		line-height: 1.65;
+	}
+
+	.artifact__outcomes {
+		margin-top: 20px;
+	}
+
+	.artifact__outcomes > p {
+		margin: 0 0 9px;
+		color: var(--sage-bright);
+		font-size: 0.62rem;
+		font-weight: 700;
+		letter-spacing: 0.11em;
+		text-transform: uppercase;
+	}
+
+	.artifact__outcomes > div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+
+	.artifact__outcomes a {
+		display: inline-flex;
+		gap: 6px;
+		align-items: center;
+		padding: 6px 8px;
+		border: 1px solid var(--rule);
+		color: var(--cream-soft);
+		font-size: 0.66rem;
+		font-weight: 700;
+		line-height: 1.2;
+		transition: border-color 180ms ease, color 180ms ease;
+	}
+
+	.artifact__outcomes a:hover {
+		border-color: var(--sage);
+		color: var(--sage-bright);
+	}
+
+	.artifact__outcomes a span {
+		color: var(--tan);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.6rem;
+	}
+
+	.artifact__actions {
+		display: grid;
+		gap: 10px;
+		align-content: start;
+		justify-items: end;
+		padding-top: 24px;
+	}
+
+	.artifact__actions a {
+		color: var(--muted);
+		font-size: 0.66rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-align: right;
+		text-transform: uppercase;
+	}
+
+	.artifact__actions a:hover,
+	.artifact__actions .artifact__read {
+		color: var(--sage-bright);
+	}
+
+	.research-arc {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		margin: 0;
+		padding: 0;
+		border: 1px solid var(--rule-strong);
+		list-style: none;
+	}
+
+	.research-arc li {
+		min-height: 270px;
+		padding: 20px;
+	}
+
+	.research-arc li + li {
+		border-left: 1px solid var(--rule);
+	}
+
+	.research-arc__marker {
+		display: grid;
+		place-items: center;
+		width: 32px;
+		height: 32px;
+		margin-bottom: 45px;
+		border: 1px solid var(--tan);
+		border-radius: 50%;
+		color: var(--tan);
+		font-size: 0.64rem;
+		font-weight: 700;
+	}
+
+	.research-arc__date {
+		margin: 0;
+		color: var(--muted);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+	}
+
+	.research-arc h3 {
+		margin: 9px 0 10px;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: 1.75rem;
+		font-weight: 400;
+		line-height: 1;
+	}
+
+	.research-arc li p:last-child {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.78rem;
+		line-height: 1.65;
+	}
+
+	.revision-compare {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		border: 1px solid var(--rule-strong);
+	}
+
+	.revision-compare > div {
+		padding: clamp(26px, 4vw, 42px);
+	}
+
+	.revision-compare > div + div {
+		border-left: 1px solid var(--rule-strong);
+		background: var(--forest-deep);
+	}
+
+	.revision-compare__label {
+		margin: 0 0 12px;
+		color: var(--tan);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.revision-compare h3 {
+		margin: 0;
+		color: var(--cream);
+		font-family: var(--display);
+		font-size: clamp(2rem, 3vw, 2.9rem);
+		font-weight: 400;
+		line-height: 1;
+	}
+
+	.revision-compare ul {
+		margin: 28px 0;
+		padding-left: 1.1rem;
+	}
+
+	.revision-compare li {
+		color: var(--cream-soft);
+		font-size: 0.83rem;
+		line-height: 1.7;
+	}
+
+	.revision-compare li + li {
+		margin-top: 10px;
+	}
+
+	.revision-compare a {
+		color: var(--sage-bright);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.artifact-rationale__copy {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 32px 52px;
+		max-width: 1020px;
+	}
+
+	.artifact-rationale__copy p {
+		margin: 0;
+		color: var(--cream-soft);
+		font-size: clamp(1rem, 1.3vw, 1.06rem);
+		line-height: 1.9;
+	}
+
+	.artifact-rationale__links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 38px;
+	}
+
+	@media (max-width: 1040px) {
+		.artifacts-masthead__inner,
+		.artifacts-layout {
+			grid-template-columns: 1fr;
+		}
+
+		.artifacts-masthead__summary {
+			max-width: 560px;
+		}
+
+		.artifacts-contents {
+			position: static;
+		}
+
+		.artifacts-contents nav {
+			display: flex;
+			overflow-x: auto;
+		}
+
+		.artifacts-contents nav a {
+			flex: 0 0 auto;
+			padding: 13px 16px;
+			border-right: 1px solid var(--rule);
+		}
+
+		.research-arc {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.research-arc li + li {
+			border-left: 0;
+		}
+
+		.research-arc li:nth-child(even) {
+			border-left: 1px solid var(--rule);
+		}
+
+		.research-arc li:nth-child(n + 3) {
+			border-top: 1px solid var(--rule);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.artifacts-masthead__inner,
+		.artifacts-layout {
+			width: min(100% - 32px, 1180px);
+		}
+
+		.artifacts-masthead h1 {
+			font-size: clamp(3.7rem, 17vw, 5.3rem);
+		}
+
+		.artifact-section {
+			scroll-margin-top: 148px;
+		}
+
+		.section-heading--split,
+		.revision-compare,
+		.artifact-rationale__copy {
+			grid-template-columns: 1fr;
+		}
+
+		.artifact {
+			grid-template-columns: 34px minmax(0, 1fr);
+			gap: 16px;
+		}
+
+		.artifact__actions {
+			grid-column: 2;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			padding-top: 0;
+		}
+
+		.artifact__actions a {
+			text-align: left;
+		}
+
+		.research-arc {
+			grid-template-columns: 1fr;
+		}
+
+		.research-arc li,
+		.research-arc li:nth-child(even) {
+			border-left: 0;
+		}
+
+		.research-arc li + li {
+			border-top: 1px solid var(--rule);
+		}
+
+		.revision-compare > div + div {
+			border-top: 1px solid var(--rule-strong);
+			border-left: 0;
+		}
+	}
+</style>

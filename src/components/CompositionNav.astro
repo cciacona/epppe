@@ -2,14 +2,22 @@
 const pathname = Astro.url.pathname.replace(/\/$/, '');
 
 const links = [
-	{ href: '/portfolio/composition', label: 'Overview' },
-	{ href: '/portfolio/composition/initial-research-proposal', label: 'Proposal' },
-	{ href: '/portfolio/composition/annotated-bibliography', label: 'Bibliography' },
-	{ href: '/portfolio/composition/investigative-field-essay', label: 'Final Paper' },
-	{ href: '/portfolio/composition/process-archive', label: 'Process Archive' }
+	{ href: '/portfolio/composition', label: 'Start Here', matches: ['/portfolio/composition'] },
+	{ href: '/portfolio/composition/outcomes', label: 'Outcomes & Reflections', matches: ['/portfolio/composition/outcomes'] },
+	{
+		href: '/portfolio/composition/artifacts',
+		label: 'Artifact Index',
+		matches: [
+			'/portfolio/composition/artifacts',
+			'/portfolio/composition/initial-research-proposal',
+			'/portfolio/composition/annotated-bibliography'
+		]
+	},
+	{ href: '/portfolio/composition/investigative-field-essay', label: 'Final Paper', matches: ['/portfolio/composition/investigative-field-essay'] },
+	{ href: '/portfolio/composition/process-archive', label: 'Process Archive', matches: ['/portfolio/composition/process-archive'] }
 ];
 
-const isActive = (href: string) => pathname === href;
+const isActive = (matches: string[]) => matches.includes(pathname);
 ---
 
 <nav class="composition-nav" aria-label="Composition portfolio">
@@ -19,8 +27,8 @@ const isActive = (href: string) => pathname === href;
 			{links.map((link, index) => (
 				<a
 					href={link.href}
-					class:list={['composition-nav__link', { 'is-active': isActive(link.href) }]}
-					aria-current={isActive(link.href) ? 'page' : undefined}
+					class:list={['composition-nav__link', { 'is-active': isActive(link.matches) }]}
+					aria-current={isActive(link.matches) ? 'page' : undefined}
 				>
 					<span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
 					{link.label}
