@@ -1950,8 +1950,8 @@ main {
 	}
 
 	.site-nav__link {
-		padding-inline: 11px;
-		font-size: 0.62rem;
+		padding-inline: 10px;
+		font-size: 0.7rem;
 	}
 
 	.site-nav__link span {

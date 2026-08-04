@@ -3,7 +3,7 @@ layout: ../../../layouts/CompositionDocumentLayout.astro
 title: Process Archive
 description: Smaller assignments, research ethics training, and peer feedback that helped me develop the project from the first proposal to the final paper.
 artifactType: Minor Assignments · Process Work
-date: July 3–29, 2026
+date: July 3–August 3, 2026
 status: Eight artifacts
 outcomes:
   - All Six Course Outcomes
