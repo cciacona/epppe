@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import CompositionNav from '../components/CompositionNav.astro';
+import { outcomeHref } from '../data/composition';
 
 interface DocumentSection {
 	href: string;
@@ -54,7 +55,7 @@ const {
 							<span aria-hidden="true">↓</span>
 						</a>
 					)}
-					<a class="button button--quiet" href="/portfolio/composition#artifacts">All artifacts</a>
+					<a class="button button--quiet" href="/portfolio/composition/artifacts">Artifact Index</a>
 				</div>
 			</div>
 
@@ -77,9 +78,9 @@ const {
 
 				{outcomes.length > 0 && (
 					<div class="document-masthead__outcomes">
-						<p>Outcome evidence</p>
+						<p>Connected outcomes</p>
 						<ul>
-							{outcomes.map((outcome) => <li>{outcome}</li>)}
+							{outcomes.map((outcome) => <li><a href={outcomeHref(outcome)}>{outcome}</a></li>)}
 						</ul>
 					</div>
 				)}
@@ -112,10 +113,13 @@ const {
 	<aside class="document-return">
 		<div class="shell document-return__inner">
 			<div>
-				<p class="eyebrow">Portfolio overview</p>
-				<p>Return to the six course outcomes and Artifact Index.</p>
+				<p class="eyebrow">Course connections</p>
+				<p>See the reflections and the other artifacts connected to each outcome.</p>
 			</div>
-			<a class="button button--quiet" href="/portfolio/composition">Back to portfolio overview</a>
+			<div class="document-return__actions">
+				<a class="button button--primary" href="/portfolio/composition/outcomes">Outcomes & Reflections</a>
+				<a class="button button--quiet" href="/portfolio/composition/artifacts">Artifact Index</a>
+			</div>
 		</div>
 	</aside>
 </Layout>
@@ -242,13 +246,23 @@ const {
 	}
 
 	.document-masthead__outcomes li {
-		padding: 5px 8px;
 		border: 1px solid var(--rule);
+	}
+
+	.document-masthead__outcomes li a {
+		display: block;
+		padding: 5px 8px;
 		color: var(--sage-bright);
 		font-size: 0.7rem;
 		font-weight: 700;
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
+		transition: background-color 180ms ease, color 180ms ease;
+	}
+
+	.document-masthead__outcomes li a:hover {
+		background: var(--paper-raised);
+		color: var(--cream);
 	}
 
 	.document-reading {
@@ -480,6 +494,13 @@ const {
 		color: var(--muted);
 	}
 
+	.document-return__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		justify-content: flex-end;
+	}
+
 	@media (max-width: 1020px) {
 		.document-reading.has-toc {
 			grid-template-columns: 1fr;
@@ -522,6 +543,10 @@ const {
 		.document-return__inner {
 			align-items: flex-start;
 			flex-direction: column;
+		}
+
+		.document-return__actions {
+			justify-content: flex-start;
 		}
 	}
 

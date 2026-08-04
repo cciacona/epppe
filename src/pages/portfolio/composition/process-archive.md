@@ -134,3 +134,8 @@ This was a required research-ethics assignment that I completed before conductin
 My peer reviewer said the homepage was clear, the navigation made the artifacts easy to find, the style was consistent, and the color contrast and mobile layout worked well. The main criticism was that the portfolio did not use much multimodality. The reviewer also said that the outcome reflections had enough support and that the artifacts were clearly labeled.
 
 I agreed with the multimodality comment, but I did not want to add unrelated images just to check a box. The final paper gave me a useful place to respond. I added a coding table that defines the interview themes and a bar chart that lets readers compare the theme counts. I also put both visuals on the final-paper web page with alt text and a caption. That way, the visuals add information instead of just filling space.
+
+<div class="artifact-callout">
+  <strong>Later reader feedback and revision</strong>
+  A later reader wrote, “The website looks cool, but I had a hard time navigating it and finding ‘reflections’ about the specific connections between your chosen artifacts and the outcomes.” I agreed that the reflections were too difficult to locate on the original long overview page. I split that page into a short Start Here page, a dedicated Outcomes & Reflections page, and an Artifact Index. On the outcomes page, every section now uses the same three labels: “Official course outcome,” “My Reflection,” and “Artifacts Connected to This Outcome.” I also added a “Why it connects” explanation under every artifact and linked each artifact back to the related outcome reflections.
+</div>
