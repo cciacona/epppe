@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const projects = [
 	{
 		category: 'Game modding',
-		title: 'Keeping older Factorio mods running.',
+		title: 'Factorio mod maintenance',
 		description: 'I maintain four mods for Factorio 2.1: Fire Extinguisher, Flammable Oils, Nicer Fuel Glow, and Ammo & Turret Tweaks.',
 		href: 'https://github.com/cciacona',
 		linkLabel: 'Browse on GitHub',
@@ -12,7 +12,7 @@ const projects = [
 	},
 	{
 		category: 'Self-hosting',
-		title: 'A home server with a job to do.',
+		title: 'Proxmox home server',
 		description: 'A dedicated PC running Proxmox VE hosts my Minecraft server and Jellyfin. I handle the networking, updates, and troubleshooting.',
 		href: '/vault',
 		linkLabel: 'See hosted services',
@@ -20,7 +20,7 @@ const projects = [
 	},
 	{
 		category: 'Research & writing',
-		title: 'What happens in class group chats?',
+		title: 'Class group chats: a research portfolio',
 		description: 'My ENC 1102 research portfolio follows a semester of interviews, writing, and revision about student-run class group chats.',
 		href: '/portfolio/composition',
 		linkLabel: 'Read the portfolio',
@@ -72,8 +72,8 @@ const toolkit = [
 
 	<section class="project-notes shell" aria-labelledby="projects-heading">
 		<div class="project-notes__intro">
-			<p class="eyebrow">Personal projects</p>
-			<h2 id="projects-heading">Some of<br />my work.</h2>
+			<p class="eyebrow">Selected work</p>
+			<h2 id="projects-heading">Projects &amp;<br /> writing.</h2>
 			<p>The code, systems, and writing I’ve been working on.</p>
 		</div>
 		<div class="project-notes__list">
@@ -93,8 +93,8 @@ const toolkit = [
 
 	<section class="home-details shell" aria-label="Background and toolkit">
 		<div class="home-background">
-			<p class="eyebrow">A little background</p>
-			<h2>Away from the keyboard.</h2>
+			<p class="eyebrow">Background</p>
+			<h2>Work &amp; study.</h2>
 			<p>I’ve worked in Park Operations at Universal Orlando since August 2023.</p>
 			<dl class="background-facts">
 				<div><dt>Studying</dt><dd>CECS at UCF</dd></div>
@@ -102,7 +102,7 @@ const toolkit = [
 			</dl>
 		</div>
 		<div class="home-toolkit">
-			<p class="eyebrow">At the keyboard</p>
+			<p class="eyebrow">Toolkit</p>
 			<h2>Tools I use.</h2>
 			<dl>
 				{toolkit.map(([label, value]) => (
