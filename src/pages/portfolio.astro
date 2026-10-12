@@ -27,11 +27,11 @@ const collections = [
 >
 	<header class="page-masthead shell">
 		<div>
-			<p class="eyebrow">Index · 01</p>
-			<h1>My<br /><em>portfolio</em></h1>
+			<p class="eyebrow">Work & study</p>
+			<h1>Portfolio<span class="title-period">.</span></h1>
 		</div>
 		<div class="page-masthead__note">
-			<p class="page-masthead__number">02 / SECTIONS</p>
+			
 			<p>Technical projects and my ENC 1102 composition portfolio.</p>
 		</div>
 	</header>
@@ -45,7 +45,7 @@ const collections = [
 		<div class="collection-list">
 			{collections.map((collection) => (
 				<article class:list={['collection-row', { 'collection-row--linked': collection.href }]}>
-					<div class="collection-row__number">{collection.number}</div>
+					<div class="collection-row__number" aria-hidden="true">{collection.href ? '↗' : '…'}</div>
 					<div>
 						<p class="eyebrow">{collection.kicker}</p>
 						<h3>{collection.title}</h3>

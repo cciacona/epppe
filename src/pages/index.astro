@@ -1,160 +1,114 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SystemsPlate from '../components/SystemsPlate.astro';
 
-const focusAreas = [
+const projects = [
 	{
-		title: 'Home Server',
-		description: 'I run Minecraft and Jellyfin from a dedicated PC using Proxmox VE. I handle the service setup, networking, updates, and troubleshooting.'
+		category: 'Game modding',
+		title: 'Keeping older Factorio mods running.',
+		description: 'I maintain four mods for Factorio 2.1: Fire Extinguisher, Flammable Oils, Nicer Fuel Glow, and Ammo & Turret Tweaks.',
+		href: 'https://github.com/cciacona',
+		linkLabel: 'Browse on GitHub',
+		tags: 'Lua · Factorio 2.1'
 	},
 	{
-		title: 'Factorio Mods',
-		description: 'I update older mods for Factorio 2.1, test the changes, and publish the maintained versions on GitHub and the Factorio mod portal.'
+		category: 'Self-hosting',
+		title: 'A home server with a job to do.',
+		description: 'A dedicated PC running Proxmox VE hosts my Minecraft server and Jellyfin. I handle the networking, updates, and troubleshooting.',
+		href: '/vault',
+		linkLabel: 'See hosted services',
+		tags: 'Proxmox VE · Minecraft · Jellyfin'
 	},
 	{
-		title: 'Park Operations',
-		description: 'I have worked in Park Operations at Universal Orlando since August 2023.'
+		category: 'Research & writing',
+		title: 'What happens in class group chats?',
+		description: 'My ENC 1102 research portfolio follows a semester of interviews, writing, and revision about student-run class group chats.',
+		href: '/portfolio/composition',
+		linkLabel: 'Read the portfolio',
+		tags: 'ENC 1102 · Primary research'
 	}
 ];
 
-const technicalStack = [
+const toolkit = [
 	['Systems', 'Windows 11, Proxmox VE'],
 	['Languages', 'Python, Java, Lua, C'],
 	['Tools', 'Git, GitHub, PowerShell, VSC, MSYS2'],
 	['Services', 'Minecraft, Jellyfin, Cloudflare']
 ];
-
-const selectedWork = [
-	{
-		title: 'Factorio 2.1 Mods',
-		meta: 'Lua / Factorio / GitHub',
-		description: 'Four maintained mods: Fire Extinguisher, Flammable Oils, Nicer Fuel Glow, and Ammo & Turret Tweaks.',
-		href: 'https://github.com/cciacona'
-	},
-	{
-		title: 'Proxmox Home Server',
-		meta: 'Proxmox VE / Minecraft / Jellyfin',
-		description: 'A dedicated PC hosts the Minecraft server and Jellyfin instance linked from the Vault.',
-		href: '/vault'
-	},
-	{
-		title: 'Composition Research Portfolio',
-		meta: 'ENC 1102 / Primary research',
-		description: 'A semester project about student-run class group chats, with five interviews, three major assignments, and the revision process.',
-		href: '/portfolio/composition'
-	}
-];
 ---
 
-<Layout title="Carmine Iacona | CECS Student">
-	<section class="hero shell">
-		<div class="hero__copy">
-			<p class="eyebrow">Carmine Iacona · Orlando, Florida</p>
-			<h1>
-				I build, host,<br />
-				<span>and fix things.</span>
-			</h1>
-			<p class="hero__lede">
-				I’m a CECS student at UCF. Most of my projects involve
-				my Proxmox home server, Factorio mods, or this website.
+<Layout title="Carmine Iacona | EPPPE.NET">
+	<section class="home-intro shell" aria-labelledby="intro-heading">
+		<div class="home-intro__copy">
+			<p class="home-location">Orlando, Florida</p>
+			<h1 id="intro-heading">Carmine<br />Iacona<span>.</span></h1>
+			<p class="home-intro__lede">
+				I’m a CECS student at UCF. Outside class, I spend a lot of time
+				maintaining game mods and getting my home server to behave.
 			</p>
-			<div class="button-row">
-				<a href="/portfolio" class="button button--primary">
-					View projects
-					<span aria-hidden="true">↗</span>
-				</a>
-				<a href="/vault" class="button button--quiet">Open the Vault</a>
-			</div>
+			<a class="text-link" href="https://github.com/cciacona">
+				Find me on GitHub <span aria-hidden="true">↗</span>
+			</a>
 		</div>
 
-		<div class="hero__visual">
-			<SystemsPlate />
-			<p class="hero__caption">
-				<span>Home lab</span>
-				A dedicated Proxmox PC hosts Minecraft and Jellyfin.
-			</p>
-		</div>
-	</section>
-
-	<div class="proof-strip">
-		<div class="shell proof-strip__inner">
-			<div class="proof-strip__intro">
-				<span class="status-dot"></span>
-				Orlando, Florida
-			</div>
-			<div class="proof-strip__item">
-				<span>02</span>
-				<p>Universal Orlando<br /><strong>Park Operations · Since 2023</strong></p>
-			</div>
-			<div class="proof-strip__item">
-				<span>03</span>
-				<p>CompTIA<br /><strong>IT Fundamentals Pro · Jul. 2024</strong></p>
-			</div>
-		</div>
-	</div>
-
-	<section class="section shell split-section">
-		<div class="section-heading">
-			<p class="eyebrow">Toolkit · 01</p>
-			<h2>What I<br /><em>use</em></h2>
-			<p>The software and platforms behind the projects on this site.</p>
-		</div>
-
-		<div class="ruled-list">
-			{technicalStack.map(([label, value], index) => (
-				<div class="ruled-list__row">
-					<span class="ruled-list__number">0{index + 1}</span>
-					<h3>{label}</h3>
-					<p>{value}</p>
-				</div>
-			))}
-		</div>
-	</section>
-
-	<section class="section section--forest">
-		<div class="shell">
-			<div class="section-heading section-heading--horizontal">
+		<aside class="home-directory" aria-label="Explore this site">
+			<p class="home-directory__label">Elsewhere on this site</p>
+			<a href="/portfolio">
 				<div>
-					<p class="eyebrow">Experience · 02</p>
-					<h2>What I<br /><em>do</em></h2>
+					<h2>Portfolio</h2>
+					<p>Technical projects and my<br class="desktop-break" /> composition research.</p>
 				</div>
-				<p>My home server, mod projects, and work at Universal.</p>
-			</div>
+				<span aria-hidden="true">↗</span>
+			</a>
+			<a href="/vault">
+				<div>
+					<h2>The Vault</h2>
+					<p>Hosted services, media reviews,<br class="desktop-break" /> and creative writing.</p>
+				</div>
+				<span aria-hidden="true">↗</span>
+			</a>
+			<p class="home-directory__footnote">A place for the things I work on.</p>
+		</aside>
+	</section>
 
-			<div class="focus-grid">
-				{focusAreas.map((area, index) => (
-					<article class="focus-card">
-						<p class="focus-card__index">0{index + 1} / 03</p>
-						<h3>{area.title}</h3>
-						<p>{area.description}</p>
-						<div class="focus-card__mark" aria-hidden="true"></div>
-					</article>
-				))}
-			</div>
+	<section class="project-notes shell" aria-labelledby="projects-heading">
+		<div class="project-notes__intro">
+			<p class="eyebrow">Personal projects</p>
+			<h2 id="projects-heading">Some of<br />my work.</h2>
+			<p>The code, systems, and writing I’ve been working on.</p>
+		</div>
+		<div class="project-notes__list">
+			{projects.map((project) => (
+				<article class="project-note">
+					<p class="project-note__category">{project.category}</p>
+					<h3><a href={project.href}>{project.title}<span aria-hidden="true"> ↗</span></a></h3>
+					<p class="project-note__description">{project.description}</p>
+					<div class="project-note__bottom">
+						<span>{project.tags}</span>
+						<a href={project.href}>{project.linkLabel} <span aria-hidden="true">→</span></a>
+					</div>
+				</article>
+			))}
 		</div>
 	</section>
 
-	<section class="section shell">
-		<div class="section-heading section-heading--horizontal">
-			<div>
-				<p class="eyebrow">Selected work · 03</p>
-				<h2>Selected<br /><em>projects</em></h2>
-			</div>
-			<p>Technical projects, hosted services, and my ENC 1102 portfolio.</p>
+	<section class="home-details shell" aria-label="Background and toolkit">
+		<div class="home-background">
+			<p class="eyebrow">A little background</p>
+			<h2>Away from the keyboard.</h2>
+			<p>I’ve worked in Park Operations at Universal Orlando since August 2023.</p>
+			<dl class="background-facts">
+				<div><dt>Studying</dt><dd>CECS at UCF</dd></div>
+				<div><dt>Certification</dt><dd>CompTIA IT Fundamentals Pro<br /><span>July 2024</span></dd></div>
+			</dl>
 		</div>
-
-		<div class="work-list">
-			{selectedWork.map((work, index) => (
-				<a href={work.href} class="work-row">
-					<span class="work-row__number">0{index + 1}</span>
-					<div>
-						<p class="work-row__meta">{work.meta}</p>
-						<h3>{work.title}</h3>
-					</div>
-					<p class="work-row__description">{work.description}</p>
-					<span class="work-row__arrow" aria-hidden="true">↗</span>
-				</a>
-			))}
+		<div class="home-toolkit">
+			<p class="eyebrow">At the keyboard</p>
+			<h2>Tools I use.</h2>
+			<dl>
+				{toolkit.map(([label, value]) => (
+					<div><dt>{label}</dt><dd>{value}</dd></div>
+				))}
+			</dl>
 		</div>
 	</section>
 </Layout>

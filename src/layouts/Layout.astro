@@ -46,34 +46,33 @@ const isActive = (href: string) =>
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		{socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
-		<meta name="theme-color" content="#141713" />
+		<meta name="theme-color" content="#141516" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/favicon.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
 	<body>
 		<a class="skip-link" href="#main-content">Skip to content</a>
-		<div class="site-grid" aria-hidden="true"></div>
 
 		<header class="site-header">
 			<div class="shell site-header__inner">
 				<a href="/" class="wordmark" aria-label="EPPPE.NET home">
-					<span class="wordmark__name">EPPPE</span><span class="wordmark__dot">.NET</span>
+					<span class="wordmark__name">EPPPE<span class="wordmark__dot">.NET</span></span>
+					<span class="wordmark__caption">Carmine Iacona</span>
 				</a>
 
 				<nav class="site-nav" aria-label="Primary navigation">
-					{navItems.map((item, index) => (
+					{navItems.map((item) => (
 						<a
 							href={item.href}
 							class:list={['site-nav__link', { 'is-active': isActive(item.href) }]}
 							aria-current={isActive(item.href) ? 'page' : undefined}
 						>
-							<span aria-hidden="true">0{index + 1}</span>
 							{item.label}
 						</a>
 					))}
@@ -81,19 +80,19 @@ const isActive = (href: string) =>
 			</div>
 		</header>
 
-		<main id="main-content">
+		<main id="main-content" tabindex="-1">
 			<slot />
 		</main>
 
 		<footer class="site-footer">
 			<div class="shell site-footer__inner">
 				<div>
-					<p class="eyebrow">Carmine Iacona</p>
-					<p class="site-footer__statement">CECS at UCF.</p>
+					<a class="site-footer__name" href="/">Carmine Iacona<span>.</span></a>
+					<p class="site-footer__statement">CECS at UCF · Orlando, Florida</p>
 				</div>
 				<div class="site-footer__meta">
 					<p>&copy; {new Date().getFullYear()} Carmine Iacona</p>
-					<p>Astro · Cloudflare Pages</p>
+					<a href="https://github.com/cciacona">GitHub <span aria-hidden="true">↗</span></a>
 				</div>
 			</div>
 		</footer>
