@@ -129,9 +129,7 @@ const {
 		overflow: hidden;
 		padding-block: clamp(44px, 6vw, 72px);
 		border-bottom: 1px solid var(--rule);
-		background:
-			linear-gradient(90deg, transparent 0 68%, rgba(193, 165, 126, 0.055) 68% 68.1%, transparent 68.1%),
-			radial-gradient(circle at 82% 14%, rgba(91, 123, 100, 0.19), transparent 24rem);
+		background: var(--paper-soft);
 	}
 
 	.document-masthead__inner {
@@ -166,10 +164,10 @@ const {
 		margin: 16px 0 0;
 		color: var(--cream);
 		font-family: var(--display);
-		font-size: clamp(2.9rem, 6vw, 5.8rem);
-		font-weight: 400;
+		font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+		font-weight: 600;
 		letter-spacing: -0.048em;
-		line-height: 0.9;
+		line-height: 1.15;
 	}
 
 	.document-masthead__deck {
@@ -321,6 +319,7 @@ const {
 	}
 
 	.document-content {
+		min-width: 0;
 		width: 100%;
 		max-width: 800px;
 	}
@@ -332,12 +331,12 @@ const {
 	.document-content :global(h2) {
 		margin: 4.7rem 0 1.4rem;
 		padding-top: 2rem;
-		scroll-margin-top: 154px;
+		scroll-margin-top: 0;
 		border-top: 1px solid var(--rule-strong);
 		color: var(--cream);
 		font-family: var(--display);
-		font-size: clamp(2.35rem, 4vw, 4rem);
-		font-weight: 400;
+		font-size: clamp(1.6rem, 3vw, 2.5rem);
+		font-weight: 600;
 		letter-spacing: -0.035em;
 		line-height: 1;
 	}
@@ -502,7 +501,7 @@ const {
 
 	@media (max-width: 1020px) {
 		.document-reading.has-toc {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 			gap: 50px;
 		}
 

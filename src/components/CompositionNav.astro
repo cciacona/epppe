@@ -24,13 +24,12 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 	<div class="shell composition-nav__inner">
 		<p class="composition-nav__label">ENC 1102 Portfolio</p>
 		<div class="composition-nav__links">
-			{links.map((link, index) => (
+			{links.map((link) => (
 				<a
 					href={link.href}
 					class:list={['composition-nav__link', { 'is-active': isActive(link.matches) }]}
 					aria-current={isActive(link.matches) ? 'page' : undefined}
 				>
-					<span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
 					{link.label}
 				</a>
 			))}
@@ -41,11 +40,11 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 <style>
 	.composition-nav {
 		position: sticky;
-		top: 78px;
+		top: 0;
 		z-index: 40;
 		border-block: 1px solid var(--rule);
-		background: rgba(16, 35, 28, 0.92);
-		backdrop-filter: blur(14px);
+		background: var(--paper-soft);
+		
 	}
 
 	.composition-nav__inner {
@@ -64,8 +63,8 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 		color: var(--sage-bright);
 		font-size: 0.72rem;
 		font-weight: 700;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		text-transform: none;
 		white-space: nowrap;
 	}
 
@@ -83,8 +82,8 @@ const isActive = (matches: string[]) => matches.includes(pathname);
 		color: var(--muted);
 		font-size: 0.76rem;
 		font-weight: 700;
-		letter-spacing: 0.07em;
-		text-transform: uppercase;
+		letter-spacing: 0;
+		text-transform: none;
 		white-space: nowrap;
 		transition: color 180ms ease, background-color 180ms ease;
 	}
