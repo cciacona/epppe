@@ -1408,29 +1408,9 @@ main:focus { outline: none; }
 .writing-entry h3 { font-size: 1.5rem; line-height: 1.25; }
 .writing-entry p { font-size: 0.72rem; letter-spacing: 0; text-transform: none; }
 .writing-entry > strong { grid-column: 2; font-size: 0.78rem; font-weight: 400; text-align: left; text-transform: none; }
-.writing-entry > strong br { display: none; }
-.writing-entry > strong br::after { content: " "; }
 .writing-entry__number, .review-entry__index { font-family: var(--mono); font-size: 0.72rem; font-style: normal; }
 
-/* Scoped Astro page styles retain their layouts; these rules unify their presentation. */
-.composition-hero, .document-masthead { background: var(--paper-soft) !important; }
-.composition-hero__inner { padding-block: 60px !important; }
-.composition-hero h1 { font-size: clamp(2.4rem, 5.5vw, 4.6rem) !important; font-weight: 600 !important; line-height: 1.12 !important; }
-.composition-hero h1 em { font-style: normal; color: var(--cream-soft); }
-.composition-hero__deck { font-size: 1rem !important; }
-.research-card { background: transparent !important; border: 0 !important; border-left: 1px solid var(--rule-strong) !important; }
-.research-card__question { font-size: 1.2rem !important; line-height: 1.55 !important; }
-.research-card__stats strong { font-size: 1.5rem !important; }
-.document-masthead h1 { font-size: clamp(2.2rem, 4.2vw, 3.8rem) !important; font-weight: 600 !important; line-height: 1.12 !important; }
 .document-content { overflow-wrap: anywhere; }
-.document-content h2, .document-content h3 { font-family: var(--body) !important; font-weight: 600 !important; line-height: 1.3 !important; }
-.reader-path { background: transparent !important; }
-.reader-path--primary { background: var(--paper-soft) !important; border-color: var(--rule-strong) !important; }
-.reader-path strong { font-size: 1.3rem !important; font-weight: 600 !important; line-height: 1.3 !important; }
-.outcome-map__grid > a { background: transparent !important; }
-.outcome-map__grid > a:hover { background: var(--paper-soft) !important; }
-.start-heading h2, .section-heading h2 { font-size: clamp(1.6rem, 3vw, 2.5rem) !important; font-weight: 600 !important; line-height: 1.2 !important; }
-.outcome-entry h2, .artifact-card h2 { font-size: clamp(1.5rem, 3vw, 2.6rem) !important; font-weight: 600 !important; line-height: 1.2 !important; }
 
 @media (max-width: 960px) {
 	.wordmark__caption { display: none; }
@@ -1472,7 +1452,6 @@ main:focus { outline: none; }
 	.service-links a { min-height: auto; }
 	.site-footer__inner { align-items: start; flex-direction: column; gap: 24px; padding-block: 30px; }
 	.site-footer__meta { flex-wrap: wrap; gap: 12px 24px; }
-	.research-card { padding-left: 0 !important; border-left: 0 !important; border-top: 1px solid var(--rule-strong) !important; }
 }
 @media (max-width: 380px) {
 	.site-header__inner { flex-wrap: wrap; padding-block: 16px; gap: 8px; }
